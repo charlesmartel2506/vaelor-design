@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio Halona — Salon de beauté et soins à Brossard</title>
+<meta name="description" content="Studio Halona à Brossard : coiffure, soins du visage, ongles et massage. Prix affichés, forfaits détente, réservation en ligne. 450 555-0198.">
+<meta name="theme-color" content="#B4787A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== STUDIO HALONA — thème Nuance ==================================== */
+:root{
+  --rose:#B4787A; --rose-f:#96585A; --rose-p:#F6EDE9; --sable:#D6B2A6;
+  --encre:#2A2124; --gris:#7A6A6E; --gris-c:#A99B9E; --bord:#EDDDD8;
+  --creme:#FDF9F7; --creme2:#F6EDE9;
+  --max:1160px; --pad:clamp(20px,5vw,40px); --r:99px; --r-c:20px;
+  --t:'Cormorant Garamond',Georgia,serif; --c:'Inter',system-ui,sans-serif;
+  --ombre:0 22px 54px -26px rgba(42,33,36,.32);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--creme);color:var(--encre);font-family:var(--c);font-size:17px;line-height:1.72;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:54px}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--t);font-weight:600;line-height:1.1;margin:0 0 .5em;letter-spacing:.01em}
+h1{font-size:clamp(2.8rem,7vw,5rem)}
+h2{font-size:clamp(2.1rem,4.4vw,3.3rem)}
+h3{font-size:clamp(1.3rem,2vw,1.6rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:6px}
+.env{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(64px,8vw,112px)}
+.sur{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--rose);margin-bottom:16px}
+.plomb{color:var(--gris);font-size:1.05rem;max-width:60ch}
+.centre{text-align:center;margin-inline:auto}
+.ital{font-style:italic;color:var(--rose)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--c);font-size:.82rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 32px;border-radius:var(--r);border:1.5px solid transparent;text-decoration:none;cursor:pointer;transition:.26s ease;white-space:nowrap}
+.btn--plein{background:var(--rose);color:#fff}
+.btn--plein:hover{background:var(--rose-f);transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(180,120,122,.8)}
+.btn--ligne{background:transparent;border-color:var(--bord);color:var(--encre)}
+.btn--ligne:hover{border-color:var(--rose);color:var(--rose)}
+.btn--mini{padding:11px 22px;font-size:.72rem}
+/* Un bouton pleine largeur doit pouvoir passer à la ligne, sinon son libellé
+   élargit toute la page sur téléphone. */
+.form .btn,.forfait .btn{white-space:normal;text-align:center}
+@media(max-width:430px){.btn{white-space:normal;text-align:center}}
+body{overflow-wrap:break-word}
+
+/* En-tête */
+.ent{position:sticky;top:0;z-index:100;background:rgba(253,249,247,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord)}
+.ent__g{display:flex;align-items:center;gap:22px;padding-block:15px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.logo svg{width:36px;height:36px;flex:0 0 auto}
+.logo b{display:block;font-family:var(--t);font-size:1.5rem;font-weight:600;letter-spacing:.2em;line-height:1;text-transform:uppercase}
+.logo span{display:block;font-size:.6rem;color:var(--gris-c);letter-spacing:.3em;text-transform:uppercase;margin-top:4px}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{text-decoration:none;color:var(--gris);font-size:.83rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:9px 13px;transition:.2s}
+.nav a:hover{color:var(--rose)}
+.brg{display:none;width:44px;height:44px;border-radius:var(--r);background:var(--creme2);border:1px solid var(--bord);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.brg span{width:18px;height:1.5px;background:var(--encre);transition:.25s}
+.brg[aria-expanded=true] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.brg[aria-expanded=true] span:nth-child(2){opacity:0}
+.brg[aria-expanded=true] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:1000px){
+  .brg{display:flex}.ent__cta{display:none}
+  .nav{position:absolute;inset:100% 12px auto 12px;flex-direction:column;align-items:stretch;background:var(--creme);border:1px solid var(--bord);border-radius:var(--r-c);padding:12px;box-shadow:var(--ombre);opacity:0;transform:translateY(-10px);pointer-events:none;transition:.22s}
+  .nav.ouv{opacity:1;transform:none;pointer-events:auto}
+  .nav a{padding:14px}.nav .btn{margin-top:8px}
+}
+
+/* Héros */
+.hero{position:relative;overflow:hidden;background:var(--creme2)}
+.hero__art{position:absolute;inset:0;z-index:0}
+.hero__g{position:relative;z-index:2;padding-block:clamp(60px,9vw,126px);max-width:620px}
+.hero h1{margin-bottom:22px}
+.hero__act{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero__pts{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:36px;padding-top:24px;border-top:1px solid var(--bord);font-size:.9rem;color:var(--gris)}
+.pt{display:flex;align-items:center;gap:8px}
+.pt svg{width:17px;height:17px;color:var(--rose);flex:0 0 auto}
+
+/* Bandeau */
+.bd{background:var(--rose);color:#fff;padding-block:14px;font-size:.86rem;letter-spacing:.04em}
+.bd .env{display:flex;flex-wrap:wrap;gap:6px 28px;align-items:center;justify-content:center;text-align:center}
+
+/* Services accordéon */
+.cats{display:grid;gap:14px;max-width:880px;margin-inline:auto}
+.cat{border:1px solid var(--bord);border-radius:var(--r-c);background:var(--creme);overflow:hidden;transition:.25s}
+.cat[open]{box-shadow:var(--ombre);border-color:var(--sable)}
+.cat summary{cursor:pointer;list-style:none;padding:22px 60px 22px 26px;position:relative;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.cat summary::-webkit-details-marker{display:none}
+.cat summary::after{content:'';position:absolute;right:26px;top:50%;width:11px;height:11px;border-right:1.5px solid var(--rose);border-bottom:1.5px solid var(--rose);transform:translateY(-70%) rotate(45deg);transition:.25s}
+.cat[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.cat summary b{font-family:var(--t);font-size:1.5rem;font-weight:600}
+.cat summary span{font-size:.82rem;color:var(--gris-c);letter-spacing:.1em}
+.cat__c{padding:0 26px 24px}
+.svc{display:flex;align-items:baseline;gap:14px;padding-block:14px;border-top:1px dotted var(--bord)}
+.svc__n{flex:0 1 auto}
+.svc__n b{display:block;font-weight:500;font-size:1rem;color:var(--encre)}
+.svc__n span{font-size:.88rem;color:var(--gris)}
+.svc__pt{flex:1;border-bottom:1px dotted var(--bord);transform:translateY(-4px);min-width:20px}
+.svc__px{font-family:var(--t);font-size:1.3rem;font-weight:600;color:var(--rose);white-space:nowrap}
+.svc__d{font-size:.78rem;color:var(--gris-c);white-space:nowrap;margin-left:8px}
+
+/* Forfaits */
+.forf{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.forf{grid-template-columns:1fr;max-width:480px;margin-inline:auto}}
+.forfait{background:var(--creme);border:1px solid var(--bord);border-radius:var(--r-c);padding:32px 28px;display:flex;flex-direction:column;transition:.25s;position:relative}
+.forfait:hover{box-shadow:var(--ombre);transform:translateY(-5px)}
+.forfait--vedette{border-color:var(--rose);background:linear-gradient(170deg,var(--rose-p),var(--creme))}
+.forfait__rub{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--rose);color:#fff;font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:7px 18px;border-radius:var(--r);white-space:nowrap}
+.forfait h3{margin-bottom:4px}
+.forfait__d{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gris-c);margin-bottom:18px}
+.forfait__px{font-family:var(--t);font-size:3rem;font-weight:600;color:var(--rose);line-height:1;margin-bottom:20px}
+.forfait ul{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:11px}
+.forfait li{display:flex;gap:11px;align-items:flex-start;font-size:.94rem;color:var(--gris)}
+.forfait li svg{width:16px;height:16px;color:var(--rose);flex:0 0 auto;margin-top:5px}
+.forfait .btn{margin-top:auto;width:100%}
+
+/* Équipe */
+.eq{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.eq{grid-template-columns:1fr}}
+.pers{text-align:center}
+.pers__ph{border-radius:var(--r-c);overflow:hidden;border:1px solid var(--bord);margin-bottom:18px;background:var(--creme2)}
+.pers h3{margin-bottom:2px;font-size:1.4rem}
+.pers__r{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:10px}
+.pers p{color:var(--gris);font-size:.93rem;margin:0}
+
+/* Le lieu */
+.lieu{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,60px);align-items:center}
+@media(max-width:880px){.lieu{grid-template-columns:1fr}}
+.lieu ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.lieu li{display:flex;gap:12px;align-items:flex-start;color:var(--gris);font-size:.97rem}
+.lieu li svg{width:17px;height:17px;color:var(--rose);flex:0 0 auto;margin-top:5px}
+
+/* Avis */
+.avis{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.avis{grid-template-columns:1fr}}
+.avis__c{background:var(--creme);border:1px solid var(--bord);border-radius:var(--r-c);padding:30px}
+.avis__e{color:var(--sable);letter-spacing:3px;margin-bottom:14px}
+.avis__c p{font-family:var(--t);font-size:1.2rem;font-style:italic;color:var(--encre);margin-bottom:16px;line-height:1.5}
+.avis__c cite{font-style:normal;font-size:.85rem;color:var(--gris-c)}
+.avis__c cite b{display:block;color:var(--encre);font-weight:600;font-family:var(--c);font-size:.92rem}
+
+/* Réservation */
+.resa{background:var(--creme2);border-block:1px solid var(--bord)}
+.resa__g{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,56px)}
+@media(max-width:900px){.resa__g{grid-template-columns:1fr}}
+.heures{background:var(--creme);border:1px solid var(--bord);border-radius:var(--r-c);padding:24px 26px;margin-top:24px}
+.heure{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--bord);font-size:.93rem}
+.heure:last-child{border-bottom:none}
+.heure b{font-weight:500;color:var(--encre)}
+.heure span{color:var(--gris)}
+.form{background:var(--creme);border:1px solid var(--bord);border-radius:var(--r-c);padding:clamp(24px,3vw,36px);display:grid;gap:16px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.duo{grid-template-columns:1fr}}
+.ch{display:grid;gap:7px}
+.ch label{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
+.ch input,.ch select,.ch textarea{font-family:var(--c);font-size:.97rem;font-weight:400;color:var(--encre);background:var(--creme);border:1px solid var(--bord);border-radius:12px;padding:14px 16px;width:100%}
+.ch textarea{resize:vertical;min-height:92px}
+.ch input:focus,.ch select:focus,.ch textarea:focus{outline:none;border-color:var(--rose)}
+.retour{display:none;padding:14px 16px;border-radius:12px;background:var(--rose-p);border:1px solid var(--sable);color:var(--rose-f);font-size:.92rem}
+.retour.on{display:block}
+
+/* Pied */
+.pied{background:var(--encre);color:#C3B6B8;padding-block:52px 26px}
+.pied__g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:34px}
+@media(max-width:760px){.pied__g{grid-template-columns:1fr;gap:26px}}
+.pied h4{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--sable);margin:0 0 14px;font-weight:600}
+.pied ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.pied a{color:#C3B6B8;text-decoration:none;font-size:.93rem}
+.pied a:hover{color:#fff}
+.pied__bas{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.8rem;color:#8B7D80}
+
+.rev{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rev.vu{opacity:1;transform:none}
+
+.demo-bar{position:fixed;inset:auto 0 0 0;z-index:200;background:linear-gradient(120deg,#12D8C5,#4FA6FF,#7C5CFF);color:#080812;font-family:var(--c);font-size:.82rem;font-weight:600;padding:11px 18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:center;text-align:center}
+.demo-bar a{color:#080812;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.demo-bar{font-size:.74rem;padding:9px 12px}}
+</style>
+</head>
+<body>
+
+<header class="ent" id="ent">
+  <div class="env ent__g">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 36 36" aria-hidden="true">
+        <circle cx="18" cy="18" r="17" fill="#B4787A"/>
+        <path d="M18 8c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10Z" fill="#FDF9F7"/>
+        <path d="M18 28v-9" stroke="#FDF9F7" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span><b>Halona</b><span>Brossard</span></span>
+    </a>
+    <button class="brg" id="brg" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Navigation">
+      <a href="#soins">Soins et tarifs</a>
+      <a href="#forfaits">Forfaits</a>
+      <a href="#equipe">L'équipe</a>
+      <a href="#lieu">Le studio</a>
+      <a href="#avis">Avis</a>
+      <a class="btn btn--plein btn--mini" href="#reserver">Réserver</a>
+    </nav>
+    <a class="btn btn--plein btn--mini ent__cta" href="#reserver">Réserver</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HÉROS -->
+<section class="hero">
+  <div class="hero__art" aria-hidden="true">
+    <svg viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+      <rect width="1440" height="760" fill="#F6EDE9"/>
+      <circle cx="1150" cy="300" r="320" fill="#B4787A" opacity=".14"/>
+      <circle cx="1330" cy="520" r="200" fill="#D6B2A6" opacity=".3"/>
+      <circle cx="980" cy="620" r="130" fill="#D6B2A6" opacity=".22"/>
+      <!-- feuillage doux -->
+      <g opacity=".22" fill="#B4787A">
+        <path d="M1080 180c40 0 74 30 74 70s-34 70-74 70Z"/>
+        <path d="M1080 320c-40 0-74-30-74-70s34-70 74-70Z" opacity=".6"/>
+      </g>
+      <g stroke="#B4787A" stroke-opacity=".22" fill="none" stroke-width="1.5">
+        <path d="M0 640c180-60 300 40 480 0s300-80 480-40 300 20 480-40"/>
+        <path d="M0 690c180-60 300 40 480 0s300-80 480-40 300 20 480-40"/>
+      </g>
+    </svg>
+  </div>
+  <div class="env hero__g">
+    <span class="sur">Soins · Coiffure · Ongles</span>
+    <h1>Prenez une<br><span class="ital">heure pour vous.</span></h1>
+    <p class="plomb">
+      Un petit salon de quartier à Brossard, où l'on vous appelle par votre prénom et où personne
+      ne vous presse. Nos prix sont affichés, nos produits sont sans cruauté, et le café est offert.
+    </p>
+    <div class="hero__act">
+      <a class="btn btn--plein" href="#reserver">Réserver mon moment</a>
+      <a class="btn btn--ligne" href="#soins">Voir les soins et les prix</a>
+    </div>
+    <div class="hero__pts">
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ouvert le dimanche</span>
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Produits végétaliens</span>
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Stationnement gratuit</span>
+    </div>
+  </div>
+</section>
+
+<div class="bd">
+  <div class="env">
+    <span>✦ Nouvelle cliente ? 15 % de rabais sur votre premier soin du visage.</span>
+    <span>450 555-0198</span>
+  </div>
+</div>
+
+<!-- SOINS -->
+<section class="sec" id="soins">
+  <div class="env">
+    <div class="centre rev" style="max-width:640px;margin-bottom:40px">
+      <span class="sur">Soins et tarifs</span>
+      <h2>Tous nos prix, <span class="ital">sans exception</span></h2>
+      <p class="plomb centre">
+        Vous saurez ce que vous payez avant de vous asseoir. Cliquez sur une catégorie pour la
+        déplier.
+      </p>
+    </div>
+
+    <div class="cats rev">
+      <details class="cat" open>
+        <summary><b>Coiffure</b><span>7 services</span></summary>
+        <div class="cat__c">
+          <div class="svc"><span class="svc__n"><b>Coupe femme</b><span>Consultation, lavage, coupe et coiffage</span></span><span class="svc__pt"></span><span class="svc__px">68 $</span><span class="svc__d">1 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Coupe homme</b><span>Lavage, coupe aux ciseaux ou à la tondeuse</span></span><span class="svc__pt"></span><span class="svc__px">42 $</span><span class="svc__d">45 min</span></div>
+          <div class="svc"><span class="svc__n"><b>Coupe enfant (12 ans et moins)</b><span>Sans pression, à leur rythme</span></span><span class="svc__pt"></span><span class="svc__px">30 $</span><span class="svc__d">30 min</span></div>
+          <div class="svc"><span class="svc__n"><b>Couleur simple</b><span>Racines ou couleur uniforme, soin inclus</span></span><span class="svc__pt"></span><span class="svc__px">Dès 95 $</span><span class="svc__d">2 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Balayage</b><span>Selon la longueur, avec toner et soin profond</span></span><span class="svc__pt"></span><span class="svc__px">Dès 175 $</span><span class="svc__d">3 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Coiffure d'occasion</b><span>Mariage, bal, événement. Essai possible</span></span><span class="svc__pt"></span><span class="svc__px">Dès 90 $</span><span class="svc__d">1 h 15</span></div>
+          <div class="svc"><span class="svc__n"><b>Soin réparateur en profondeur</b><span>Kératine végétale, sans formaldéhyde</span></span><span class="svc__pt"></span><span class="svc__px">55 $</span><span class="svc__d">40 min</span></div>
+        </div>
+      </details>
+
+      <details class="cat">
+        <summary><b>Soins du visage</b><span>5 services</span></summary>
+        <div class="cat__c">
+          <div class="svc"><span class="svc__n"><b>Soin découverte</b><span>Nettoyage, exfoliation, masque hydratant</span></span><span class="svc__pt"></span><span class="svc__px">85 $</span><span class="svc__d">50 min</span></div>
+          <div class="svc"><span class="svc__n"><b>Soin profond anti-âge</b><span>Massage facial, sérum ciblé, masque à l'acide hyaluronique</span></span><span class="svc__pt"></span><span class="svc__px">135 $</span><span class="svc__d">1 h 15</span></div>
+          <div class="svc"><span class="svc__n"><b>Microdermabrasion</b><span>Exfoliation mécanique, texture affinée</span></span><span class="svc__pt"></span><span class="svc__px">120 $</span><span class="svc__d">1 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Soin peau sensible ou rosacée</b><span>Produits sans parfum, protocole apaisant</span></span><span class="svc__pt"></span><span class="svc__px">98 $</span><span class="svc__d">1 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Soin express du midi</b><span>Nettoyage et hydratation, pour repartir travailler</span></span><span class="svc__pt"></span><span class="svc__px">55 $</span><span class="svc__d">30 min</span></div>
+        </div>
+      </details>
+
+      <details class="cat">
+        <summary><b>Ongles</b><span>6 services</span></summary>
+        <div class="cat__c">
+          <div class="svc"><span class="svc__n"><b>Manucure classique</b><span>Limage, cuticules, massage des mains, vernis</span></span><span class="svc__pt"></span><span class="svc__px">45 $</span><span class="svc__d">45 min</span></div>
+          <div class="svc"><span class="svc__n"><b>Manucure vernis gel</b><span>Tenue de trois semaines sans écaillage</span></span><span class="svc__pt"></span><span class="svc__px">62 $</span><span class="svc__d">1 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Pose d'ongles</b><span>Gel ou acrylique, longueur au choix</span></span><span class="svc__pt"></span><span class="svc__px">Dès 85 $</span><span class="svc__d">1 h 30</span></div>
+          <div class="svc"><span class="svc__n"><b>Remplissage</b><span>Aux trois ou quatre semaines</span></span><span class="svc__pt"></span><span class="svc__px">65 $</span><span class="svc__d">1 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Pédicure spa</b><span>Bain, exfoliation, massage, vernis. Fauteuil chauffant</span></span><span class="svc__pt"></span><span class="svc__px">72 $</span><span class="svc__d">1 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Retrait de gel ou d'acrylique</b><span>Gratuit si suivi d'un nouveau service</span></span><span class="svc__pt"></span><span class="svc__px">20 $</span><span class="svc__d">25 min</span></div>
+        </div>
+      </details>
+
+      <details class="cat">
+        <summary><b>Massage et épilation</b><span>6 services</span></summary>
+        <div class="cat__c">
+          <div class="svc"><span class="svc__n"><b>Massage suédois 60 minutes</b><span>Reçu d'assurance fourni</span></span><span class="svc__pt"></span><span class="svc__px">95 $</span><span class="svc__d">1 h</span></div>
+          <div class="svc"><span class="svc__n"><b>Massage suédois 90 minutes</b><span>Pour les dos qui en ont vraiment besoin</span></span><span class="svc__pt"></span><span class="svc__px">135 $</span><span class="svc__d">1 h 30</span></div>
+          <div class="svc"><span class="svc__n"><b>Massage aux pierres chaudes</b><span>Notre soin le plus demandé l'hiver</span></span><span class="svc__pt"></span><span class="svc__px">125 $</span><span class="svc__d">1 h 15</span></div>
+          <div class="svc"><span class="svc__n"><b>Épilation sourcils</b><span>À la cire ou à la pince, selon votre peau</span></span><span class="svc__pt"></span><span class="svc__px">24 $</span><span class="svc__d">20 min</span></div>
+          <div class="svc"><span class="svc__n"><b>Épilation demi-jambes</b><span>Cire tiède, application en bandes</span></span><span class="svc__pt"></span><span class="svc__px">45 $</span><span class="svc__d">30 min</span></div>
+          <div class="svc"><span class="svc__n"><b>Pose de cils</b><span>Volume russe ou classique, retouche à trois semaines</span></span><span class="svc__pt"></span><span class="svc__px">Dès 140 $</span><span class="svc__d">1 h 45</span></div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FORFAITS -->
+<section class="sec" id="forfaits" style="background:var(--creme2);border-block:1px solid var(--bord)">
+  <div class="env">
+    <div class="centre rev" style="max-width:600px;margin-bottom:44px">
+      <span class="sur">Nos forfaits</span>
+      <h2>Quand une heure <span class="ital">ne suffit pas</span></h2>
+      <p class="plomb centre">Trois formules pensées pour qu'on ne vous regarde pas l'horloge.</p>
+    </div>
+
+    <div class="forf">
+      <article class="forfait rev">
+        <h3>Pause</h3>
+        <p class="forfait__d">1 h 30 · en semaine</p>
+        <div class="forfait__px">139 $</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Soin du visage découverte</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Manucure classique</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Thé ou café servi en salle</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Économie de 21 $</li>
+        </ul>
+        <a class="btn btn--ligne" href="#reserver" data-forfait="Pause">Réserver ce forfait</a>
+      </article>
+
+      <article class="forfait forfait--vedette rev">
+        <span class="forfait__rub">Le plus choisi</span>
+        <h3>Détente</h3>
+        <p class="forfait__d">2 h 30 · sept jours</p>
+        <div class="forfait__px">239 $</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Massage suédois 60 minutes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Soin profond anti-âge</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Pédicure spa</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Salle privée et silence garanti</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Économie de 63 $</li>
+        </ul>
+        <a class="btn btn--plein" href="#reserver" data-forfait="Détente">Réserver ce forfait</a>
+      </article>
+
+      <article class="forfait rev">
+        <h3>Grande occasion</h3>
+        <p class="forfait__d">Sur mesure · à deux ou en groupe</p>
+        <div class="forfait__px">Dès 320 $</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Coiffure et maquillage complets</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Essai préalable inclus</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Manucure et pose de cils</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Studio privatisé pour votre groupe</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Mimosas offerts (oui, vraiment)</li>
+        </ul>
+        <a class="btn btn--ligne" href="#reserver" data-forfait="Grande occasion">Nous en parler</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section class="sec" id="equipe">
+  <div class="env">
+    <div class="centre rev" style="max-width:600px;margin-bottom:44px">
+      <span class="sur">L'équipe</span>
+      <h2>Trois personnes, <span class="ital">pas trente</span></h2>
+      <p class="plomb centre">Vous reverrez la même personne à chaque visite, si c'est ce que vous voulez.</p>
+    </div>
+
+    <div class="eq">
+      <article class="pers rev">
+        <div class="pers__ph">
+          <svg viewBox="0 0 400 400" aria-hidden="true"><rect width="400" height="400" fill="#F6EDE9"/>
+            <circle cx="200" cy="160" r="78" fill="#B4787A"/>
+            <path d="M60 400c0-76 62-124 140-124s140 48 140 124Z" fill="#B4787A" opacity=".7"/>
+            <text x="200" y="182" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="62" font-weight="600" fill="#FDF9F7">NH</text>
+          </svg>
+        </div>
+        <h3>Naomie Hébert</h3>
+        <p class="pers__r">Coiffeuse · fondatrice</p>
+        <p>Quinze ans derrière une chaise, dont huit dans un grand salon du centre-ville qu'elle a quitté pour ouvrir plus petit et prendre son temps. Spécialiste du balayage et des cheveux bouclés.</p>
+      </article>
+
+      <article class="pers rev">
+        <div class="pers__ph">
+          <svg viewBox="0 0 400 400" aria-hidden="true"><rect width="400" height="400" fill="#F4EDE6"/>
+            <circle cx="200" cy="160" r="78" fill="#D6B2A6"/>
+            <path d="M60 400c0-76 62-124 140-124s140 48 140 124Z" fill="#D6B2A6" opacity=".75"/>
+            <text x="200" y="182" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="62" font-weight="600" fill="#FDF9F7">SL</text>
+          </svg>
+        </div>
+        <h3>Sarah Lemieux</h3>
+        <p class="pers__r">Esthéticienne</p>
+        <p>Diplômée en esthétique et en électrolyse. C'est elle qui reçoit les peaux réactives et les rosacées — elle connaît la composition de chaque produit du studio par cœur.</p>
+      </article>
+
+      <article class="pers rev">
+        <div class="pers__ph">
+          <svg viewBox="0 0 400 400" aria-hidden="true"><rect width="400" height="400" fill="#EFE9E9"/>
+            <circle cx="200" cy="160" r="78" fill="#96585A"/>
+            <path d="M60 400c0-76 62-124 140-124s140 48 140 124Z" fill="#96585A" opacity=".7"/>
+            <text x="200" y="182" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="62" font-weight="600" fill="#FDF9F7">TN</text>
+          </svg>
+        </div>
+        <h3>Thi Nguyen</h3>
+        <p class="pers__r">Massothérapeute agréée</p>
+        <p>Membre de la Fédération québécoise des massothérapeutes : ses reçus sont acceptés par la plupart des assurances collectives. Massage suédois et pierres chaudes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LE LIEU -->
+<section class="sec" id="lieu" style="background:var(--creme2);border-block:1px solid var(--bord)">
+  <div class="env lieu">
+    <div class="rev">
+      <span class="sur">Le studio</span>
+      <h2>Petit, calme, <span class="ital">et bien à vous</span></h2>
+      <p class="plomb">
+        Quatre postes, une salle de soin fermée et une pièce de massage insonorisée. On ne fait
+        jamais entrer plus de personnes que ce que le lieu peut accueillir sans devenir bruyant —
+        c'est un choix, pas une limite.
+      </p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Produits sans cruauté et majoritairement végétaliens</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Entrée de plain-pied, accessible en fauteuil roulant</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Stationnement gratuit devant la porte</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Café, thé et eau pétillante offerts</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cartes-cadeaux disponibles en tout temps</li>
+      </ul>
+    </div>
+    <svg viewBox="0 0 520 480" style="border-radius:20px;border:1px solid var(--bord)" class="rev" aria-hidden="true">
+      <rect width="520" height="480" fill="#FDF9F7"/>
+      <rect x="0" y="330" width="520" height="150" fill="#F0E4DF"/>
+      <!-- miroirs -->
+      <g>
+        <ellipse cx="130" cy="180" rx="66" ry="86" fill="#F6EDE9" stroke="#D6B2A6" stroke-width="3"/>
+        <ellipse cx="300" cy="180" rx="66" ry="86" fill="#F6EDE9" stroke="#D6B2A6" stroke-width="3"/>
+      </g>
+      <!-- fauteuils -->
+      <g fill="#B4787A">
+        <rect x="96" y="300" width="70" height="56" rx="12"/><rect x="120" y="356" width="22" height="40" rx="8" opacity=".7"/>
+        <rect x="266" y="300" width="70" height="56" rx="12"/><rect x="290" y="356" width="22" height="40" rx="8" opacity=".7"/>
+      </g>
+      <!-- plante -->
+      <g><rect x="440" y="352" width="44" height="52" rx="6" fill="#D6B2A6"/>
+        <path d="M462 352c0-46 22-72 54-80-6 48-24 74-54 80Z" fill="#9BB58C"/>
+        <path d="M462 352c0-40-20-64-48-72 6 42 22 66 48 72Z" fill="#B0C7A2"/></g>
+      <!-- lampe -->
+      <g stroke="#D6B2A6" stroke-width="3" fill="none"><path d="M420 60v120"/></g>
+      <path d="M396 180h48l-12 26h-24Z" fill="#D6B2A6"/>
+      <circle cx="420" cy="212" r="14" fill="#F5E3D8"/>
+      <!-- fleurs -->
+      <g fill="#D98C9E"><circle cx="60" cy="332" r="8"/><circle cx="78" cy="342" r="7"/><circle cx="46" cy="346" r="6"/></g>
+    </svg>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="sec" id="avis">
+  <div class="env">
+    <div class="centre rev" style="max-width:560px;margin-bottom:42px">
+      <span class="sur">Ce qu'on dit de nous</span>
+      <h2>4,9 sur 5 · 187 avis</h2>
+    </div>
+    <div class="avis">
+      <article class="avis__c rev">
+        <div class="avis__e">★★★★★</div>
+        <p>« C'est le seul salon où on ne m'a jamais fait sentir mal à l'aise à propos de mes cheveux. Naomie explique ce qu'elle fait pendant qu'elle le fait. »</p>
+        <cite><b>Émilie R.</b>Cliente depuis 2021</cite>
+      </article>
+      <article class="avis__c rev">
+        <div class="avis__e">★★★★★</div>
+        <p>« Le forfait Détente était un cadeau de ma fille. J'ai dormi pendant le massage et je suis repartie en flottant. J'y retourne à chaque anniversaire depuis. »</p>
+        <cite><b>Louise D.</b>Brossard</cite>
+      </article>
+      <article class="avis__c rev">
+        <div class="avis__e">★★★★★</div>
+        <p>« Sarah a réussi à calmer une rosacée que trois esthéticiennes avaient empirée. Elle prend le temps de lire les étiquettes avec moi. »</p>
+        <cite><b>Katia M.</b>Saint-Hubert</cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSERVATION -->
+<section class="sec resa" id="reserver">
+  <div class="env resa__g">
+    <div class="rev">
+      <span class="sur">Réserver</span>
+      <h2>On vous <span class="ital">attend</span></h2>
+      <p class="plomb">
+        Écrivez-nous et nous vous confirmons par message texte dans la journée. Vous préférez le
+        téléphone ? Il y a toujours quelqu'un au bout du fil pendant les heures d'ouverture.
+      </p>
+
+      <div class="heures">
+        <div class="heure"><b>Lundi</b><span>Fermé</span></div>
+        <div class="heure"><b>Mardi – Mercredi</b><span>9 h – 18 h</span></div>
+        <div class="heure"><b>Jeudi – Vendredi</b><span>9 h – 20 h</span></div>
+        <div class="heure"><b>Samedi</b><span>9 h – 17 h</span></div>
+        <div class="heure"><b>Dimanche</b><span>10 h – 16 h</span></div>
+      </div>
+
+      <p class="plomb" style="margin-top:22px;font-size:.96rem">
+        <strong style="color:var(--encre)">7480, boulevard Taschereau, local 4</strong><br>
+        Brossard (Québec)  J4Y 1A2<br>
+        450 555-0198 · bonjour@studiohalona.ca
+      </p>
+      <p style="font-size:.86rem;color:var(--gris-c)">
+        Annulation sans frais jusqu'à 24 heures avant. Après, on facture 50 % du service — ça nous
+        permet de garder nos prix bas pour tout le monde.
+      </p>
+    </div>
+
+    <form class="form rev" id="form-resa" novalidate>
+      <div class="duo">
+        <div class="ch"><label for="h-nom">Prénom et nom</label><input id="h-nom" type="text" placeholder="Émilie Roy" required></div>
+        <div class="ch"><label for="h-tel">Téléphone</label><input id="h-tel" type="tel" placeholder="450 555-0123" required></div>
+      </div>
+      <div class="ch"><label for="h-courriel">Courriel</label><input id="h-courriel" type="email" placeholder="emilie@exemple.ca"></div>
+      <div class="ch"><label for="h-svc">Le service souhaité</label>
+        <select id="h-svc">
+          <option>Coupe et coiffage</option><option>Couleur ou balayage</option>
+          <option>Soin du visage</option><option>Manucure ou pédicure</option>
+          <option>Massage</option><option>Épilation ou pose de cils</option>
+          <option>Forfait Pause</option><option>Forfait Détente</option><option>Forfait Grande occasion</option>
+          <option>Je ne sais pas — conseillez-moi</option>
+        </select>
+      </div>
+      <div class="duo">
+        <div class="ch"><label for="h-pers">Avec qui ?</label>
+          <select id="h-pers"><option>Peu importe</option><option>Naomie (coiffure)</option><option>Sarah (esthétique)</option><option>Thi (massage)</option></select>
+        </div>
+        <div class="ch"><label for="h-quand">Vos disponibilités</label>
+          <select id="h-quand"><option>En semaine, le jour</option><option>En semaine, en soirée</option><option>La fin de semaine</option><option>Je suis flexible</option></select>
+        </div>
+      </div>
+      <div class="ch"><label for="h-msg">Autre chose ?</label><textarea id="h-msg" placeholder="Une allergie, une occasion spéciale, une inquiétude particulière…"></textarea></div>
+      <button class="btn btn--plein" type="submit" style="width:100%">Demander mon rendez-vous</button>
+      <p class="retour" id="h-retour" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="env">
+    <div class="pied__g">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:16px">
+          <svg viewBox="0 0 36 36" aria-hidden="true">
+            <circle cx="18" cy="18" r="17" fill="#D6B2A6"/>
+            <path d="M18 8c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10Z" fill="#2A2124"/>
+            <path d="M18 28v-9" stroke="#2A2124" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span><b style="color:#fff">Halona</b><span style="color:#8B7D80">Brossard</span></span>
+        </a>
+        <p style="font-size:.93rem;max-width:38ch;color:#C3B6B8">
+          Un petit salon de quartier où l'on prend le temps. Coiffure, soins, ongles et massage.
+        </p>
+      </div>
+      <div>
+        <h4>Le studio</h4>
+        <ul>
+          <li><a href="#soins">Soins et tarifs</a></li><li><a href="#forfaits">Forfaits</a></li>
+          <li><a href="#equipe">L'équipe</a></li><li><a href="#lieu">Le lieu</a></li>
+          <li><a href="#avis">Avis</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nous joindre</h4>
+        <ul>
+          <li><a href="tel:+14505550198">450 555-0198</a></li>
+          <li><a href="mailto:bonjour@studiohalona.ca">bonjour@studiohalona.ca</a></li>
+          <li style="font-size:.93rem;color:#C3B6B8">7480, boul. Taschereau, local 4<br>Brossard (Québec) J4Y 1A2</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© 2026 Studio Halona. Entreprise fictive créée en exemple.</span>
+      <span>Site conçu par Vaelor Design</span>
+    </div>
+  </div>
+</footer>
+
+<div class="demo-bar">
+  <span>🎨 Exemple de site créé par <strong>Vaelor Design</strong> — ce salon est fictif.</span>
+  <a href="../../index.html">Voir tous les exemples</a>
+  <a href="../../index.html#contact">Obtenir le mien</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s,c){return (c||document).querySelector(s);};
+  var $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));};
+
+  var brg=$('#brg'),nav=$('#nav');
+  brg.addEventListener('click',function(){
+    var o=nav.classList.toggle('ouv');
+    brg.setAttribute('aria-expanded',o?'true':'false');
+  });
+  $$('a',nav).forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('ouv');brg.setAttribute('aria-expanded','false');});});
+
+  // Les boutons de forfait pré-remplissent le formulaire
+  $$('[data-forfait]').forEach(function(a){
+    a.addEventListener('click',function(){
+      var sel=$('#h-svc'); if(!sel) return;
+      var cible='Forfait '+a.dataset.forfait;
+      $$('option',sel).forEach(function(o){ if(o.textContent===cible){ sel.value=o.value||o.textContent; } });
+    });
+  });
+
+  var els=$$('.rev');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});
+    setTimeout(function(){ if(!$('.rev.vu')){ els.forEach(function(e){e.classList.add('vu');}); } },2500);
+  } else { els.forEach(function(e){e.classList.add('vu');}); }
+
+  var f=$('#form-resa'),r=$('#h-retour');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nom=$('#h-nom').value.trim(), tel=$('#h-tel').value.trim();
+    if(!nom||!tel){ r.textContent='Il nous faut votre nom et un numéro pour confirmer.'; r.classList.add('on'); return; }
+    r.textContent='Merci '+nom+' ! Nous vous confirmons par texto au '+tel+' aujourd’hui même, avec les heures libres pour « '+$('#h-svc').value+' ». (Démonstration : aucun message n’a réellement été envoyé.)';
+    r.classList.add('on');
+    f.reset();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verdal Paysagement — Aménagement extérieur sur la Rive-Sud</title>
+<meta name="description" content="Verdal Paysagement : pavé-uni, murets, plantation, éclairage et entretien saisonnier sur la Rive-Sud de Montréal. Soumission gratuite et prix fixé d'avance. 450 555-0311.">
+<meta name="theme-color" content="#2F6B43">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== VERDAL PAYSAGEMENT — thème Terra ================================ */
+:root{
+  --vert:#2F6B43; --vert-f:#20492E; --vert-p:#E5EDE4; --terre:#B08A50;
+  --encre:#1F2A20; --gris:#5C6B58; --gris-c:#8C9887; --bord:#E3DCCB;
+  --creme:#FBF8F1; --creme2:#F1EDE1;
+  --max:1180px; --pad:clamp(20px,5vw,40px); --r:4px; --r-l:8px;
+  --t:'DM Serif Display',Georgia,serif; --c:'Inter',system-ui,sans-serif;
+  --ombre:0 20px 50px -24px rgba(31,42,32,.35);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{margin:0;background:var(--creme);color:var(--encre);font-family:var(--c);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:54px}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--t);font-weight:400;line-height:1.14;margin:0 0 .5em}
+h1{font-size:clamp(2.5rem,6vw,4.3rem)}
+h2{font-size:clamp(1.9rem,4.2vw,3rem)}
+h3{font-size:clamp(1.2rem,2vw,1.45rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--vert);outline-offset:2px}
+.env{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(64px,8vw,110px)}
+.sur{display:inline-block;font-size:.73rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--vert);margin-bottom:14px}
+.plomb{color:var(--gris);font-size:1.05rem;max-width:62ch}
+.centre{text-align:center;margin-inline:auto}
+.vert{color:var(--vert)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--c);font-size:.9rem;font-weight:600;padding:16px 28px;border-radius:var(--r);border:2px solid transparent;text-decoration:none;cursor:pointer;transition:.24s ease;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+.btn--plein{background:var(--vert);color:var(--creme)}
+.btn--plein:hover{background:var(--vert-f);transform:translateY(-2px)}
+.btn--ligne{background:transparent;border-color:var(--bord);color:var(--encre)}
+.btn--ligne:hover{border-color:var(--vert);color:var(--vert)}
+.btn--mini{padding:11px 20px;font-size:.85rem}
+/* Un bouton pleine largeur doit pouvoir passer à la ligne, sinon son libellé
+   élargit toute la page sur téléphone. */
+.form .btn{white-space:normal;text-align:center}
+@media(max-width:430px){.btn{white-space:normal;text-align:center}}
+body{overflow-wrap:break-word}
+
+/* En-tête */
+.ent{position:sticky;top:0;z-index:100;background:rgba(251,248,241,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord)}
+.ent__g{display:flex;align-items:center;gap:20px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.logo svg{width:38px;height:38px;flex:0 0 auto}
+.logo b{display:block;font-family:var(--t);font-size:1.35rem;line-height:1}
+.logo span{display:block;font-size:.66rem;color:var(--gris-c);letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{text-decoration:none;color:var(--gris);font-size:.93rem;font-weight:500;padding:9px 13px;transition:.2s}
+.nav a:hover{color:var(--vert)}
+.brg{display:none;width:44px;height:44px;background:var(--creme2);border:1px solid var(--bord);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.brg span{width:18px;height:2px;background:var(--encre);transition:.25s}
+.brg[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.brg[aria-expanded=true] span:nth-child(2){opacity:0}
+.brg[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:980px){
+  .brg{display:flex}.ent__cta{display:none}
+  .nav{position:absolute;inset:100% 12px auto 12px;flex-direction:column;align-items:stretch;background:var(--creme);border:1px solid var(--bord);padding:10px;box-shadow:var(--ombre);opacity:0;transform:translateY(-10px);pointer-events:none;transition:.22s}
+  .nav.ouv{opacity:1;transform:none;pointer-events:auto}
+  .nav a{padding:14px}.nav .btn{margin-top:6px}
+}
+
+/* Héros */
+.hero{position:relative;overflow:hidden;background:var(--creme2)}
+.hero__art{position:absolute;inset:0;z-index:0}
+.hero__g{position:relative;z-index:2;padding-block:clamp(60px,9vw,120px);max-width:640px}
+.hero h1{margin-bottom:20px}
+.hero__act{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero__pts{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;padding-top:24px;border-top:1px solid var(--bord);font-size:.92rem;color:var(--gris)}
+.pt{display:flex;align-items:center;gap:8px}
+.pt svg{width:18px;height:18px;color:var(--vert);flex:0 0 auto}
+
+/* Bandeau */
+.bd{background:var(--vert);color:var(--creme);padding-block:16px;font-size:.9rem}
+.bd .env{display:flex;flex-wrap:wrap;gap:8px 30px;align-items:center;justify-content:center;text-align:center}
+.bd b{font-weight:600}
+
+/* Saisons */
+.sais-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:36px}
+.sais-nav button{background:transparent;border:1.5px solid var(--bord);color:var(--gris);font-family:var(--c);font-size:.88rem;font-weight:600;padding:12px 24px;border-radius:var(--r);cursor:pointer;transition:.22s}
+.sais-nav button:hover{border-color:var(--vert);color:var(--vert)}
+.sais-nav button[aria-selected=true]{background:var(--vert);border-color:var(--vert);color:var(--creme)}
+.sais{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,4vw,56px);align-items:center}
+@media(max-width:880px){.sais{grid-template-columns:1fr}}
+.sais ul{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:12px}
+.sais li{display:flex;gap:12px;align-items:flex-start;color:var(--gris);font-size:.97rem}
+.sais li svg{width:18px;height:18px;color:var(--vert);flex:0 0 auto;margin-top:5px}
+.sais__px{display:inline-block;margin-top:22px;background:var(--vert-p);border:1px solid #CBDCC7;color:var(--vert-f);font-size:.9rem;font-weight:600;padding:10px 18px;border-radius:var(--r)}
+
+/* Avant / après */
+.aa{position:relative;overflow:hidden;border:1px solid var(--bord);border-radius:var(--r-l);background:var(--creme2);aspect-ratio:16/10;cursor:ew-resize;user-select:none}
+.aa svg{position:absolute;inset:0;width:100%;height:100%}
+.aa__apres{clip-path:inset(0 0 0 50%)}
+.aa__poignee{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--creme);transform:translateX(-50%);pointer-events:none;box-shadow:0 0 0 1px rgba(31,42,32,.2)}
+.aa__poignee::after{content:'';position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:var(--creme);border:3px solid var(--vert);transform:translate(-50%,-50%)}
+.aa__poignee::before{content:'⟷';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;font-size:20px;color:var(--vert);line-height:1}
+.aa__et{position:absolute;top:14px;background:rgba(31,42,32,.82);color:var(--creme);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:99px;pointer-events:none}
+.aa__et--a{left:14px}.aa__et--b{right:14px}
+.aa-note{text-align:center;font-size:.86rem;color:var(--gris-c);margin-top:12px}
+
+/* Étapes */
+.etapes{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:900px){.etapes{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.etapes{grid-template-columns:1fr}}
+.etape{background:var(--creme);border:1px solid var(--bord);border-radius:var(--r-l);padding:26px;position:relative}
+.etape b{display:block;font-family:var(--t);font-size:2.4rem;color:var(--terre);line-height:1;margin-bottom:12px}
+.etape h3{font-size:1.15rem;margin-bottom:8px}
+.etape p{color:var(--gris);font-size:.93rem;margin:0}
+
+/* Réalisations */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.g3{grid-template-columns:1fr}}
+.proj{background:var(--creme);border:1px solid var(--bord);border-radius:var(--r-l);overflow:hidden;transition:.25s}
+.proj:hover{box-shadow:var(--ombre);transform:translateY(-4px)}
+.proj__ph{aspect-ratio:4/3;background:var(--creme2)}
+.proj__c{padding:22px 24px 26px}
+.proj__l{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--terre);margin-bottom:8px}
+.proj h3{font-size:1.25rem;margin-bottom:6px}
+.proj p{color:var(--gris);font-size:.93rem;margin:0}
+.proj__m{margin-top:14px;padding-top:14px;border-top:1px solid var(--bord);font-size:.85rem;color:var(--gris-c);display:flex;justify-content:space-between;gap:12px}
+
+/* Témoignages */
+.temoins{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.temoins{grid-template-columns:1fr}}
+.temoin{background:var(--creme);border:1px solid var(--bord);border-radius:var(--r-l);padding:28px}
+.temoin__et{color:var(--terre);font-size:1rem;letter-spacing:2px;margin-bottom:12px}
+.temoin p{font-size:1rem;color:var(--encre);margin-bottom:16px}
+.temoin cite{font-style:normal;font-size:.88rem;color:var(--gris)}
+.temoin cite b{display:block;color:var(--encre);font-weight:600}
+
+/* Soumission */
+.soum{background:var(--vert-f);color:var(--creme)}
+.soum h2,.soum h3{color:var(--creme)}
+.soum .sur{color:#9FD3AC}
+.soum p{color:#C3D8C6}
+.soum__g{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,56px)}
+@media(max-width:900px){.soum__g{grid-template-columns:1fr}}
+.soum__pts{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px}
+.soum__pts li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;color:#C3D8C6}
+.soum__pts svg{width:18px;height:18px;color:#9FD3AC;flex:0 0 auto;margin-top:5px}
+.form{background:var(--creme);border-radius:var(--r-l);padding:clamp(22px,3vw,34px);display:grid;gap:16px;color:var(--encre)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.duo{grid-template-columns:1fr}}
+.ch{display:grid;gap:7px}
+.ch label{font-size:.85rem;font-weight:600;color:var(--encre)}
+.ch input,.ch select,.ch textarea{font-family:var(--c);font-size:.97rem;color:var(--encre);background:var(--creme);border:1.5px solid var(--bord);border-radius:var(--r);padding:13px 15px;width:100%}
+.ch textarea{resize:vertical;min-height:92px}
+.ch input:focus,.ch select:focus,.ch textarea:focus{outline:none;border-color:var(--vert)}
+.retour{display:none;padding:14px 16px;border-radius:var(--r);background:var(--vert-p);border:1px solid var(--vert);color:var(--vert-f);font-size:.92rem}
+.retour.on{display:block}
+
+/* Pied */
+.pied{background:var(--encre);color:#B4C0B0;padding-block:50px 26px}
+.pied__g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:34px}
+@media(max-width:760px){.pied__g{grid-template-columns:1fr;gap:26px}}
+.pied h4{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#9FD3AC;margin:0 0 14px;font-weight:600}
+.pied ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.pied a{color:#B4C0B0;text-decoration:none;font-size:.93rem}
+.pied a:hover{color:var(--creme)}
+.pied__bas{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.82rem;color:#7E8A7B}
+
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.vu{opacity:1;transform:none}
+
+.demo-bar{position:fixed;inset:auto 0 0 0;z-index:200;background:linear-gradient(120deg,#12D8C5,#4FA6FF,#7C5CFF);color:#080812;font-family:var(--c);font-size:.82rem;font-weight:600;padding:11px 18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:center;text-align:center}
+.demo-bar a{color:#080812;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.demo-bar{font-size:.74rem;padding:9px 12px}}
+</style>
+</head>
+<body>
+
+<header class="ent" id="ent">
+  <div class="env ent__g">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="#2F6B43"/>
+        <path d="M20 31c0-9 5-14 12-15-1 9-5 14-12 15Z" fill="#9FD3AC"/>
+        <path d="M20 31c0-8-4.5-12.5-11-13.5.9 8 4.5 12.5 11 13.5Z" fill="#FBF8F1" opacity=".75"/>
+        <path d="M20 33V20" stroke="#FBF8F1" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span><b>Verdal</b><span>Paysagement</span></span>
+    </a>
+    <button class="brg" id="brg" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Navigation">
+      <a href="#services">Services</a>
+      <a href="#avant-apres">Avant / après</a>
+      <a href="#demarche">Notre démarche</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#avis">Avis</a>
+      <a class="btn btn--plein btn--mini" href="#soumission">Soumission gratuite</a>
+    </nav>
+    <a class="btn btn--plein btn--mini ent__cta" href="#soumission">Soumission gratuite</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HÉROS -->
+<section class="hero">
+  <div class="hero__art" aria-hidden="true">
+    <svg viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+      <rect width="1440" height="760" fill="#F1EDE1"/>
+      <path d="M1440 760V180c-90 0-124 78-214 78s-124-58-214-58-124 58-214 58-124-58-214-58S460 258 370 258 246 200 156 200 32 240 0 250v510Z" fill="#2F6B43" opacity=".1"/>
+      <path d="M1440 760V300c-80 0-110 66-190 66s-110-50-190-50-110 50-190 50-110-50-190-50-110 50-190 50-110-40-190-40S50 356 0 366v394Z" fill="#2F6B43" opacity=".12"/>
+      <path d="M1440 760V450c-70 0-96 54-166 54s-96-42-166-42-96 42-166 42-96-42-166-42-96 42-166 42-96-34-166-34S48 496 0 504v256Z" fill="#2F6B43" opacity=".14"/>
+      <!-- arbres -->
+      <g opacity=".22">
+        <path d="M1180 480c0-56 34-92 76-100-6 58-32 92-76 100Z" fill="#2F6B43"/>
+        <rect x="1176" y="470" width="7" height="90" fill="#B08A50"/>
+        <path d="M1300 520c0-46 28-76 62-82-5 48-26 76-62 82Z" fill="#2F6B43"/>
+        <rect x="1297" y="512" width="6" height="72" fill="#B08A50"/>
+      </g>
+      <!-- pavé -->
+      <g opacity=".2" fill="none" stroke="#B08A50" stroke-width="2">
+        <path d="M0 700h1440M0 730h1440"/>
+        <path d="M60 700v60M180 700v60M300 700v60M420 700v60M540 700v60M660 700v60M780 700v60M900 700v60M1020 700v60M1140 700v60M1260 700v60M1380 700v60"/>
+      </g>
+    </svg>
+  </div>
+  <div class="env hero__g">
+    <span class="sur">Aménagement paysager · Rive-Sud</span>
+    <h1>Une cour qui<br><span class="vert">vous ressemble.</span></h1>
+    <p class="plomb">
+      Pavé-uni, murets, plantations, éclairage : on dessine votre projet, on le construit avec
+      notre propre équipe, et on revient vérifier au printemps suivant. Prix fixé d'avance,
+      soumission détaillée gratuite.
+    </p>
+    <div class="hero__act">
+      <a class="btn btn--plein" href="#soumission">Obtenir ma soumission gratuite</a>
+      <a class="btn btn--ligne" href="#realisations">Voir nos réalisations</a>
+    </div>
+    <div class="hero__pts">
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Garantie 10 ans sur le pavé</span>
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> RBQ 5811-0244-01</span>
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Aucune sous-traitance</span>
+    </div>
+  </div>
+</section>
+
+<div class="bd">
+  <div class="env">
+    <span><b>Calendrier 2026 :</b> il reste des places en juin et en septembre.</span>
+    <span>Appelez au <b>450 555-0311</b> ou demandez votre soumission en ligne.</span>
+  </div>
+</div>
+
+<!-- SERVICES PAR SAISON -->
+<section class="sec" id="services">
+  <div class="env">
+    <div class="centre rev" style="max-width:680px;margin-bottom:34px">
+      <span class="sur">Nos services</span>
+      <h2>Ce qu'on fait, saison par saison</h2>
+      <p class="plomb centre">Chaque période de l'année a ses travaux. Cliquez sur une saison pour voir ce qu'on peut faire chez vous à ce moment-là.</p>
+    </div>
+
+    <div class="sais-nav rev" role="tablist" aria-label="Saisons">
+      <button role="tab" aria-selected="true"  data-sais="printemps">Printemps</button>
+      <button role="tab" aria-selected="false" data-sais="ete">Été</button>
+      <button role="tab" aria-selected="false" data-sais="automne">Automne</button>
+      <button role="tab" aria-selected="false" data-sais="hiver">Hiver</button>
+    </div>
+
+    <div class="sais rev" data-panneau="printemps">
+      <div>
+        <span class="sur">Avril à juin</span>
+        <h3 style="font-size:clamp(1.5rem,3vw,2.1rem)">Le grand réveil</h3>
+        <p class="plomb">
+          Le printemps, c'est la saison où l'on répare les dégâts de l'hiver et où l'on plante.
+          C'est aussi le meilleur moment pour lancer un gros chantier : le sol est encore souple et
+          les végétaux ont tout l'été pour s'enraciner.
+        </p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Nettoyage complet et ramassage des débris</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Réparation du gazon abîmé par le sel et la déneigeuse</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Plantation d'arbres, d'arbustes et de vivaces</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ouverture du système d'irrigation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Terre neuve, paillis et engrais naturel</li>
+        </ul>
+        <span class="sais__px">Forfait ouverture : à partir de 340 $</span>
+      </div>
+      <svg viewBox="0 0 560 420" style="border-radius:8px;border:1px solid var(--bord)" aria-hidden="true">
+        <rect width="560" height="420" fill="#EDF3EA"/>
+        <path d="M0 420V300c60-16 96 22 156 22s96-30 156-30 96 30 156 30 76-24 92-30v128Z" fill="#2F6B43" opacity=".26"/>
+        <path d="M0 420V352c60-10 96 14 156 14s96-20 156-20 96 20 156 20 76-16 92-20v74Z" fill="#2F6B43" opacity=".38"/>
+        <g><rect x="150" y="196" width="10" height="120" fill="#B08A50"/><circle cx="155" cy="176" r="52" fill="#4E8F5E"/><circle cx="122" cy="196" r="34" fill="#3D7A4D"/><circle cx="188" cy="198" r="32" fill="#3D7A4D"/></g>
+        <g><rect x="392" y="230" width="8" height="90" fill="#B08A50"/><circle cx="396" cy="214" r="40" fill="#5A9E68"/><circle cx="370" cy="230" r="26" fill="#4E8F5E"/></g>
+        <g fill="#D98C9E"><circle cx="70" cy="330" r="9"/><circle cx="96" cy="342" r="8"/><circle cx="52" cy="348" r="7"/></g>
+        <g fill="#E6C15C"><circle cx="470" cy="336" r="9"/><circle cx="496" cy="348" r="8"/><circle cx="450" cy="352" r="7"/></g>
+        <circle cx="480" cy="80" r="42" fill="#E6C15C" opacity=".5"/>
+      </svg>
+    </div>
+
+    <div class="sais rev" data-panneau="ete" hidden>
+      <div>
+        <span class="sur">Juin à août</span>
+        <h3 style="font-size:clamp(1.5rem,3vw,2.1rem)">La saison des chantiers</h3>
+        <p class="plomb">
+          C'est le cœur de notre année. Les gros travaux de construction extérieure se font l'été,
+          quand le sol est sec et que le pavé se pose dans les meilleures conditions.
+        </p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Terrasses et allées en pavé-uni</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Murets de soutènement et murets décoratifs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Escaliers de pierre naturelle</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Éclairage paysager basse tension</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Aménagement autour d'une piscine creusée</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tonte et entretien aux deux semaines</li>
+        </ul>
+        <span class="sais__px">Pavé-uni : à partir de 38 $ / pi²</span>
+      </div>
+      <svg viewBox="0 0 560 420" style="border-radius:8px;border:1px solid var(--bord)" aria-hidden="true">
+        <rect width="560" height="420" fill="#F1EDE1"/>
+        <circle cx="470" cy="82" r="46" fill="#E6C15C" opacity=".55"/>
+        <path d="M0 420V270h560v150Z" fill="#D8CDB4"/>
+        <g fill="none" stroke="#B08A50" stroke-width="2.5" opacity=".7">
+          <path d="M0 300h560M0 336h560M0 372h560"/>
+          <path d="M60 270v150M140 270v150M220 270v150M300 270v150M380 270v150M460 270v150M540 270v150"/>
+        </g>
+        <rect x="0" y="222" width="560" height="50" fill="#9E8560"/>
+        <rect x="0" y="212" width="560" height="14" fill="#B08A50"/>
+        <g><rect x="440" y="130" width="10" height="94" fill="#8A6E44"/><circle cx="445" cy="116" r="46" fill="#4E8F5E"/><circle cx="410" cy="136" r="30" fill="#3D7A4D"/></g>
+        <g><rect x="92" y="150" width="9" height="74" fill="#8A6E44"/><circle cx="96" cy="138" r="38" fill="#5A9E68"/></g>
+        <g fill="#3D7A4D" opacity=".9"><ellipse cx="230" cy="215" rx="46" ry="16"/><ellipse cx="320" cy="215" rx="38" ry="14"/></g>
+        <g fill="#F5E9C8"><circle cx="180" cy="330" r="5"/><circle cx="380" cy="366" r="5"/></g>
+      </svg>
+    </div>
+
+    <div class="sais rev" data-panneau="automne" hidden>
+      <div>
+        <span class="sur">Septembre à novembre</span>
+        <h3 style="font-size:clamp(1.5rem,3vw,2.1rem)">Préparer l'hiver</h3>
+        <p class="plomb">
+          L'automne est sous-estimé : c'est la meilleure période pour planter des arbres, et le
+          moment où l'on protège ce qui doit passer l'hiver. Un aménagement bien fermé, c'est un
+          printemps sans mauvaise surprise.
+        </p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ramassage des feuilles et taille des vivaces</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Protection hivernale des arbustes et des cèdres</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Aération et terreautage de la pelouse</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Plantation d'arbres (la meilleure saison)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Fermeture de l'irrigation et des fontaines</li>
+        </ul>
+        <span class="sais__px">Forfait fermeture : à partir de 290 $</span>
+      </div>
+      <svg viewBox="0 0 560 420" style="border-radius:8px;border:1px solid var(--bord)" aria-hidden="true">
+        <rect width="560" height="420" fill="#F5EDDD"/>
+        <path d="M0 420V320c70-14 110 16 180 16s110-24 180-24 130 20 200 24v84Z" fill="#B08A50" opacity=".3"/>
+        <g><rect x="180" y="180" width="12" height="150" fill="#7A5F3A"/><circle cx="186" cy="160" r="58" fill="#C97A34"/><circle cx="146" cy="186" r="36" fill="#B0632A"/><circle cx="226" cy="184" r="34" fill="#D89446"/></g>
+        <g><rect x="400" y="220" width="9" height="110" fill="#7A5F3A"/><circle cx="404" cy="204" r="42" fill="#D89446"/><circle cx="376" cy="222" r="26" fill="#C97A34"/></g>
+        <g fill="#C97A34" opacity=".85">
+          <ellipse cx="80" cy="356" rx="12" ry="7" transform="rotate(-20 80 356)"/>
+          <ellipse cx="120" cy="378" rx="11" ry="6" transform="rotate(30 120 378)"/>
+          <ellipse cx="300" cy="366" rx="12" ry="7" transform="rotate(15 300 366)"/>
+          <ellipse cx="480" cy="380" rx="11" ry="6" transform="rotate(-35 480 380)"/>
+          <ellipse cx="250" cy="392" rx="10" ry="6" transform="rotate(45 250 392)"/>
+        </g>
+        <circle cx="490" cy="76" r="38" fill="#E6C15C" opacity=".38"/>
+      </svg>
+    </div>
+
+    <div class="sais rev" data-panneau="hiver" hidden>
+      <div>
+        <span class="sur">Décembre à mars</span>
+        <h3 style="font-size:clamp(1.5rem,3vw,2.1rem)">On dessine, vous décidez</h3>
+        <p class="plomb">
+          L'hiver, on ne creuse pas — on planifie. C'est la meilleure période pour concevoir votre
+          projet tranquillement, obtenir les permis municipaux et réserver votre place au calendrier
+          du printemps. Les clients qui signent en janvier passent en premier.
+        </p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Plan d'aménagement dessiné en 3D</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Demandes de permis à la municipalité</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Choix des matériaux en salle de montre</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Réservation de votre date de chantier</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Déneigement résidentiel (secteur Saint-Bruno)</li>
+        </ul>
+        <span class="sais__px">Plan 3D : 450 $, crédité si le projet se réalise</span>
+      </div>
+      <svg viewBox="0 0 560 420" style="border-radius:8px;border:1px solid var(--bord)" aria-hidden="true">
+        <rect width="560" height="420" fill="#EAEEF0"/>
+        <path d="M0 420V330c70-12 110 12 180 12s110-18 180-18 130 14 200 18v78Z" fill="#fff" opacity=".85"/>
+        <g><rect x="170" y="190" width="11" height="150" fill="#6B5B45"/><path d="M176 130 130 220h92Z" fill="#3D7A4D"/><path d="M176 170 138 250h76Z" fill="#4E8F5E"/><path d="M176 116 142 190h68Z" fill="#356B44"/></g>
+        <g><rect x="410" y="240" width="9" height="100" fill="#6B5B45"/><path d="M414 190l-36 70h72Z" fill="#3D7A4D"/><path d="M414 218l-30 58h60Z" fill="#4E8F5E"/></g>
+        <g fill="#fff"><circle cx="80" cy="90" r="4"/><circle cx="160" cy="60" r="3"/><circle cx="260" cy="100" r="4"/><circle cx="340" cy="52" r="3"/><circle cx="450" cy="94" r="4"/><circle cx="520" cy="140" r="3"/><circle cx="60" cy="180" r="3"/><circle cx="300" cy="170" r="4"/><circle cx="500" cy="220" r="3"/></g>
+        <!-- plan sur table -->
+        <rect x="240" y="286" width="200" height="120" rx="6" fill="#fff" stroke="#B8C4C8" transform="rotate(-6 340 346)"/>
+        <g stroke="#2F6B43" stroke-width="2" fill="none" transform="rotate(-6 340 346)" opacity=".7">
+          <rect x="264" y="306" width="70" height="52"/><path d="M348 306h70v80h-70zM264 370h70v22h-70z"/><circle cx="380" cy="340" r="16"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- AVANT / APRÈS -->
+<section class="sec" id="avant-apres" style="background:var(--creme2);border-block:1px solid var(--bord)">
+  <div class="env">
+    <div class="centre rev" style="max-width:640px;margin-bottom:34px">
+      <span class="sur">Avant / après</span>
+      <h2>Glissez pour voir la différence</h2>
+      <p class="plomb centre">Un vrai chantier de Saint-Bruno, terminé en onze jours ouvrables.</p>
+    </div>
+
+    <div class="aa rev" id="aa">
+      <svg viewBox="0 0 800 500" aria-hidden="true">
+        <rect width="800" height="500" fill="#DCD6C4"/>
+        <rect y="330" width="800" height="170" fill="#C4BCA4"/>
+        <g fill="#A99E82"><ellipse cx="140" cy="392" rx="70" ry="18"/><ellipse cx="470" cy="430" rx="90" ry="22"/><ellipse cx="690" cy="376" rx="56" ry="15"/></g>
+        <g fill="#8C9A72" opacity=".55"><ellipse cx="220" cy="356" rx="34" ry="12"/><ellipse cx="600" cy="404" rx="42" ry="14"/></g>
+        <rect x="0" y="288" width="800" height="46" fill="#B7AF95"/>
+        <rect x="600" y="180" width="200" height="112" fill="#B0A78C"/>
+        <rect x="618" y="200" width="60" height="50" fill="#8E866E"/>
+        <g stroke="#9A9078" stroke-width="3" fill="none"><path d="M60 300c40-26 92-14 132 6M300 296c50-22 96-8 140 12"/></g>
+      </svg>
+      <svg class="aa__apres" viewBox="0 0 800 500" aria-hidden="true">
+        <rect width="800" height="500" fill="#EDF3EA"/>
+        <rect y="330" width="800" height="170" fill="#D8CDB4"/>
+        <g fill="none" stroke="#B08A50" stroke-width="2.5" opacity=".75">
+          <path d="M0 358h800M0 392h800M0 426h800M0 460h800"/>
+          <path d="M70 330v170M170 330v170M270 330v170M370 330v170M470 330v170M570 330v170M670 330v170M770 330v170"/>
+        </g>
+        <rect x="0" y="288" width="800" height="46" fill="#9E8560"/>
+        <rect x="0" y="280" width="800" height="12" fill="#B08A50"/>
+        <rect x="600" y="180" width="200" height="102" fill="#B0A78C"/>
+        <rect x="618" y="198" width="60" height="46" fill="#7E8F6B"/>
+        <g><rect x="128" y="170" width="12" height="118" fill="#7A5F3A"/><circle cx="134" cy="152" r="52" fill="#4E8F5E"/><circle cx="98" cy="176" r="32" fill="#3D7A4D"/><circle cx="172" cy="174" r="30" fill="#5A9E68"/></g>
+        <g><rect x="420" y="216" width="9" height="72" fill="#7A5F3A"/><circle cx="424" cy="200" r="38" fill="#5A9E68"/></g>
+        <g fill="#3D7A4D"><ellipse cx="250" cy="278" rx="40" ry="14"/><ellipse cx="330" cy="280" rx="32" ry="12"/><ellipse cx="540" cy="278" rx="36" ry="13"/></g>
+        <g fill="#D98C9E"><circle cx="230" cy="262" r="7"/><circle cx="258" cy="266" r="6"/><circle cx="322" cy="266" r="6"/></g>
+        <g fill="#E6C15C"><circle cx="530" cy="264" r="7"/><circle cx="556" cy="268" r="6"/></g>
+        <!-- éclairage -->
+        <g fill="#F5E9C8" opacity=".9"><circle cx="200" cy="342" r="8"/><circle cx="480" cy="342" r="8"/><circle cx="700" cy="342" r="8"/></g>
+        <g fill="#F5E9C8" opacity=".2"><circle cx="200" cy="342" r="30"/><circle cx="480" cy="342" r="30"/><circle cx="700" cy="342" r="30"/></g>
+      </svg>
+      <span class="aa__et aa__et--a">Avant</span>
+      <span class="aa__et aa__et--b">Après</span>
+      <span class="aa__poignee" id="aa-poignee"></span>
+    </div>
+    <p class="aa-note">Glissez le curseur de gauche à droite · au clavier, utilisez les flèches après avoir cliqué sur l'image</p>
+  </div>
+</section>
+
+<!-- DÉMARCHE -->
+<section class="sec" id="demarche">
+  <div class="env">
+    <div class="centre rev" style="max-width:640px;margin-bottom:38px">
+      <span class="sur">Notre démarche</span>
+      <h2>Quatre étapes, aucune surprise</h2>
+    </div>
+    <div class="etapes">
+      <article class="etape rev"><b>01</b><h3>La visite</h3><p>On vient chez vous, on mesure, on écoute ce que vous imaginez. Gratuit, sans engagement, environ 45 minutes.</p></article>
+      <article class="etape rev"><b>02</b><h3>Le plan et le prix</h3><p>Vous recevez un dessin de votre cour et une soumission détaillée ligne par ligne. Ce montant est celui que vous paierez.</p></article>
+      <article class="etape rev"><b>03</b><h3>Le chantier</h3><p>Notre équipe, jamais de sous-traitant. On vous dit le premier jour combien de temps ça prendra, et on nettoie chaque soir.</p></article>
+      <article class="etape rev"><b>04</b><h3>Le suivi</h3><p>On repasse un an plus tard vérifier le pavé et l'état des plantations. Inclus, sans que vous ayez à le demander.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- RÉALISATIONS -->
+<section class="sec" id="realisations" style="background:var(--creme2);border-block:1px solid var(--bord)">
+  <div class="env">
+    <div class="centre rev" style="max-width:640px;margin-bottom:38px">
+      <span class="sur">Réalisations</span>
+      <h2>Quelques cours de la Rive-Sud</h2>
+    </div>
+    <div class="g3">
+      <article class="proj rev">
+        <div class="proj__ph">
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#EDF3EA"/>
+            <rect y="180" width="400" height="120" fill="#D8CDB4"/>
+            <g fill="none" stroke="#B08A50" stroke-width="2" opacity=".7"><path d="M0 210h400M0 240h400M0 270h400"/><path d="M50 180v120M120 180v120M190 180v120M260 180v120M330 180v120"/></g>
+            <rect y="160" width="400" height="26" fill="#9E8560"/>
+            <ellipse cx="300" cy="130" rx="90" ry="46" fill="#6FA8D8" opacity=".7"/>
+            <ellipse cx="300" cy="126" rx="86" ry="42" fill="#8FC4E8"/>
+            <g><rect x="72" y="80" width="8" height="82" fill="#7A5F3A"/><circle cx="76" cy="68" r="36" fill="#4E8F5E"/></g>
+            <g fill="#3D7A4D"><ellipse cx="180" cy="156" rx="30" ry="11"/></g>
+          </svg>
+        </div>
+        <div class="proj__c">
+          <p class="proj__l">Saint-Bruno</p>
+          <h3>Cour arrière avec piscine</h3>
+          <p>Terrasse de pavé de 780 pi², muret de soutènement de 22 pieds et éclairage encastré tout autour du bassin.</p>
+          <div class="proj__m"><span>11 jours de chantier</span><span>2025</span></div>
+        </div>
+      </article>
+
+      <article class="proj rev">
+        <div class="proj__ph">
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#F5EDDD"/>
+            <rect y="200" width="400" height="100" fill="#C4BCA4"/>
+            <path d="M120 200v-60h160v60Z" fill="#B0A78C"/>
+            <path d="M110 142 200 78l90 64Z" fill="#8A6E44"/>
+            <rect x="182" y="158" width="36" height="42" fill="#5C6B58"/>
+            <g fill="none" stroke="#B08A50" stroke-width="2" opacity=".8"><path d="M0 226h400M0 252h400M0 278h400"/><path d="M60 200v100M140 200v100M260 200v100M340 200v100"/></g>
+            <g><rect x="42" y="150" width="7" height="60" fill="#7A5F3A"/><circle cx="45" cy="140" r="28" fill="#4E8F5E"/></g>
+            <g><rect x="352" y="158" width="7" height="52" fill="#7A5F3A"/><circle cx="355" cy="148" r="24" fill="#5A9E68"/></g>
+            <g fill="#D98C9E"><circle cx="150" cy="196" r="5"/><circle cx="168" cy="199" r="4"/><circle cx="238" cy="196" r="5"/></g>
+          </svg>
+        </div>
+        <div class="proj__c">
+          <p class="proj__l">Boucherville</p>
+          <h3>Façade et entrée refaites</h3>
+          <p>Nouvelle entrée de garage en pavé, escalier de granit et plate-bande avant complètement redessinée.</p>
+          <div class="proj__m"><span>6 jours de chantier</span><span>2025</span></div>
+        </div>
+      </article>
+
+      <article class="proj rev">
+        <div class="proj__ph">
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#EAEEF0"/>
+            <rect y="190" width="400" height="110" fill="#D8CDB4"/>
+            <path d="M0 190h400v-30H0Z" fill="#9E8560"/>
+            <path d="M40 160h120v-26H40ZM40 134h120v-26H40Z" fill="#B0A78C" stroke="#9A9078"/>
+            <g fill="none" stroke="#B08A50" stroke-width="2" opacity=".7"><path d="M0 218h400M0 246h400M0 274h400"/><path d="M80 190v110M180 190v110M280 190v110"/></g>
+            <g fill="#3D7A4D"><ellipse cx="250" cy="152" rx="42" ry="16"/><ellipse cx="320" cy="156" rx="34" ry="13"/></g>
+            <g><rect x="330" y="86" width="8" height="70" fill="#7A5F3A"/><circle cx="334" cy="76" r="32" fill="#4E8F5E"/></g>
+            <g fill="#F5E9C8"><circle cx="120" cy="206" r="6"/><circle cx="300" cy="206" r="6"/></g>
+            <g fill="#F5E9C8" opacity=".25"><circle cx="120" cy="206" r="24"/><circle cx="300" cy="206" r="24"/></g>
+          </svg>
+        </div>
+        <div class="proj__c">
+          <p class="proj__l">Saint-Lambert</p>
+          <h3>Terrain en pente aménagé</h3>
+          <p>Deux murets en paliers pour rattraper une dénivellation de six pieds, escalier intégré et jardin de vivaces.</p>
+          <div class="proj__m"><span>14 jours de chantier</span><span>2024</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="sec" id="avis">
+  <div class="env">
+    <div class="centre rev" style="max-width:600px;margin-bottom:38px">
+      <span class="sur">Ce qu'on dit de nous</span>
+      <h2>4,8 sur 5 · 96 avis Google</h2>
+    </div>
+    <div class="temoins">
+      <article class="temoin rev">
+        <div class="temoin__et">★★★★★</div>
+        <p>« La soumission était détaillée ligne par ligne et le montant final était exactement celui-là. Trois autres compagnies m'avaient donné un prix vague au téléphone. »</p>
+        <cite><b>Danielle P.</b>Saint-Bruno-de-Montarville</cite>
+      </article>
+      <article class="temoin rev">
+        <div class="temoin__et">★★★★★</div>
+        <p>« Ils ont ramassé et balayé chaque soir. Avec deux jeunes enfants à la maison, ça valait de l'or. Le muret est impeccable deux ans plus tard. »</p>
+        <cite><b>Simon G.</b>Boucherville</cite>
+      </article>
+      <article class="temoin rev">
+        <div class="temoin__et">★★★★☆</div>
+        <p>« Le chantier a pris trois jours de plus que prévu à cause de la pluie, mais ils m'ont appelée chaque matin pour me tenir au courant. Le résultat est superbe. »</p>
+        <cite><b>Manon T.</b>Saint-Lambert</cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SOUMISSION -->
+<section class="sec soum" id="soumission">
+  <div class="env soum__g">
+    <div class="rev">
+      <span class="sur">Soumission gratuite</span>
+      <h2>Dites-nous ce que vous imaginez</h2>
+      <p>
+        Remplissez le formulaire et on vous rappelle sous 48 heures pour fixer une visite.
+        La visite, le plan sommaire et la soumission détaillée ne vous coûtent rien et ne vous
+        engagent à rien.
+      </p>
+      <ul class="soum__pts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Prix ferme, détaillé ligne par ligne</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Licence RBQ 5811-0244-01, assurance responsabilité 2 M$</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Garantie 10 ans sur le pavé, 2 ans sur les végétaux</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Paiement en trois versements possible</li>
+      </ul>
+      <p style="margin-top:26px">
+        <strong style="color:var(--creme)">450 555-0311</strong><br>
+        <span style="font-size:.92rem">soumission@verdal.ca · Saint-Bruno-de-Montarville</span><br>
+        <span style="font-size:.92rem">Nous desservons toute la Rive-Sud, de Longueuil à Chambly.</span>
+      </p>
+    </div>
+
+    <form class="form rev" id="form-soum" novalidate>
+      <div class="duo">
+        <div class="ch"><label for="s-nom">Nom</label><input id="s-nom" type="text" placeholder="Danielle Paquette" required></div>
+        <div class="ch"><label for="s-tel">Téléphone</label><input id="s-tel" type="tel" placeholder="450 555-0123" required></div>
+      </div>
+      <div class="duo">
+        <div class="ch"><label for="s-courriel">Courriel</label><input id="s-courriel" type="email" placeholder="danielle@exemple.ca"></div>
+        <div class="ch"><label for="s-ville">Ville</label>
+          <select id="s-ville"><option>Saint-Bruno</option><option>Boucherville</option><option>Longueuil</option><option>Saint-Lambert</option><option>Brossard</option><option>Chambly</option><option>Autre — Rive-Sud</option></select>
+        </div>
+      </div>
+      <div class="ch"><label for="s-projet">Type de projet</label>
+        <select id="s-projet">
+          <option>Terrasse ou allée en pavé</option><option>Muret ou escalier</option>
+          <option>Plantation et plate-bandes</option><option>Aménagement autour d'une piscine</option>
+          <option>Éclairage extérieur</option><option>Entretien saisonnier</option>
+          <option>Projet complet — je ne sais pas par où commencer</option>
+        </select>
+      </div>
+      <div class="duo">
+        <div class="ch"><label for="s-budget">Budget envisagé</label>
+          <select id="s-budget"><option>Moins de 5 000 $</option><option>5 000 $ à 15 000 $</option><option>15 000 $ à 30 000 $</option><option>Plus de 30 000 $</option><option>Je n'ai aucune idée</option></select>
+        </div>
+        <div class="ch"><label for="s-quand">Quand ?</label>
+          <select id="s-quand"><option>Dès que possible</option><option>Ce printemps</option><option>Cet été</option><option>Cet automne</option><option>L'an prochain — je planifie</option></select>
+        </div>
+      </div>
+      <div class="ch"><label for="s-msg">Décrivez votre projet</label><textarea id="s-msg" placeholder="La superficie approximative, ce qui vous dérange dans la cour actuelle, ce que vous aimeriez y faire…"></textarea></div>
+      <button class="btn btn--plein" type="submit" style="width:100%">Demander ma soumission gratuite</button>
+      <p class="retour" id="s-retour" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="env">
+    <div class="pied__g">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:14px">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="19" fill="#9FD3AC"/>
+            <path d="M20 31c0-9 5-14 12-15-1 9-5 14-12 15Z" fill="#1F2A20"/>
+            <path d="M20 31c0-8-4.5-12.5-11-13.5.9 8 4.5 12.5 11 13.5Z" fill="#2F6B43"/>
+          </svg>
+          <span><b style="color:var(--creme)">Verdal</b><span style="color:#7E8A7B">Paysagement</span></span>
+        </a>
+        <p style="font-size:.93rem;max-width:38ch">
+          Aménagement paysager sur la Rive-Sud depuis 2012. Notre équipe, nos machines,
+          notre garantie.
+        </p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Par saison</a></li><li><a href="#avant-apres">Avant / après</a></li>
+          <li><a href="#demarche">Notre démarche</a></li><li><a href="#realisations">Réalisations</a></li>
+          <li><a href="#avis">Avis clients</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nous joindre</h4>
+        <ul>
+          <li><a href="tel:+14505550311">450 555-0311</a></li>
+          <li><a href="mailto:soumission@verdal.ca">soumission@verdal.ca</a></li>
+          <li style="font-size:.93rem">1450, rue des Pommiers<br>Saint-Bruno-de-Montarville (QC)</li>
+          <li style="font-size:.93rem">RBQ 5811-0244-01</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© 2026 Verdal Paysagement. Entreprise fictive créée en exemple.</span>
+      <span>Site conçu par Vaelor Design</span>
+    </div>
+  </div>
+</footer>
+
+<div class="demo-bar">
+  <span>🎨 Exemple de site créé par <strong>Vaelor Design</strong> — cette entreprise est fictive.</span>
+  <a href="../../index.html">Voir tous les exemples</a>
+  <a href="../../index.html#contact">Obtenir le mien</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s,c){return (c||document).querySelector(s);};
+  var $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));};
+
+  var brg=$('#brg'),nav=$('#nav');
+  brg.addEventListener('click',function(){
+    var o=nav.classList.toggle('ouv');
+    brg.setAttribute('aria-expanded',o?'true':'false');
+  });
+  $$('a',nav).forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('ouv');brg.setAttribute('aria-expanded','false');});});
+
+  // Onglets saisons
+  var ong=$$('.sais-nav button');
+  ong.forEach(function(b){
+    b.addEventListener('click',function(){
+      var c=b.dataset.sais;
+      ong.forEach(function(o){o.setAttribute('aria-selected',o===b?'true':'false');});
+      $$('[data-panneau]').forEach(function(p){
+        p.hidden=(p.dataset.panneau!==c);
+        if(!p.hidden){ p.classList.add('vu'); }
+      });
+    });
+  });
+
+  // Curseur avant / après
+  var aa=$('#aa');
+  if(aa){
+    var apres=$('.aa__apres',aa), poignee=$('#aa-poignee'), actif=false, pos=50;
+    aa.setAttribute('tabindex','0');
+    aa.setAttribute('role','slider');
+    aa.setAttribute('aria-label','Comparer avant et après');
+    aa.setAttribute('aria-valuemin','0'); aa.setAttribute('aria-valuemax','100');
+
+    function place(p){
+      pos=Math.max(0,Math.min(100,p));
+      apres.style.clipPath='inset(0 0 0 '+pos+'%)';
+      poignee.style.left=pos+'%';
+      aa.setAttribute('aria-valuenow',Math.round(pos));
+    }
+    function depuis(e){
+      var r=aa.getBoundingClientRect();
+      var x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+      place(x/r.width*100);
+    }
+    aa.addEventListener('mousedown',function(e){actif=true;depuis(e);});
+    window.addEventListener('mousemove',function(e){if(actif){depuis(e);}});
+    window.addEventListener('mouseup',function(){actif=false;});
+    aa.addEventListener('touchstart',function(e){actif=true;depuis(e);},{passive:true});
+    aa.addEventListener('touchmove',function(e){if(actif){depuis(e);}},{passive:true});
+    aa.addEventListener('touchend',function(){actif=false;});
+    aa.addEventListener('keydown',function(e){
+      if(e.key==='ArrowLeft'){ place(pos-4); e.preventDefault(); }
+      if(e.key==='ArrowRight'){ place(pos+4); e.preventDefault(); }
+    });
+    place(50);
+  }
+
+  var els=$$('.rev');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});
+    setTimeout(function(){ if(!$('.rev.vu')){ els.forEach(function(e){e.classList.add('vu');}); } },2500);
+  } else { els.forEach(function(e){e.classList.add('vu');}); }
+
+  var f=$('#form-soum'),r=$('#s-retour');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nom=$('#s-nom').value.trim(), tel=$('#s-tel').value.trim();
+    if(!nom||!tel){ r.textContent='Il nous faut votre nom et un numéro pour vous rappeler.'; r.classList.add('on'); return; }
+    r.textContent='Merci '+nom+'. Nous vous appelons au '+tel+' d’ici 48 heures pour fixer la visite. (Démonstration : aucun message n’a réellement été envoyé.)';
+    r.classList.add('on');
+    f.reset();
+  });
+})();
+</script>
+</body>
+</html>

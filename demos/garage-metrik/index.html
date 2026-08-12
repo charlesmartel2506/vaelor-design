@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garage Métrik — Mécanique générale à Anjou, Montréal</title>
+<meta name="description" content="Garage Métrik, mécanique générale à Anjou : prix affichés, estimation écrite avant toute réparation, freins, huile, pneus, inspection pré-achat. 514 555-0477.">
+<meta name="theme-color" content="#101215">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== GARAGE MÉTRIK — thème Volt ====================================== */
+:root{
+  --noir:#101215; --noir2:#171A1F; --noir3:#1E232A;
+  --orange:#FF6A1A; --orange-f:#E25610; --orange-p:rgba(255,106,26,.12);
+  --blanc:#F2F4F7; --gris:#99A2AE; --gris-f:#6C7683; --bord:#2A303A;
+  --max:1180px; --pad:clamp(20px,5vw,40px); --r:3px;
+  --t:'Oswald',Impact,sans-serif; --c:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;background:var(--noir);color:var(--blanc);font-family:var(--c);font-size:17px;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:54px}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--t);font-weight:700;line-height:1.05;margin:0 0 .5em;text-transform:uppercase;letter-spacing:.01em}
+h1{font-size:clamp(2.7rem,7.5vw,5.2rem)}
+h2{font-size:clamp(2rem,4.6vw,3.3rem)}
+h3{font-size:clamp(1.15rem,2vw,1.4rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.env{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(60px,8vw,104px)}
+.sur{display:inline-block;font-family:var(--t);font-size:.82rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.plomb{color:var(--gris);font-size:1.05rem;max-width:62ch}
+.centre{text-align:center;margin-inline:auto}
+.or{color:var(--orange)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--t);font-size:1rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:16px 30px;border-radius:var(--r);border:2px solid transparent;text-decoration:none;cursor:pointer;transition:.2s ease;white-space:nowrap}
+.btn svg{width:19px;height:19px;flex:0 0 auto}
+.btn--plein{background:var(--orange);color:#101215}
+.btn--plein:hover{background:var(--orange-f);transform:translateY(-2px)}
+.btn--ligne{background:transparent;border-color:var(--bord);color:var(--blanc)}
+.btn--ligne:hover{border-color:var(--orange);color:var(--orange)}
+.btn--mini{padding:11px 20px;font-size:.85rem}
+/* Un bouton pleine largeur doit pouvoir passer à la ligne, sinon son libellé
+   élargit toute la page sur téléphone. */
+.form .btn{white-space:normal;text-align:center}
+@media(max-width:430px){.btn{white-space:normal;text-align:center}}
+body{overflow-wrap:break-word}
+
+/* Bandeau haut */
+.top{background:var(--orange);color:#101215;font-size:.86rem;font-weight:600;padding:9px 0}
+.top .env{display:flex;flex-wrap:wrap;gap:5px 24px;align-items:center;justify-content:center;text-align:center}
+.top a{color:#101215;text-decoration:none;border-bottom:1.5px solid rgba(16,18,21,.4)}
+
+/* En-tête */
+.ent{position:sticky;top:0;z-index:100;background:rgba(16,18,21,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord)}
+.ent__g{display:flex;align-items:center;gap:20px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.logo svg{width:40px;height:40px;flex:0 0 auto}
+.logo b{display:block;font-family:var(--t);font-size:1.5rem;font-weight:700;letter-spacing:.06em;line-height:1;text-transform:uppercase}
+.logo span{display:block;font-size:.62rem;color:var(--gris-f);letter-spacing:.26em;text-transform:uppercase;margin-top:3px}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{text-decoration:none;color:var(--gris);font-family:var(--t);font-size:.92rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:9px 13px;transition:.2s}
+.nav a:hover{color:var(--orange)}
+.brg{display:none;width:44px;height:44px;background:var(--noir2);border:1px solid var(--bord);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.brg span{width:19px;height:2px;background:var(--blanc);transition:.25s}
+.brg[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.brg[aria-expanded=true] span:nth-child(2){opacity:0}
+.brg[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:1020px){
+  .brg{display:flex}.ent__cta{display:none}
+  .nav{position:absolute;inset:100% 12px auto 12px;flex-direction:column;align-items:stretch;background:var(--noir2);border:1px solid var(--bord);padding:10px;opacity:0;transform:translateY(-10px);pointer-events:none;transition:.22s}
+  .nav.ouv{opacity:1;transform:none;pointer-events:auto}
+  .nav a{padding:14px}.nav .btn{margin-top:6px}
+}
+
+/* Héros */
+.hero{position:relative;overflow:hidden;background:var(--noir2);border-bottom:1px solid var(--bord)}
+.hero__art{position:absolute;inset:0;z-index:0}
+.hero__g{position:relative;z-index:2;padding-block:clamp(56px,8vw,110px);max-width:660px}
+.hero h1{margin-bottom:20px}
+.hero__act{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero__pts{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:34px;padding-top:24px;border-top:2px solid var(--bord);font-size:.9rem;color:var(--gris)}
+.pt{display:flex;align-items:center;gap:8px}
+.pt svg{width:18px;height:18px;color:var(--orange);flex:0 0 auto}
+
+/* Chiffres */
+.stats{border-bottom:1px solid var(--bord);background:var(--noir)}
+.stats__g{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--bord)}
+@media(max-width:800px){.stats__g{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--noir);padding:30px 22px;text-align:center}
+.stat b{display:block;font-family:var(--t);font-size:2.4rem;font-weight:700;color:var(--orange);line-height:1}
+.stat span{font-size:.84rem;color:var(--gris)}
+
+/* Grille prix */
+.tbl-env{overflow-x:auto;border:1px solid var(--bord);background:var(--noir2)}
+.tbl{width:100%;border-collapse:collapse;min-width:600px}
+.tbl th,.tbl td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--bord)}
+.tbl thead th{font-family:var(--t);font-size:.88rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);background:var(--noir3)}
+.tbl tbody th{font-weight:500;color:var(--blanc);font-family:var(--c);font-size:.97rem}
+.tbl td{color:var(--gris);font-size:.95rem}
+.tbl .px{font-family:var(--t);font-size:1.2rem;font-weight:600;color:var(--blanc);white-space:nowrap}
+.tbl tbody tr:hover{background:rgba(255,106,26,.05)}
+.tbl tbody tr:last-child th,.tbl tbody tr:last-child td{border-bottom:none}
+
+/* Services */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.g3{grid-template-columns:1fr}}
+.svc{background:var(--noir2);border:1px solid var(--bord);border-top:3px solid var(--orange);padding:26px;transition:.24s}
+.svc:hover{transform:translateY(-4px);background:var(--noir3)}
+.svc__i{width:48px;height:48px;background:var(--orange-p);display:grid;place-items:center;margin-bottom:16px}
+.svc__i svg{width:24px;height:24px;color:var(--orange)}
+.svc h3{margin-bottom:8px}
+.svc p{color:var(--gris);font-size:.94rem;margin:0}
+
+/* Promesse */
+.prom{background:var(--noir2);border-block:1px solid var(--bord)}
+.prom__g{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:900px){.prom__g{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.prom__g{grid-template-columns:1fr}}
+.prom__i{display:flex;gap:14px;align-items:flex-start}
+.prom__n{font-family:var(--t);font-size:2rem;font-weight:700;color:var(--orange);line-height:1;flex:0 0 auto}
+.prom__i h3{font-size:1.05rem;margin-bottom:5px}
+.prom__i p{color:var(--gris);font-size:.92rem;margin:0}
+
+/* Urgence */
+.urg{background:linear-gradient(120deg,var(--orange),#FF9146);color:#101215;padding-block:clamp(36px,5vw,56px)}
+.urg__g{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.urg h2{color:#101215;margin-bottom:6px}
+.urg p{color:rgba(16,18,21,.78);margin:0;font-weight:500;max-width:52ch}
+.urg .btn{background:#101215;color:var(--orange);border-color:#101215}
+.urg .btn:hover{background:#000;color:#fff}
+
+/* Avis */
+.avis{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.avis{grid-template-columns:1fr}}
+.avis__c{background:var(--noir2);border:1px solid var(--bord);padding:26px}
+.avis__e{color:var(--orange);letter-spacing:2px;margin-bottom:12px;font-size:.95rem}
+.avis__c p{color:var(--blanc);font-size:.98rem;margin-bottom:14px}
+.avis__c cite{font-style:normal;font-size:.86rem;color:var(--gris-f)}
+.avis__c cite b{display:block;color:var(--gris);font-weight:600;font-family:var(--t);letter-spacing:.06em;text-transform:uppercase;font-size:.9rem}
+
+/* Rendez-vous */
+.rdv__g{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,56px)}
+@media(max-width:900px){.rdv__g{grid-template-columns:1fr}}
+.heures{border:1px solid var(--bord);background:var(--noir2);margin-top:24px}
+.heure{display:flex;justify-content:space-between;gap:16px;padding:13px 20px;border-bottom:1px solid var(--bord);font-size:.93rem}
+.heure:last-child{border-bottom:none}
+.heure b{font-family:var(--t);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--blanc)}
+.heure span{color:var(--gris)}
+.form{background:var(--noir2);border:1px solid var(--bord);padding:clamp(22px,3vw,34px);display:grid;gap:16px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.duo{grid-template-columns:1fr}}
+.ch{display:grid;gap:7px}
+.ch label{font-family:var(--t);font-size:.82rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.ch input,.ch select,.ch textarea{font-family:var(--c);font-size:.97rem;color:var(--blanc);background:var(--noir);border:1.5px solid var(--bord);border-radius:var(--r);padding:13px 15px;width:100%}
+.ch textarea{resize:vertical;min-height:92px}
+.ch input:focus,.ch select:focus,.ch textarea:focus{outline:none;border-color:var(--orange)}
+.ch select option{background:var(--noir2)}
+.retour{display:none;padding:14px 16px;background:var(--orange-p);border:1px solid var(--orange);color:#FFB585;font-size:.92rem}
+.retour.on{display:block}
+
+/* Pied */
+.pied{background:var(--noir2);border-top:1px solid var(--bord);padding-block:48px 24px}
+.pied__g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:32px}
+@media(max-width:760px){.pied__g{grid-template-columns:1fr;gap:26px}}
+.pied h4{font-family:var(--t);font-size:.84rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin:0 0 14px;font-weight:600}
+.pied ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.pied a{color:var(--gris);text-decoration:none;font-size:.93rem}
+.pied a:hover{color:var(--orange)}
+.pied p{color:var(--gris-f);font-size:.93rem}
+.pied__bas{border-top:1px solid var(--bord);padding-top:20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.82rem;color:var(--gris-f)}
+
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rev.vu{opacity:1;transform:none}
+
+.demo-bar{position:fixed;inset:auto 0 0 0;z-index:200;background:linear-gradient(120deg,#12D8C5,#4FA6FF,#7C5CFF);color:#080812;font-family:var(--c);font-size:.82rem;font-weight:600;padding:11px 18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:center;text-align:center}
+.demo-bar a{color:#080812;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.demo-bar{font-size:.74rem;padding:9px 12px}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="env">
+    <span>⚡ SANS RENDEZ-VOUS POUR L'HUILE ET LES PNEUS — LUNDI AU VENDREDI</span>
+    <a href="tel:+15145550477">514 555-0477</a>
+  </div>
+</div>
+
+<header class="ent" id="ent">
+  <div class="env ent__g">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" fill="#FF6A1A"/>
+        <path d="M8 26c0-7 5.4-12 12-12s12 5 12 12" fill="none" stroke="#101215" stroke-width="3.4"/>
+        <circle cx="20" cy="26" r="4.4" fill="#101215"/>
+        <path d="M20 26 27 15" stroke="#101215" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span><b>Métrik</b><span>Anjou · Montréal</span></span>
+    </a>
+    <button class="brg" id="brg" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Navigation">
+      <a href="#prix">Nos prix</a>
+      <a href="#services">Services</a>
+      <a href="#promesse">Nos garanties</a>
+      <a href="#avis">Avis</a>
+      <a href="#rdv">Heures</a>
+      <a class="btn btn--plein btn--mini" href="#rdv">Rendez-vous</a>
+    </nav>
+    <a class="btn btn--plein btn--mini ent__cta" href="#rdv">Prendre rendez-vous</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HÉROS -->
+<section class="hero">
+  <div class="hero__art" aria-hidden="true">
+    <svg viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+      <rect width="1440" height="700" fill="#171A1F"/>
+      <path d="M860 0h580v700H700Z" fill="#FF6A1A" opacity=".13"/>
+      <path d="M1010 0h430v700H870Z" fill="#FF6A1A" opacity=".1"/>
+      <!-- silhouette de voiture -->
+      <g opacity=".28">
+        <path d="M900 470h420c14 0 22-10 20-24l-14-72c-4-20-18-32-38-36l-70-14-52-42c-12-10-26-14-42-14h-104c-18 0-34 8-44 22l-40 54-52 14c-18 4-30 18-30 36v54c0 12 8 22 20 22h26Z" fill="#FF6A1A"/>
+        <circle cx="990" cy="470" r="52" fill="#101215"/><circle cx="990" cy="470" r="26" fill="#FF6A1A"/>
+        <circle cx="1260" cy="470" r="52" fill="#101215"/><circle cx="1260" cy="470" r="26" fill="#FF6A1A"/>
+      </g>
+      <!-- grille technique -->
+      <g stroke="#FF6A1A" stroke-opacity=".08" stroke-width="1">
+        <path d="M0 100h1440M0 200h1440M0 300h1440M0 400h1440M0 500h1440M0 600h1440"/>
+        <path d="M120 0v700M240 0v700M360 0v700M480 0v700M600 0v700"/>
+      </g>
+    </svg>
+  </div>
+  <div class="env hero__g">
+    <span class="sur">Mécanique générale · Anjou</span>
+    <h1>On répare.<br><span class="or">On explique.</span></h1>
+    <p class="plomb">
+      Vous recevez une estimation écrite avant qu'on touche à quoi que ce soit. Si on découvre
+      autre chose en cours de route, on vous appelle — on ne l'ajoute jamais à la facture sans
+      votre accord. C'est notre seule règle, et elle n'a jamais changé en 22 ans.
+    </p>
+    <div class="hero__act">
+      <a class="btn btn--plein" href="#rdv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+        Prendre rendez-vous
+      </a>
+      <a class="btn btn--ligne" href="#prix">Voir la grille de prix</a>
+    </div>
+    <div class="hero__pts">
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Prix affichés publiquement</span>
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Garantie 2 ans sur les pièces</span>
+      <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Auto de courtoisie gratuite</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="env" style="padding-inline:0">
+    <div class="stats__g">
+      <div class="stat rev"><b>22</b><span>ans à Anjou</span></div>
+      <div class="stat rev"><b>4,7/5</b><span>sur 418 avis Google</span></div>
+      <div class="stat rev"><b>2 ans</b><span>de garantie sur les pièces</span></div>
+      <div class="stat rev"><b>0 $</b><span>pour l'inspection des freins</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIX -->
+<section class="sec" id="prix">
+  <div class="env">
+    <div class="centre rev" style="max-width:680px;margin-bottom:34px">
+      <span class="sur">Grille de prix</span>
+      <h2>Nos prix sont affichés. Point.</h2>
+      <p class="plomb centre">
+        La plupart des garages refusent de donner un prix au téléphone. Nous, on l'écrit sur
+        notre site. Les montants ci-dessous sont réels et incluent la main-d'œuvre.
+      </p>
+    </div>
+
+    <div class="tbl-env rev">
+      <table class="tbl">
+        <thead>
+          <tr><th scope="col">Service</th><th scope="col">Ce qui est compris</th><th scope="col">Prix</th><th scope="col">Durée</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Changement d'huile synthétique</th><td>Huile 5W-30 synthétique, filtre, inspection en 21 points, liquides remplis</td><td class="px">69 $</td><td>30 min</td></tr>
+          <tr><th scope="row">Inspection des freins</th><td>Mesure des plaquettes et des disques, rapport écrit avec photos</td><td class="px">Gratuit</td><td>20 min</td></tr>
+          <tr><th scope="row">Freins avant (plaquettes + disques)</th><td>Pièces de qualité originale, main-d'œuvre, purge du liquide</td><td class="px">Dès 389 $</td><td>2 h</td></tr>
+          <tr><th scope="row">Remplacement de la batterie</th><td>Batterie 5 ans, installation, test de l'alternateur, recyclage de l'ancienne</td><td class="px">Dès 229 $</td><td>30 min</td></tr>
+          <tr><th scope="row">Changement de pneus saisonnier</th><td>Quatre pneus montés sur jantes, équilibrage, remise à zéro des capteurs</td><td class="px">89 $</td><td>45 min</td></tr>
+          <tr><th scope="row">Entreposage de pneus</th><td>Six mois, à l'intérieur, lavés avant l'entreposage</td><td class="px">79 $ / saison</td><td>—</td></tr>
+          <tr><th scope="row">Diagnostic électronique</th><td>Lecture des codes, essai routier, rapport expliqué en français clair</td><td class="px">109 $</td><td>1 h</td></tr>
+          <tr><th scope="row">Inspection pré-achat d'un usagé</th><td>Inspection de 92 points, essai routier, rapport écrit remis le jour même</td><td class="px">89 $</td><td>1 h 15</td></tr>
+          <tr><th scope="row">Mise au point complète</th><td>Bougies, filtres à air et à cabine, nettoyage du corps de papillon</td><td class="px">Dès 279 $</td><td>2 h</td></tr>
+          <tr><th scope="row">Taux horaire (autres travaux)</th><td>Facturé au quart d'heure réel, jamais au forfait gonflé</td><td class="px">112 $ / h</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rev" style="margin-top:16px;font-size:.88rem;color:var(--gris-f)">
+      Les prix varient selon la marque et le modèle. Appelez-nous avec le numéro de série et on vous
+      donne le montant exact en trois minutes — sans que vous ayez à venir.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services" style="background:var(--noir2);border-block:1px solid var(--bord)">
+  <div class="env">
+    <div class="centre rev" style="max-width:620px;margin-bottom:36px">
+      <span class="sur">Nos services</span>
+      <h2>Tout sauf la carrosserie</h2>
+      <p class="plomb centre">Six baies, quatre mécaniciens certifiés, et l'équipement pour à peu près toutes les marques vendues au Québec.</p>
+    </div>
+    <div class="g3">
+      <article class="svc rev">
+        <span class="svc__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4a4 4 0 0 0-5 5L4 14a2 2 0 0 0 0 3l3 3a2 2 0 0 0 3 0l5-5a4 4 0 0 0 5-5l-3 3-3-3 3-3a4 4 0 0 0-3-3Z"/></svg></span>
+        <h3>Entretien régulier</h3>
+        <p>Huile, filtres, courroies, liquides, bougies. On suit le calendrier du fabricant sans vous vendre ce dont vous n'avez pas besoin.</p>
+      </article>
+      <article class="svc rev">
+        <span class="svc__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></span>
+        <h3>Freins et suspension</h3>
+        <p>Plaquettes, disques, étriers, amortisseurs, rotules. Inspection gratuite avec photos avant tout devis.</p>
+      </article>
+      <article class="svc rev">
+        <span class="svc__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg></span>
+        <h3>Électricité et diagnostic</h3>
+        <p>Voyant moteur allumé, démarrage capricieux, alternateur. On lit les codes puis on cherche la vraie cause, pas juste le code.</p>
+      </article>
+      <article class="svc rev">
+        <span class="svc__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16M6.3 6.3l11.4 11.4M17.7 6.3 6.3 17.7"/></svg></span>
+        <h3>Pneus et alignement</h3>
+        <p>Vente, pose, équilibrage, entreposage. Alignement quatre roues avec rapport imprimé avant et après.</p>
+      </article>
+      <article class="svc rev">
+        <span class="svc__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></span>
+        <h3>Climatisation et chauffage</h3>
+        <p>Recharge, détection de fuite, remplacement du compresseur. On teste avant de recharger — recharger une fuite, c'est jeter l'argent.</p>
+      </article>
+      <article class="svc rev">
+        <span class="svc__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg></span>
+        <h3>Inspection pré-achat</h3>
+        <p>Vous voulez acheter un usagé ? Amenez-le nous avant de signer. 89 $ pour éviter une erreur à 6 000 $.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROMESSE -->
+<section class="sec prom" id="promesse">
+  <div class="env">
+    <div class="centre rev" style="max-width:640px;margin-bottom:40px">
+      <span class="sur">Nos quatre engagements</span>
+      <h2>Ce qu'on vous promet par écrit</h2>
+    </div>
+    <div class="prom__g">
+      <div class="prom__i rev"><span class="prom__n">01</span><div><h3>Rien sans votre accord</h3><p>Aucune réparation n'est ajoutée sans un appel et un « oui » de votre part. Jamais d'exception.</p></div></div>
+      <div class="prom__i rev"><span class="prom__n">02</span><div><h3>Vos vieilles pièces</h3><p>On vous les garde dans une boîte. Vous voulez voir l'ancienne plaquette de frein ? La voici.</p></div></div>
+      <div class="prom__i rev"><span class="prom__n">03</span><div><h3>Garantie 2 ans</h3><p>Pièces et main-d'œuvre, 40 000 km. Si ça lâche, on le refait sans discuter.</p></div></div>
+      <div class="prom__i rev"><span class="prom__n">04</span><div><h3>Auto de courtoisie</h3><p>Gratuite pour tout travail de plus de trois heures. Réservez-la en même temps que le rendez-vous.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCE -->
+<section class="urg">
+  <div class="env urg__g">
+    <div>
+      <h2 style="font-size:clamp(1.7rem,3.6vw,2.5rem)">En panne sur le bord de la route ?</h2>
+      <p>Remorquage 24 heures sur 24 dans l'est de Montréal. Si on répare le véhicule chez nous, le remorquage est gratuit.</p>
+    </div>
+    <a class="btn" href="tel:+15145550477">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      514 555-0477
+    </a>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="sec" id="avis" style="background:var(--noir2);border-bottom:1px solid var(--bord)">
+  <div class="env">
+    <div class="centre rev" style="max-width:600px;margin-bottom:36px">
+      <span class="sur">Avis Google</span>
+      <h2>4,7 / 5 sur 418 avis</h2>
+    </div>
+    <div class="avis">
+      <article class="avis__c rev">
+        <div class="avis__e">★★★★★</div>
+        <p>« Le concessionnaire me demandait 1 400 $ pour les freins. Métrik l'a fait pour 620 $ avec les mêmes pièces, et ils m'ont montré les vieilles. »</p>
+        <cite><b>Karim B.</b>Client depuis 2019</cite>
+      </article>
+      <article class="avis__c rev">
+        <div class="avis__e">★★★★★</div>
+        <p>« Ils m'ont appelée en cours de route pour me dire qu'un travail prévu n'était finalement pas nécessaire. La facture était plus basse que l'estimation. Du jamais vu. »</p>
+        <cite><b>Josée L.</b>Anjou</cite>
+      </article>
+      <article class="avis__c rev">
+        <div class="avis__e">★★★★☆</div>
+        <p>« Faut prendre rendez-vous d'avance, ils sont occupés. Mais quand tu y es, c'est fait dans le temps annoncé et le prix est celui qui était écrit. »</p>
+        <cite><b>Marc-André T.</b>Montréal-Est</cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RENDEZ-VOUS -->
+<section class="sec" id="rdv">
+  <div class="env rdv__g">
+    <div class="rev">
+      <span class="sur">Nous trouver</span>
+      <h2>Heures et adresse</h2>
+      <p class="plomb">
+        Sans rendez-vous pour l'huile, les pneus et l'inspection des freins. Pour tout le reste,
+        réservez : ça vous évite d'attendre.
+      </p>
+
+      <div class="heures">
+        <div class="heure"><b>Lundi – Jeudi</b><span>7 h 30 – 18 h</span></div>
+        <div class="heure"><b>Vendredi</b><span>7 h 30 – 17 h</span></div>
+        <div class="heure"><b>Samedi</b><span>8 h – 13 h</span></div>
+        <div class="heure"><b>Dimanche</b><span>Fermé</span></div>
+        <div class="heure"><b>Remorquage</b><span style="color:var(--orange);font-weight:600">24 h sur 24, 7 jours sur 7</span></div>
+      </div>
+
+      <p class="plomb" style="margin-top:24px;font-size:.96rem">
+        <strong style="color:var(--blanc)">7420, boulevard Métropolitain Est</strong><br>
+        Anjou (Québec)  H1M 1A1<br>
+        Sortie 78 de l'autoroute 40 · stationnement de 30 places
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px">
+        <a class="btn btn--ligne btn--mini" href="tel:+15145550477">514 555-0477</a>
+        <a class="btn btn--ligne btn--mini" href="mailto:info@garagemetrik.ca">info@garagemetrik.ca</a>
+      </div>
+    </div>
+
+    <form class="form rev" id="form-rdv" novalidate>
+      <div class="duo">
+        <div class="ch"><label for="g-nom">Nom</label><input id="g-nom" type="text" placeholder="Karim Benali" required></div>
+        <div class="ch"><label for="g-tel">Téléphone</label><input id="g-tel" type="tel" placeholder="514 555-0123" required></div>
+      </div>
+      <div class="duo">
+        <div class="ch"><label for="g-vehic">Véhicule</label><input id="g-vehic" type="text" placeholder="Honda CR-V 2019" required></div>
+        <div class="ch"><label for="g-km">Kilométrage</label><input id="g-km" type="text" placeholder="112 000 km"></div>
+      </div>
+      <div class="ch"><label for="g-svc">Ce dont vous avez besoin</label>
+        <select id="g-svc">
+          <option>Changement d'huile</option><option>Freins</option><option>Pneus / entreposage</option>
+          <option>Voyant moteur allumé</option><option>Bruit ou vibration à diagnostiquer</option>
+          <option>Climatisation</option><option>Inspection pré-achat</option><option>Autre — j'explique plus bas</option>
+        </select>
+      </div>
+      <div class="duo">
+        <div class="ch"><label for="g-quand">Quand ?</label>
+          <select id="g-quand"><option>Dès que possible</option><option>Cette semaine</option><option>La semaine prochaine</option><option>Je suis flexible</option></select>
+        </div>
+        <div class="ch"><label for="g-courtoisie">Auto de courtoisie ?</label>
+          <select id="g-courtoisie"><option>Non merci</option><option>Oui, si c'est disponible</option><option>Oui, c'est essentiel</option></select>
+        </div>
+      </div>
+      <div class="ch"><label for="g-msg">Décrivez le problème</label><textarea id="g-msg" placeholder="Un bruit quand je freine à basse vitesse, surtout le matin quand il fait froid…"></textarea></div>
+      <button class="btn btn--plein" type="submit" style="width:100%">Demander mon rendez-vous</button>
+      <p class="retour" id="g-retour" role="status"></p>
+      <p style="font-size:.82rem;color:var(--gris-f);margin:0">On vous rappelle dans les deux heures ouvrables avec une estimation approximative.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="env">
+    <div class="pied__g">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:14px">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" fill="#FF6A1A"/>
+            <path d="M8 26c0-7 5.4-12 12-12s12 5 12 12" fill="none" stroke="#101215" stroke-width="3.4"/>
+            <circle cx="20" cy="26" r="4.4" fill="#101215"/>
+            <path d="M20 26 27 15" stroke="#101215" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span><b>Métrik</b><span>Anjou · Montréal</span></span>
+        </a>
+        <p style="max-width:38ch">Mécanique générale à Anjou depuis 2003. Prix affichés, estimation écrite, vieilles pièces conservées.</p>
+      </div>
+      <div>
+        <h4>Le garage</h4>
+        <ul>
+          <li><a href="#prix">Grille de prix</a></li><li><a href="#services">Services</a></li>
+          <li><a href="#promesse">Nos engagements</a></li><li><a href="#avis">Avis clients</a></li>
+          <li><a href="#rdv">Heures et adresse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nous joindre</h4>
+        <ul>
+          <li><a href="tel:+15145550477">514 555-0477</a></li>
+          <li><a href="mailto:info@garagemetrik.ca">info@garagemetrik.ca</a></li>
+          <li style="color:var(--gris-f);font-size:.93rem">7420, boul. Métropolitain E.<br>Anjou (Québec) H1M 1A1</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© 2026 Garage Métrik. Entreprise fictive créée en exemple.</span>
+      <span>Site conçu par Vaelor Design</span>
+    </div>
+  </div>
+</footer>
+
+<div class="demo-bar">
+  <span>🎨 Exemple de site créé par <strong>Vaelor Design</strong> — ce garage est fictif.</span>
+  <a href="../../index.html">Voir tous les exemples</a>
+  <a href="../../index.html#contact">Obtenir le mien</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s,c){return (c||document).querySelector(s);};
+  var $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));};
+
+  var brg=$('#brg'),nav=$('#nav');
+  brg.addEventListener('click',function(){
+    var o=nav.classList.toggle('ouv');
+    brg.setAttribute('aria-expanded',o?'true':'false');
+  });
+  $$('a',nav).forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('ouv');brg.setAttribute('aria-expanded','false');});});
+
+  var els=$$('.rev');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});
+    setTimeout(function(){ if(!$('.rev.vu')){ els.forEach(function(e){e.classList.add('vu');}); } },2500);
+  } else { els.forEach(function(e){e.classList.add('vu');}); }
+
+  var f=$('#form-rdv'),r=$('#g-retour');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nom=$('#g-nom').value.trim(), tel=$('#g-tel').value.trim(), v=$('#g-vehic').value.trim();
+    if(!nom||!tel||!v){ r.textContent='Il nous faut votre nom, votre numéro et le véhicule pour préparer l’estimation.'; r.classList.add('on'); return; }
+    r.textContent='Reçu, '+nom+'. On vous rappelle au '+tel+' dans les deux heures ouvrables pour votre '+v+'. (Démonstration : aucun message n’a réellement été envoyé.)';
+    r.classList.add('on');
+    f.reset();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinique dentaire Aubéry — Dentisterie familiale à Laval</title>
+<meta name="description" content="Clinique dentaire Aubéry à Laval : examens, urgences reçues le jour même, orthodontie, esthétique. Réclamation transmise directement à votre assurance. 450 555-0244.">
+<meta name="theme-color" content="#1B74C4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== CLINIQUE AUBÉRY — thème Clarté ================================== */
+:root{
+  --bleu:#1B74C4; --bleu-f:#12558F; --bleu-p:#EAF3FB; --menthe:#12B5A8;
+  --encre:#0E2233; --gris:#5A7186; --gris-c:#8FA5B8; --bord:#E2EBF3;
+  --fond:#FFFFFF; --fond2:#F1F6FC;
+  --max:1180px; --pad:clamp(20px,5vw,40px); --r:12px; --r-l:20px;
+  --t:'Sora',system-ui,sans-serif; --c:'Inter',system-ui,sans-serif;
+  --ombre:0 18px 50px -22px rgba(14,34,51,.28);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--fond);color:var(--encre);font-family:var(--c);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:54px}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--t);font-weight:700;line-height:1.15;margin:0 0 .5em;letter-spacing:-.025em}
+h1{font-size:clamp(2.3rem,5.6vw,3.8rem)}
+h2{font-size:clamp(1.8rem,3.8vw,2.7rem)}
+h3{font-size:clamp(1.1rem,1.8vw,1.3rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:2px;border-radius:6px}
+.env{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(60px,8vw,104px)}
+.sur{display:inline-block;font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--bleu);margin-bottom:14px}
+.plomb{color:var(--gris);font-size:1.05rem;max-width:62ch}
+.centre{text-align:center;margin-inline:auto}
+.bleu{color:var(--bleu)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--t);font-size:.95rem;font-weight:600;padding:15px 26px;border-radius:var(--r);border:2px solid transparent;text-decoration:none;cursor:pointer;transition:.22s ease;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+.btn--plein{background:var(--bleu);color:#fff}
+.btn--plein:hover{background:var(--bleu-f);transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(27,116,196,.6)}
+.btn--ligne{background:#fff;border-color:var(--bord);color:var(--encre)}
+.btn--ligne:hover{border-color:var(--bleu);color:var(--bleu)}
+.btn--menthe{background:var(--menthe);color:#fff}
+.btn--menthe:hover{background:#0E9C91;transform:translateY(-2px)}
+.btn--mini{padding:11px 20px;font-size:.87rem}
+/* Un bouton pleine largeur doit pouvoir passer à la ligne, sinon son libellé
+   élargit toute la page sur téléphone. */
+.form .btn{white-space:normal;text-align:center}
+@media(max-width:430px){.btn{white-space:normal;text-align:center}}
+body{overflow-wrap:break-word}
+
+/* Bandeau urgence */
+.urg-bar{background:var(--encre);color:#fff;font-size:.87rem;padding:10px 0}
+.urg-bar .env{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;justify-content:center;text-align:center}
+.urg-bar a{color:#7FD4CC;font-weight:600;text-decoration:none}
+.urg-bar a:hover{text-decoration:underline}
+
+/* En-tête */
+.ent{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);transition:box-shadow .3s}
+.ent.collee{box-shadow:0 6px 24px -14px rgba(14,34,51,.3)}
+.ent__g{display:flex;align-items:center;gap:20px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.logo__m{width:42px;height:42px;flex:0 0 auto}
+.logo b{display:block;font-family:var(--t);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.logo span{display:block;font-size:.7rem;color:var(--gris-c);letter-spacing:.08em}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{text-decoration:none;color:var(--gris);font-size:.93rem;font-weight:500;padding:9px 13px;border-radius:8px;transition:.2s}
+.nav a:hover{color:var(--bleu);background:var(--bleu-p)}
+.brg{display:none;width:44px;height:44px;border-radius:10px;background:var(--fond2);border:1px solid var(--bord);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.brg span{width:18px;height:2px;background:var(--encre);border-radius:2px;transition:.25s}
+.brg[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.brg[aria-expanded=true] span:nth-child(2){opacity:0}
+.brg[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:980px){
+  .brg{display:flex}.ent__cta{display:none}
+  .nav{position:absolute;inset:100% 12px auto 12px;flex-direction:column;align-items:stretch;background:#fff;border:1px solid var(--bord);border-radius:var(--r-l);padding:10px;box-shadow:var(--ombre);opacity:0;transform:translateY(-10px);pointer-events:none;transition:.22s}
+  .nav.ouv{opacity:1;transform:none;pointer-events:auto}
+  .nav a{padding:14px}
+  .nav .btn{margin-top:6px}
+}
+
+/* Héros */
+.hero{background:linear-gradient(170deg,var(--fond2) 0%,#fff 100%);padding-block:clamp(50px,7vw,86px);position:relative;overflow:hidden}
+.hero__g{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,60px);align-items:center;position:relative;z-index:2}
+@media(max-width:940px){.hero__g{grid-template-columns:1fr}}
+.hero h1{margin-bottom:18px}
+.hero__act{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero__pts{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:30px;font-size:.92rem;color:var(--gris)}
+.pt{display:flex;align-items:center;gap:8px}
+.pt svg{width:18px;height:18px;color:var(--menthe);flex:0 0 auto}
+.hero__art{position:relative}
+.badge-flot{position:absolute;background:#fff;border:1px solid var(--bord);border-radius:var(--r-l);box-shadow:var(--ombre);padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:.85rem}
+.badge-flot b{display:block;font-family:var(--t);font-size:1.15rem;color:var(--encre)}
+.badge-flot span{color:var(--gris-c);font-size:.78rem}
+.badge-flot__i{width:40px;height:40px;border-radius:12px;background:var(--bleu-p);display:grid;place-items:center;flex:0 0 auto}
+.badge-flot__i svg{width:20px;height:20px;color:var(--bleu)}
+.bf1{left:-18px;bottom:34px}.bf2{right:-10px;top:22px}
+@media(max-width:940px){.bf1{left:4px}.bf2{right:4px}}
+@media(max-width:520px){.badge-flot{display:none}}
+
+/* Bandeau confiance */
+.conf{border-block:1px solid var(--bord);background:var(--fond2)}
+.conf__g{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-block:34px;text-align:center}
+@media(max-width:820px){.conf__g{grid-template-columns:repeat(2,1fr);gap:26px}}
+.conf b{display:block;font-family:var(--t);font-size:2rem;color:var(--bleu);line-height:1.1}
+.conf span{font-size:.86rem;color:var(--gris)}
+
+/* Grilles */
+.g{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.g3,.g2{grid-template-columns:1fr}}
+
+.carte{background:#fff;border:1px solid var(--bord);border-radius:var(--r-l);padding:clamp(22px,2.6vw,30px);transition:.25s}
+.carte:hover{border-color:#C3DBF0;box-shadow:var(--ombre);transform:translateY(-4px)}
+.carte__i{width:52px;height:52px;border-radius:14px;background:var(--bleu-p);display:grid;place-items:center;margin-bottom:16px}
+.carte__i svg{width:25px;height:25px;color:var(--bleu)}
+.carte h3{margin-bottom:8px}
+.carte p{color:var(--gris);font-size:.95rem;margin:0}
+.carte__px{display:inline-block;margin-top:14px;font-family:var(--t);font-size:.85rem;font-weight:600;color:var(--bleu);background:var(--bleu-p);border-radius:99px;padding:5px 14px}
+
+/* Urgence */
+.urg{background:linear-gradient(120deg,var(--encre),#173650);color:#fff;border-radius:var(--r-l);padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,46px);align-items:center}
+@media(max-width:820px){.urg{grid-template-columns:1fr}}
+.urg h2{color:#fff}
+.urg p{color:#B6CBDC}
+.urg .sur{color:#7FD4CC}
+.urg__box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:22px}
+.urg__box b{display:block;font-family:var(--t);font-size:1.9rem;margin-bottom:4px}
+.urg__box span{color:#B6CBDC;font-size:.88rem}
+
+/* Équipe */
+.equipe{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:880px){.equipe{grid-template-columns:1fr}}
+.pers{background:#fff;border:1px solid var(--bord);border-radius:var(--r-l);overflow:hidden;transition:.25s}
+.pers:hover{box-shadow:var(--ombre);transform:translateY(-4px)}
+.pers__ph{aspect-ratio:4/3.4;background:var(--fond2)}
+.pers__c{padding:22px 24px 26px}
+.pers h3{margin-bottom:2px}
+.pers__r{font-size:.83rem;font-weight:600;color:var(--bleu);letter-spacing:.04em;margin-bottom:10px}
+.pers p{color:var(--gris);font-size:.93rem;margin:0}
+
+/* Assurances */
+.assur{background:var(--fond2);border:1px solid var(--bord);border-radius:var(--r-l);padding:clamp(24px,3.4vw,42px)}
+.assur__liste{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.assur__liste span{background:#fff;border:1px solid var(--bord);border-radius:99px;padding:8px 16px;font-size:.88rem;color:var(--gris)}
+
+/* FAQ */
+.faq{display:grid;gap:12px;max-width:840px;margin-inline:auto}
+.qr{border:1px solid var(--bord);border-radius:var(--r);background:#fff;overflow:hidden}
+.qr[open]{border-color:#C3DBF0;box-shadow:var(--ombre)}
+.qr summary{cursor:pointer;list-style:none;padding:18px 54px 18px 22px;position:relative;font-family:var(--t);font-weight:600;font-size:1rem}
+.qr summary::-webkit-details-marker{display:none}
+.qr summary::after{content:'';position:absolute;right:22px;top:50%;width:10px;height:10px;border-right:2px solid var(--gris);border-bottom:2px solid var(--gris);transform:translateY(-70%) rotate(45deg);transition:.25s}
+.qr[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.qr div{padding:0 22px 20px;color:var(--gris);font-size:.95rem}
+
+/* Rendez-vous */
+.rdv{background:var(--fond2);border-block:1px solid var(--bord)}
+.rdv__g{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px)}
+@media(max-width:900px){.rdv__g{grid-template-columns:1fr}}
+.heures{background:#fff;border:1px solid var(--bord);border-radius:var(--r-l);padding:24px;margin-top:24px}
+.heure{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--bord);font-size:.93rem}
+.heure:last-child{border-bottom:none}
+.heure b{font-weight:500;color:var(--encre)}
+.heure span{color:var(--gris)}
+.form{background:#fff;border:1px solid var(--bord);border-radius:var(--r-l);padding:clamp(22px,3vw,34px);display:grid;gap:16px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.duo{grid-template-columns:1fr}}
+.ch{display:grid;gap:7px}
+.ch label{font-size:.85rem;font-weight:500;color:var(--encre)}
+.ch input,.ch select,.ch textarea{font-family:var(--c);font-size:.97rem;color:var(--encre);background:#fff;border:1.5px solid var(--bord);border-radius:var(--r);padding:13px 15px;width:100%}
+.ch textarea{resize:vertical;min-height:92px}
+.ch input:focus,.ch select:focus,.ch textarea:focus{outline:none;border-color:var(--bleu)}
+.retour{display:none;padding:14px 16px;border-radius:var(--r);background:#E6F7F5;border:1px solid var(--menthe);color:#0B6F67;font-size:.92rem}
+.retour.on{display:block}
+
+/* Pied */
+.pied{background:var(--encre);color:#B6CBDC;padding-block:50px 26px}
+.pied__g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:34px}
+@media(max-width:760px){.pied__g{grid-template-columns:1fr;gap:26px}}
+.pied h4{font-family:var(--t);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:#7FD4CC;margin:0 0 14px}
+.pied ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.pied a{color:#B6CBDC;text-decoration:none;font-size:.93rem}
+.pied a:hover{color:#fff}
+.pied__bas{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.82rem;color:#7E97AC}
+
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.vu{opacity:1;transform:none}
+
+.demo-bar{position:fixed;inset:auto 0 0 0;z-index:200;background:linear-gradient(120deg,#12D8C5,#4FA6FF,#7C5CFF);color:#080812;font-family:var(--c);font-size:.82rem;font-weight:600;padding:11px 18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:center;text-align:center}
+.demo-bar a{color:#080812;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.demo-bar{font-size:.74rem;padding:9px 12px}}
+</style>
+</head>
+<body>
+
+<div class="urg-bar">
+  <div class="env">
+    <span>🦷 Urgence dentaire ? Appelez avant 10 h, vous passez aujourd'hui —</span>
+    <a href="tel:+14505550244">450 555-0244</a>
+  </div>
+</div>
+
+<header class="ent" id="ent">
+  <div class="env ent__g">
+    <a class="logo" href="#">
+      <svg class="logo__m" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="23" fill="#1B74C4"/>
+        <path d="M24 13c-3.4-2.6-8-2.2-10.2.8-1.9 2.6-1.5 6.4-.6 10.2.7 3 1.4 6.4 2.2 8.8.6 1.9 3 2.1 3.8.3l2.6-5.8c.8-1.7 3.6-1.7 4.4 0l2.6 5.8c.8 1.8 3.2 1.6 3.8-.3.8-2.4 1.5-5.8 2.2-8.8.9-3.8 1.3-7.6-.6-10.2-2.2-3-6.8-3.4-10.2-.8Z" fill="#fff"/>
+      </svg>
+      <span><b>Clinique Aubéry</b><span>Dentisterie familiale · Laval</span></span>
+    </a>
+    <button class="brg" id="brg" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Navigation">
+      <a href="#soins">Nos soins</a>
+      <a href="#urgence">Urgences</a>
+      <a href="#equipe">L'équipe</a>
+      <a href="#assurances">Assurances</a>
+      <a href="#questions">Questions</a>
+      <a class="btn btn--plein btn--mini" href="#rdv">Prendre rendez-vous</a>
+    </nav>
+    <a class="btn btn--plein btn--mini ent__cta" href="#rdv">Prendre rendez-vous</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HÉROS -->
+<section class="hero">
+  <div class="env hero__g">
+    <div>
+      <span class="sur">Dentisterie familiale depuis 2009</span>
+      <h1>Des sourires<br><span class="bleu">en confiance.</span></h1>
+      <p class="plomb">
+        Vous n'aimez pas le dentiste ? Vous n'êtes pas seul — la moitié de nos patients nous le dit
+        au premier rendez-vous. Chez nous, on explique avant de faire, on chiffre avant de commencer,
+        et personne ne vous fera la morale sur vos dents.
+      </p>
+      <div class="hero__act">
+        <a class="btn btn--plein" href="#rdv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+          Prendre rendez-vous
+        </a>
+        <a class="btn btn--ligne" href="tel:+14505550244">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          450 555-0244
+        </a>
+      </div>
+      <div class="hero__pts">
+        <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Nouveaux patients acceptés</span>
+        <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ouvert le samedi</span>
+        <span class="pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Stationnement gratuit</span>
+      </div>
+    </div>
+
+    <div class="hero__art">
+      <svg viewBox="0 0 560 460" style="border-radius:24px;border:1px solid var(--bord);background:#fff" aria-hidden="true">
+        <rect width="560" height="460" fill="#EAF3FB"/>
+        <circle cx="420" cy="130" r="150" fill="#1B74C4" opacity=".1"/>
+        <circle cx="150" cy="360" r="110" fill="#12B5A8" opacity=".12"/>
+        <!-- dent centrale -->
+        <path d="M280 108c-30-24-70-20-89 7-17 24-13 57-5 91 6 27 12 57 19 78 6 17 27 19 34 3l23-52c7-15 32-15 39 0l23 52c7 16 28 14 34-3 7-21 13-51 19-78 8-34 12-67-5-91-19-27-59-31-89-7Z" fill="#fff" stroke="#1B74C4" stroke-width="3"/>
+        <path d="M280 150c-14 0-26 8-26 22s10 20 10 34" stroke="#C3DBF0" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <!-- étincelles -->
+        <g stroke="#12B5A8" stroke-width="4" stroke-linecap="round">
+          <path d="M400 190v22M389 201h22"/><path d="M150 170v18M142 179h16"/><path d="M430 300v16M423 308h14"/>
+        </g>
+        <!-- ligne sourire -->
+        <path d="M120 400c50 34 270 34 320 0" stroke="#1B74C4" stroke-width="4" stroke-linecap="round" fill="none" opacity=".35"/>
+      </svg>
+
+      <div class="badge-flot bf1">
+        <span class="badge-flot__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <span><b>Même jour</b><span>pour les urgences</span></span>
+      </div>
+      <div class="badge-flot bf2">
+        <span class="badge-flot__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <span><b>16 ans</b><span>au service de Laval</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIANCE -->
+<div class="conf">
+  <div class="env conf__g">
+    <div class="rev"><b>16</b><span>ans à Chomedey</span></div>
+    <div class="rev"><b>4 200</b><span>patients suivis</span></div>
+    <div class="rev"><b>4,9 / 5</b><span>sur 312 avis Google</span></div>
+    <div class="rev"><b>0 $</b><span>pour l'examen d'un enfant de moins de 10 ans</span></div>
+  </div>
+</div>
+
+<!-- SOINS -->
+<section class="sec" id="soins">
+  <div class="env">
+    <div class="centre rev" style="max-width:700px;margin-bottom:40px">
+      <span class="sur">Nos soins</span>
+      <h2>Tout se fait ici, sous un seul toit</h2>
+      <p class="plomb centre">Vous n'aurez pas à courir d'une clinique à l'autre. Et pour chaque traitement, vous recevez le prix par écrit avant qu'on commence.</p>
+    </div>
+
+    <div class="g g3">
+      <article class="carte rev">
+        <span class="carte__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5c-2.5-2-6-1.7-7.5.6-1.4 2-1.1 4.8-.4 7.6.5 2.2 1 4.7 1.6 6.5.5 1.4 2.2 1.6 2.8.2l1.9-4.3c.6-1.3 2.6-1.3 3.2 0l1.9 4.3c.6 1.4 2.3 1.2 2.8-.2.6-1.8 1.1-4.3 1.6-6.5.7-2.8 1-5.6-.4-7.6C18 3.3 14.5 3 12 5Z"/></svg></span>
+        <h3>Examen et nettoyage</h3>
+        <p>Examen complet, radiographies numériques (90 % moins de radiation), détartrage et polissage. On vous montre les images à l'écran et on explique ce qu'on voit.</p>
+        <span class="carte__px">Dès 145 $</span>
+      </article>
+
+      <article class="carte rev">
+        <span class="carte__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 8h14M5 16h14"/></svg></span>
+        <h3>Obturations et couronnes</h3>
+        <p>Plombages blancs assortis à la couleur de vos dents. Couronnes en céramique conçues et posées en deux rendez-vous, jamais plus.</p>
+        <span class="carte__px">Dès 210 $</span>
+      </article>
+
+      <article class="carte rev">
+        <span class="carte__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16M6 17V9a6 6 0 0 1 12 0v8M9 21h6"/></svg></span>
+        <h3>Traitement de canal</h3>
+        <p>Fait sur place, sous anesthésie complète. Neuf patients sur dix nous disent après coup que c'était moins pire que prévu — et ils avaient raison d'être nerveux avant.</p>
+        <span class="carte__px">Dès 620 $</span>
+      </article>
+
+      <article class="carte rev">
+        <span class="carte__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>
+        <h3>Orthodontie invisible</h3>
+        <p>Gouttières transparentes pour redresser les dents sans broches métalliques. Plan complet simulé à l'écran : vous voyez le résultat final avant de dire oui.</p>
+        <span class="carte__px">Dès 3 400 $</span>
+      </article>
+
+      <article class="carte rev">
+        <span class="carte__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>
+        <h3>Blanchiment et esthétique</h3>
+        <p>Blanchiment en clinique ou à la maison avec des gouttières faites sur mesure. Facettes de céramique pour corriger la forme et la couleur.</p>
+        <span class="carte__px">Dès 390 $</span>
+      </article>
+
+      <article class="carte rev">
+        <span class="carte__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V7a3 3 0 0 1 6 0v4"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg></span>
+        <h3>Implants et prothèses</h3>
+        <p>Remplacement d'une dent ou de plusieurs, avec un plan de traitement en étapes et un échéancier de paiement si nécessaire.</p>
+        <span class="carte__px">Sur évaluation</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCE -->
+<section class="sec" id="urgence" style="padding-top:0">
+  <div class="env">
+    <div class="urg rev">
+      <div>
+        <span class="sur">Urgences dentaires</span>
+        <h2>Une rage de dents ne peut pas attendre trois semaines</h2>
+        <p>
+          Nous gardons deux plages horaires libres chaque jour, uniquement pour les urgences.
+          Une dent cassée, un abcès, une couronne tombée, une douleur qui vous empêche de dormir :
+          appelez avant 10 h et vous êtes vu le jour même.
+        </p>
+        <p style="color:#7FD4CC;font-weight:600;margin-bottom:0">
+          Le soir et la fin de semaine, laissez un message : le service de garde vous rappelle en moins d'une heure.
+        </p>
+      </div>
+      <div style="display:grid;gap:14px">
+        <a class="urg__box" href="tel:+14505550244" style="text-decoration:none;display:block">
+          <b>450 555-0244</b>
+          <span>Ligne d'urgence — 7 jours sur 7</span>
+        </a>
+        <div class="urg__box">
+          <b>Sous 2 h</b>
+          <span>Délai moyen entre l'appel et le rendez-vous d'urgence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section class="sec" id="equipe" style="background:var(--fond2);border-block:1px solid var(--bord)">
+  <div class="env">
+    <div class="centre rev" style="max-width:660px;margin-bottom:40px">
+      <span class="sur">L'équipe</span>
+      <h2>Les mêmes visages, année après année</h2>
+      <p class="plomb centre">Personne n'aime raconter son histoire dentaire à un inconnu chaque fois. Ici, on vous connaît.</p>
+    </div>
+
+    <div class="equipe">
+      <article class="pers rev">
+        <div class="pers__ph">
+          <svg viewBox="0 0 400 340" aria-hidden="true"><rect width="400" height="340" fill="#DCEBF8"/>
+            <circle cx="200" cy="128" r="66" fill="#1B74C4" opacity=".85"/>
+            <path d="M74 340c0-64 56-104 126-104s126 40 126 104Z" fill="#1B74C4" opacity=".6"/>
+            <text x="200" y="145" text-anchor="middle" font-family="Sora,sans-serif" font-size="48" font-weight="700" fill="#fff">SA</text>
+          </svg>
+        </div>
+        <div class="pers__c">
+          <h3>Dre Sophie Aubéry</h3>
+          <p class="pers__r">Dentiste généraliste · fondatrice</p>
+          <p>Diplômée de l'Université de Montréal en 2006, elle a ouvert la clinique en 2009. Sa spécialité : les patients anxieux, qu'elle prend en charge sans jamais presser.</p>
+        </div>
+      </article>
+
+      <article class="pers rev">
+        <div class="pers__ph">
+          <svg viewBox="0 0 400 340" aria-hidden="true"><rect width="400" height="340" fill="#DFF3F1"/>
+            <circle cx="200" cy="128" r="66" fill="#12B5A8" opacity=".85"/>
+            <path d="M74 340c0-64 56-104 126-104s126 40 126 104Z" fill="#12B5A8" opacity=".6"/>
+            <text x="200" y="145" text-anchor="middle" font-family="Sora,sans-serif" font-size="48" font-weight="700" fill="#fff">MR</text>
+          </svg>
+        </div>
+        <div class="pers__c">
+          <h3>Dr Mathieu Renaud</h3>
+          <p class="pers__r">Dentiste · endodontie</p>
+          <p>C'est lui qui s'occupe des traitements de canal et des cas plus complexes. Il prend le temps de dessiner ce qu'il va faire avant de commencer.</p>
+        </div>
+      </article>
+
+      <article class="pers rev">
+        <div class="pers__ph">
+          <svg viewBox="0 0 400 340" aria-hidden="true"><rect width="400" height="340" fill="#E7E4F6"/>
+            <circle cx="200" cy="128" r="66" fill="#6E5CC4" opacity=".85"/>
+            <path d="M74 340c0-64 56-104 126-104s126 40 126 104Z" fill="#6E5CC4" opacity=".6"/>
+            <text x="200" y="145" text-anchor="middle" font-family="Sora,sans-serif" font-size="48" font-weight="700" fill="#fff">JL</text>
+          </svg>
+        </div>
+        <div class="pers__c">
+          <h3>Julie Lapointe</h3>
+          <p class="pers__r">Hygiéniste dentaire</p>
+          <p>Chez la clinique depuis 2011. C'est elle que la majorité de nos patients voient le plus souvent — et celle qui se souvient du nom de vos enfants.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ASSURANCES -->
+<section class="sec" id="assurances">
+  <div class="env">
+    <div class="assur rev">
+      <div class="g g2" style="align-items:center">
+        <div>
+          <span class="sur">Paiement et assurances</span>
+          <h2>On s'occupe de la paperasse</h2>
+          <p class="plomb">
+            Nous transmettons votre réclamation directement à votre assureur, par voie électronique,
+            à la fin du rendez-vous. Dans la plupart des cas, vous ne payez que la portion non couverte
+            avant de partir — pas besoin d'avancer le montant complet et d'attendre un remboursement.
+          </p>
+          <p class="plomb">
+            Pour les traitements de plus de 800 $, nous offrons un paiement en trois versements sans
+            intérêts. Il suffit de le demander : ça ne change rien au prix.
+          </p>
+          <div class="assur__liste">
+            <span>Croix Bleue</span><span>Desjardins</span><span>Sun Life</span><span>Manuvie</span>
+            <span>Canada Vie</span><span>iA Groupe financier</span><span>Beneva</span><span>RAMQ (enfants et prestataires)</span>
+          </div>
+        </div>
+        <div>
+          <svg viewBox="0 0 420 380" style="border-radius:16px;background:#fff;border:1px solid var(--bord)" aria-hidden="true">
+            <rect width="420" height="380" fill="#fff"/>
+            <rect x="40" y="46" width="340" height="230" rx="14" fill="#EAF3FB" stroke="#C3DBF0" stroke-width="2"/>
+            <rect x="66" y="76" width="130" height="12" rx="6" fill="#1B74C4"/>
+            <rect x="66" y="104" width="200" height="8" rx="4" fill="#B9CFE2"/>
+            <rect x="66" y="124" width="160" height="8" rx="4" fill="#B9CFE2"/>
+            <line x1="66" y1="156" x2="354" y2="156" stroke="#C3DBF0" stroke-width="2" stroke-dasharray="6 6"/>
+            <rect x="66" y="176" width="110" height="8" rx="4" fill="#B9CFE2"/>
+            <rect x="284" y="174" width="70" height="12" rx="6" fill="#12B5A8"/>
+            <rect x="66" y="204" width="140" height="8" rx="4" fill="#B9CFE2"/>
+            <rect x="294" y="202" width="60" height="12" rx="6" fill="#12B5A8"/>
+            <rect x="66" y="236" width="90" height="14" rx="7" fill="#0E2233"/>
+            <rect x="270" y="234" width="84" height="18" rx="9" fill="#1B74C4"/>
+            <circle cx="330" cy="300" r="46" fill="#12B5A8"/>
+            <path d="m310 300 13 13 27-27" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <text x="72" y="308" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="#0E2233">Réclamation</text>
+            <text x="72" y="332" font-family="Inter,sans-serif" font-size="14" fill="#5A7186">transmise pour vous</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTIONS -->
+<section class="sec" id="questions" style="background:var(--fond2);border-block:1px solid var(--bord)">
+  <div class="env">
+    <div class="centre rev" style="max-width:640px;margin-bottom:36px">
+      <span class="sur">Questions fréquentes</span>
+      <h2>Ce qu'on nous demande le plus</h2>
+    </div>
+    <div class="faq rev">
+      <details class="qr"><summary>Acceptez-vous les nouveaux patients ?</summary><div><p>Oui, en tout temps. Le premier rendez-vous dure environ une heure : examen complet, radiographies, nettoyage et discussion sur ce qu'il y a à faire. Vous repartez avec un plan écrit et chiffré, sans obligation.</p></div></details>
+      <details class="qr"><summary>J'ai vraiment peur du dentiste. Que faites-vous ?</summary><div><p>On commence par s'asseoir et parler, sans instrument dans les mains. Vous nous dites ce qui vous angoisse — le bruit, l'aiguille, la sensation d'étouffer — et on adapte. Signal convenu pour arrêter en tout temps, anesthésie topique avant l'injection, musique dans les écouteurs. Pour les cas plus lourds, la sédation consciente est disponible.</p></div></details>
+      <details class="qr"><summary>Combien ça coûte ?</summary><div><p>Un examen complet avec nettoyage et radiographies coûte 145 $ à 195 $ selon la quantité de tartre. Tout autre traitement vous est chiffré <em>par écrit avant</em> qu'on commence — jamais de surprise sur la facture. Nous suivons le guide des tarifs de l'Ordre des dentistes du Québec.</p></div></details>
+      <details class="qr"><summary>Mes enfants peuvent-ils venir ?</summary><div><p>Bien sûr. L'examen des enfants de moins de 10 ans est couvert par la RAMQ et ne vous coûte rien. On leur montre les instruments avant de les utiliser, et le premier rendez-vous sert surtout à ce qu'ils s'habituent au fauteuil.</p></div></details>
+      <details class="qr"><summary>Peut-on stationner facilement ?</summary><div><p>Oui — 22 places gratuites derrière l'immeuble, plus deux places réservées près de l'entrée accessible. La clinique est de plain-pied, sans marche.</p></div></details>
+      <details class="qr"><summary>Parlez-vous anglais ?</summary><div><p>Oui. Toute l'équipe est bilingue français-anglais, et Julie parle aussi espagnol.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- RENDEZ-VOUS -->
+<section class="sec rdv" id="rdv">
+  <div class="env rdv__g">
+    <div class="rev">
+      <span class="sur">Prendre rendez-vous</span>
+      <h2>Écrivez-nous, on vous rappelle</h2>
+      <p class="plomb">
+        Remplissez le formulaire et nous vous appelons dans les heures ouvrables pour fixer un
+        moment qui vous convient. Pour une urgence, le téléphone reste plus rapide.
+      </p>
+
+      <div class="heures">
+        <div class="heure"><b>Lundi</b><span>8 h – 20 h</span></div>
+        <div class="heure"><b>Mardi</b><span>8 h – 20 h</span></div>
+        <div class="heure"><b>Mercredi</b><span>8 h – 17 h</span></div>
+        <div class="heure"><b>Jeudi</b><span>8 h – 20 h</span></div>
+        <div class="heure"><b>Vendredi</b><span>8 h – 16 h</span></div>
+        <div class="heure"><b>Samedi</b><span>9 h – 14 h</span></div>
+        <div class="heure"><b>Dimanche</b><span>Fermé — service de garde par téléphone</span></div>
+      </div>
+
+      <p class="plomb" style="margin-top:22px;font-size:.95rem">
+        <strong>2140, boulevard Curé-Labelle, bureau 210</strong><br>
+        Laval (Québec)  H7T 1L4<br>
+        Stationnement gratuit · accessible en fauteuil roulant
+      </p>
+    </div>
+
+    <form class="form rev" id="form-rdv" novalidate>
+      <div class="duo">
+        <div class="ch"><label for="d-nom">Nom complet</label><input id="d-nom" type="text" placeholder="Marie Tremblay" required></div>
+        <div class="ch"><label for="d-tel">Téléphone</label><input id="d-tel" type="tel" placeholder="450 555-0123" required></div>
+      </div>
+      <div class="ch"><label for="d-courriel">Courriel</label><input id="d-courriel" type="email" placeholder="marie@exemple.ca"></div>
+      <div class="duo">
+        <div class="ch"><label for="d-motif">Motif</label>
+          <select id="d-motif">
+            <option>Examen et nettoyage</option><option>Urgence — j'ai mal</option>
+            <option>Consultation orthodontie</option><option>Blanchiment / esthétique</option>
+            <option>Suivi d'un traitement en cours</option><option>Autre</option>
+          </select>
+        </div>
+        <div class="ch"><label for="d-patient">Vous êtes</label>
+          <select id="d-patient"><option>Un nouveau patient</option><option>Déjà patient de la clinique</option></select>
+        </div>
+      </div>
+      <div class="ch"><label for="d-dispo">Vos disponibilités</label>
+        <select id="d-dispo"><option>En avant-midi</option><option>En après-midi</option><option>En soirée (lundi, mardi ou jeudi)</option><option>Le samedi</option><option>N'importe quand</option></select>
+      </div>
+      <div class="ch"><label for="d-msg">Autre chose à nous dire ?</label><textarea id="d-msg" placeholder="Votre assurance, une anxiété particulière, une douleur précise…"></textarea></div>
+      <button class="btn btn--plein" type="submit" style="width:100%">Demander un rendez-vous</button>
+      <p class="retour" id="d-retour" role="status"></p>
+      <p style="font-size:.82rem;color:var(--gris-c);margin:0">
+        Vos renseignements restent confidentiels et ne servent qu'à vous joindre.
+      </p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="env">
+    <div class="pied__g">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:14px">
+          <svg class="logo__m" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="#fff"/>
+            <path d="M24 13c-3.4-2.6-8-2.2-10.2.8-1.9 2.6-1.5 6.4-.6 10.2.7 3 1.4 6.4 2.2 8.8.6 1.9 3 2.1 3.8.3l2.6-5.8c.8-1.7 3.6-1.7 4.4 0l2.6 5.8c.8 1.8 3.2 1.6 3.8-.3.8-2.4 1.5-5.8 2.2-8.8.9-3.8 1.3-7.6-.6-10.2-2.2-3-6.8-3.4-10.2-.8Z" fill="#1B74C4"/>
+          </svg>
+          <span><b style="color:#fff">Clinique Aubéry</b><span style="color:#7E97AC">Dentisterie familiale · Laval</span></span>
+        </a>
+        <p style="font-size:.93rem;max-width:38ch">
+          Une clinique de quartier depuis 2009, où l'on prend le temps d'expliquer avant de traiter.
+        </p>
+      </div>
+      <div>
+        <h4>La clinique</h4>
+        <ul>
+          <li><a href="#soins">Nos soins</a></li><li><a href="#urgence">Urgences</a></li>
+          <li><a href="#equipe">L'équipe</a></li><li><a href="#assurances">Assurances</a></li>
+          <li><a href="#questions">Questions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nous joindre</h4>
+        <ul>
+          <li><a href="tel:+14505550244">450 555-0244</a></li>
+          <li><a href="mailto:info@cliniqueaubery.ca">info@cliniqueaubery.ca</a></li>
+          <li style="font-size:.93rem">2140, boul. Curé-Labelle, bur. 210<br>Laval (Québec) H7T 1L4</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© 2026 Clinique dentaire Aubéry. Entreprise fictive créée en exemple.</span>
+      <span>Site conçu par Vaelor Design</span>
+    </div>
+  </div>
+</footer>
+
+<div class="demo-bar">
+  <span>🎨 Exemple de site créé par <strong>Vaelor Design</strong> — cette clinique est fictive.</span>
+  <a href="../../index.html">Voir tous les exemples</a>
+  <a href="../../index.html#contact">Obtenir le mien</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s,c){return (c||document).querySelector(s);};
+  var $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));};
+
+  var ent=$('#ent');
+  window.addEventListener('scroll',function(){ ent.classList.toggle('collee',(window.scrollY||0)>10); },{passive:true});
+
+  var brg=$('#brg'),nav=$('#nav');
+  brg.addEventListener('click',function(){
+    var o=nav.classList.toggle('ouv');
+    brg.setAttribute('aria-expanded',o?'true':'false');
+  });
+  $$('a',nav).forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('ouv');brg.setAttribute('aria-expanded','false');});});
+
+  var els=$$('.rev');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});
+    setTimeout(function(){ if(!$('.rev.vu')){ els.forEach(function(e){e.classList.add('vu');}); } },2500);
+  } else { els.forEach(function(e){e.classList.add('vu');}); }
+
+  var f=$('#form-rdv'),r=$('#d-retour');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nom=$('#d-nom').value.trim(), tel=$('#d-tel').value.trim();
+    if(!nom||!tel){ r.style.background='#FFF3E6'; r.style.borderColor='#E89B4C'; r.style.color='#8A5218';
+      r.textContent='Il nous faut au moins votre nom et un numéro pour vous rappeler.'; r.classList.add('on'); return; }
+    r.style.background=''; r.style.borderColor=''; r.style.color='';
+    r.textContent='Merci '+nom+'. Nous vous rappelons au '+tel+' pendant les heures ouvrables pour fixer votre rendez-vous. Si c’est urgent, composez plutôt le 450 555-0244. (Démonstration : aucun message n’a réellement été envoyé.)';
+    r.classList.add('on');
+    f.reset();
+  });
+})();
+</script>
+</body>
+</html>
