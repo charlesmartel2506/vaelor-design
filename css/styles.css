@@ -135,6 +135,10 @@ p{ margin:0 0 1em; }
   padding:9px 14px; border-radius:100px; transition:color .2s, background .2s;
 }
 .nav a:hover{ color:var(--txt); background:rgba(255,255,255,.06); }
+/* Sur ordinateur, le bouton d'appel vit à droite de l'en-tête (.entete__cta).
+   Celui du menu ne sert qu'au téléphone — sinon il apparaît deux fois. */
+.nav__cta{ display:none; }
+@media (max-width:980px){ .nav__cta{ display:inline-flex; } }
 
 .burger{
   display:none; width:44px; height:44px; border-radius:12px; cursor:pointer;
@@ -340,59 +344,6 @@ p{ margin:0 0 1em; }
 .projet p{ margin:0; color:var(--txt-2); font-size:.94rem; }
 .projet__pieds{ margin-top:auto; padding-top:14px; display:flex; flex-wrap:wrap; gap:7px; }
 .jeton{ font-size:.75rem; color:var(--txt-2); background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:100px; padding:5px 12px; }
-
-/* ---------- Thèmes ---------- */
-.themes__disposition{ display:grid; grid-template-columns:300px 1fr; gap:clamp(22px,3vw,40px); align-items:start; }
-@media (max-width:940px){ .themes__disposition{ grid-template-columns:1fr; } }
-.themes__liste{ display:grid; gap:10px; }
-.theme-choix{
-  display:flex; align-items:center; gap:14px; width:100%; text-align:left; cursor:pointer;
-  padding:14px 16px; border-radius:var(--rayon-s); border:1px solid var(--line);
-  background:rgba(255,255,255,.03); color:var(--txt); transition:all .22s ease; font-family:inherit;
-}
-.theme-choix:hover{ border-color:var(--line-fort); background:rgba(255,255,255,.06); }
-.theme-choix[aria-pressed="true"]{ border-color:rgba(124,92,255,.6); background:rgba(124,92,255,.14); }
-.theme-choix__pastilles{ display:flex; flex:0 0 auto; }
-.theme-choix__pastilles i{ width:19px; height:19px; border-radius:50%; border:2px solid var(--panel); margin-left:-7px; }
-.theme-choix__pastilles i:first-child{ margin-left:0; }
-.theme-choix b{ display:block; font-family:var(--f-titre); font-size:1rem; font-weight:600; }
-.theme-choix span{ display:block; font-size:.8rem; color:var(--txt-3); line-height:1.35; }
-
-/* Aperçu de thème : un mini-site complet qui change de peau */
-.theme-apercu{ border-radius:var(--rayon-xl); overflow:hidden; border:1px solid var(--line-fort); box-shadow:var(--ombre); }
-.ta{
-  --ta-fond:#fff; --ta-fond2:#f5f5f5; --ta-txt:#111; --ta-txt2:#555;
-  --ta-acc:#333; --ta-acc-txt:#fff; --ta-bord:rgba(0,0,0,.1); --ta-rayon:8px;
-  --ta-titre:'Sora',sans-serif; --ta-corps:'Inter',sans-serif; --ta-casse:none; --ta-espace:0;
-  background:var(--ta-fond); color:var(--ta-txt); font-family:var(--ta-corps);
-  transition:background .45s ease, color .45s ease;
-}
-.ta__nav{ display:flex; align-items:center; gap:18px; padding:16px clamp(16px,3vw,30px); border-bottom:1px solid var(--ta-bord); }
-.ta__logo{ font-family:var(--ta-titre); font-weight:700; font-size:1.06rem; letter-spacing:var(--ta-espace); text-transform:var(--ta-casse); color:var(--ta-txt); }
-.ta__liens{ display:flex; gap:16px; margin-left:auto; font-size:.8rem; color:var(--ta-txt2); }
-@media (max-width:560px){ .ta__liens{ display:none; } }
-.ta__cta{
-  font-family:var(--ta-titre); font-size:.78rem; font-weight:600; padding:10px 18px;
-  border-radius:var(--ta-rayon); background:var(--ta-acc); color:var(--ta-acc-txt);
-  text-transform:var(--ta-casse); letter-spacing:var(--ta-espace);
-}
-.ta__heros{ padding:clamp(28px,5vw,54px) clamp(16px,3vw,30px); background:var(--ta-fond2); position:relative; overflow:hidden; }
-.ta__heros h3{
-  font-family:var(--ta-titre); font-size:clamp(1.6rem,3.6vw,2.7rem); line-height:1.08;
-  margin:0 0 14px; color:var(--ta-txt); text-transform:var(--ta-casse); letter-spacing:var(--ta-espace);
-  max-width:16ch;
-}
-.ta__heros p{ color:var(--ta-txt2); max-width:44ch; font-size:.94rem; margin:0 0 22px; }
-.ta__eyebrow{ font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ta-acc); font-weight:600; margin-bottom:12px; }
-.ta__cartes{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding:clamp(18px,3vw,30px); }
-@media (max-width:640px){ .ta__cartes{ grid-template-columns:1fr; } }
-.ta__carte{ border:1px solid var(--ta-bord); border-radius:var(--ta-rayon); padding:18px; background:var(--ta-fond); }
-.ta__carte b{ font-family:var(--ta-titre); display:block; font-size:.98rem; margin-bottom:6px; color:var(--ta-txt); }
-.ta__carte span{ font-size:.84rem; color:var(--ta-txt2); }
-.ta__vign{ height:8px; width:40px; border-radius:99px; background:var(--ta-acc); margin-bottom:12px; }
-.ta__pied{ padding:16px clamp(16px,3vw,30px); border-top:1px solid var(--ta-bord); font-size:.76rem; color:var(--ta-txt2); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-.theme-info{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; align-items:center; }
-.theme-info__txt{ font-size:.9rem; color:var(--txt-2); margin-right:auto; }
 
 /* ---------- Approche (chronologie) ---------- */
 .chrono{ display:grid; gap:0; position:relative; }

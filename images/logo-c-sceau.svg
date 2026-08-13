@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Vaelor Design">
+  <defs>
+    <linearGradient id="sc-1" x1="0" y1="64" x2="64" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12D8C5"/><stop offset=".5" stop-color="#4FA6FF"/><stop offset="1" stop-color="#7C5CFF"/>
+    </linearGradient>
+  </defs>
+  <!-- Une tuile pleine, le V creusé dedans. Reste lisible à 16 pixels. -->
+  <rect width="64" height="64" rx="17" fill="url(#sc-1)"/>
+  <path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

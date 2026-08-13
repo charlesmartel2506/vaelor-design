@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaelor Design — trois propositions de logo</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#07070E;--panel:#111124;--line:rgba(255,255,255,.1);--txt:#F4F3FF;--txt2:#B7B4D4;--txt3:#7F7CA0;
+      --grad:linear-gradient(120deg,#12D8C5,#4FA6FF,#7C5CFF);--t:'Sora',sans-serif;--c:'Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--txt);font-family:var(--c);line-height:1.65;padding:0 0 80px}
+svg{display:block}
+.env{max-width:1060px;margin-inline:auto;padding-inline:clamp(20px,5vw,40px)}
+h1{font-family:var(--t);font-size:clamp(2rem,5vw,3rem);letter-spacing:-.03em;margin:0 0 12px}
+h2{font-family:var(--t);font-size:1.5rem;margin:0 0 4px}
+p{margin:0 0 1em;color:var(--txt2)}
+.degrade{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+header{padding-block:clamp(48px,8vw,86px) 30px;border-bottom:1px solid var(--line)}
+.opt{padding-block:44px;border-bottom:1px solid var(--line)}
+.opt__t{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline;margin-bottom:6px}
+.puce{font-family:var(--t);font-weight:700;font-size:.8rem;letter-spacing:.14em;background:var(--grad);color:#080812;padding:5px 14px;border-radius:99px}
+.reco{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:#12D8C5;border:1px solid rgba(18,216,197,.4);border-radius:99px;padding:4px 12px}
+.desc{max-width:64ch;margin-bottom:26px}
+.bancs{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.bancs{grid-template-columns:1fr}}
+.banc{border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.banc--sombre{background:#0C0C18}
+.banc--clair{background:#FFFFFF}
+.banc__et{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--txt3)}
+.banc--clair .banc__et{color:#8A879F}
+.lock{display:flex;align-items:center;gap:12px}
+.lock__n{font-family:var(--t);font-weight:700;font-size:1.15rem;letter-spacing:.13em;line-height:1}
+.lock__s{display:block;font-size:.6rem;letter-spacing:.42em;font-weight:500;margin-top:3px}
+.banc--sombre .lock__n{color:#F4F3FF}.banc--sombre .lock__s{color:#7F7CA0}
+.banc--clair .lock__n{color:#0B0B14}.banc--clair .lock__s{color:#6E6B8A}
+.tailles{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.taille{display:flex;flex-direction:column;align-items:center;gap:7px}
+.taille span{font-size:.66rem;color:var(--txt3)}
+.banc--clair .taille span{color:#8A879F}
+.choix{padding-block:44px}
+.choix__b{border:1px solid rgba(18,216,197,.35);background:rgba(18,216,197,.07);border-radius:20px;padding:28px}
+.choix__b b{font-family:var(--t)}
+a{color:#12D8C5}
+</style>
+</head>
+<body>
+
+<header class="env">
+  <h1>Trois logos. <span class="degrade">Dis-moi le numéro.</span></h1>
+  <p style="max-width:62ch">
+    Chacun est montré sur fond sombre et sur fond blanc, avec le texte à côté, et aux tailles
+    réelles où il servira : 64 px pour l'en-tête du site, 32 px pour une carte d'affaires,
+    16 px pour l'onglet du navigateur. Un logo qui ne survit pas à 16 px ne sert à rien.
+  </p>
+</header>
+
+<!-- OPTION A -->
+<section class="opt env">
+  <div class="opt__t">
+    <span class="puce">OPTION A</span>
+    <h2>Prisme</h2>
+    <span class="reco">Ma recommandation</span>
+  </div>
+  <p class="desc">
+    Deux plans pliés qui forment un <strong>V massif</strong>, l'arête centrale captant la lumière
+    comme une feuille de papier pliée. C'est le plus « studio de design » des trois : plein,
+    assuré, sans contour fin qui disparaît en petit. Le pli au centre est ce qui le rend
+    mémorable — on ne le confond avec rien d'autre.
+  </p>
+  <div class="bancs">
+    <div class="banc banc--sombre">
+      <span class="banc__et">Fond sombre — le site</span>
+      <div class="lock">
+        <svg viewBox="0 0 64 64" width="52" height="52"><defs><linearGradient id="a1" x1="6" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#12D8C5"/><stop offset="1" stop-color="#2E8FE0"/></linearGradient><linearGradient id="a2" x1="58" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#A184FF"/><stop offset="1" stop-color="#5B63EE"/></linearGradient></defs><path d="M5 9h16l11 26v22Z" fill="url(#a1)"/><path d="M59 9H43L32 35v22Z" fill="url(#a2)"/></svg>
+        <span><span class="lock__n">VAELOR</span><span class="lock__s">DESIGN</span></span>
+      </div>
+      <div class="tailles">
+        <span class="taille"><svg viewBox="0 0 64 64" width="64" height="64"><defs><linearGradient id="a3" x1="6" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#12D8C5"/><stop offset="1" stop-color="#2E8FE0"/></linearGradient><linearGradient id="a4" x1="58" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#A184FF"/><stop offset="1" stop-color="#5B63EE"/></linearGradient></defs><path d="M5 9h16l11 26v22Z" fill="url(#a3)"/><path d="M59 9H43L32 35v22Z" fill="url(#a4)"/></svg><span>64 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="32" height="32"><path d="M5 9h16l11 26v22Z" fill="url(#a3)"/><path d="M59 9H43L32 35v22Z" fill="url(#a4)"/></svg><span>32 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="16" height="16"><path d="M5 9h16l11 26v22Z" fill="url(#a3)"/><path d="M59 9H43L32 35v22Z" fill="url(#a4)"/></svg><span>16 px</span></span>
+      </div>
+    </div>
+    <div class="banc banc--clair">
+      <span class="banc__et">Fond blanc — facture, carte d'affaires</span>
+      <div class="lock">
+        <svg viewBox="0 0 64 64" width="52" height="52"><path d="M5 9h16l11 26v22Z" fill="url(#a3)"/><path d="M59 9H43L32 35v22Z" fill="url(#a4)"/></svg>
+        <span><span class="lock__n">VAELOR</span><span class="lock__s">DESIGN</span></span>
+      </div>
+      <div class="tailles">
+        <span class="taille"><svg viewBox="0 0 64 64" width="64" height="64"><path d="M5 9h16l11 26v22Z" fill="url(#a3)"/><path d="M59 9H43L32 35v22Z" fill="url(#a4)"/></svg><span>64 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="32" height="32"><path d="M5 9h16l11 26v22Z" fill="url(#a3)"/><path d="M59 9H43L32 35v22Z" fill="url(#a4)"/></svg><span>32 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="16" height="16"><path d="M5 9h16l11 26v22Z" fill="url(#a3)"/><path d="M59 9H43L32 35v22Z" fill="url(#a4)"/></svg><span>16 px</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPTION B -->
+<section class="opt env">
+  <div class="opt__t">
+    <span class="puce">OPTION B</span>
+    <h2>Aval</h2>
+  </div>
+  <p class="desc">
+    Un <strong>crochet d'approbation</strong> qui est aussi le V de Vaelor. C'est le seul des trois
+    qui raconte ton argument de vente : <em>vous approuvez avant de payer</em>. Très lisible,
+    très simple — mais le crochet est une forme courante, donc moins distinctive que le Prisme.
+  </p>
+  <div class="bancs">
+    <div class="banc banc--sombre">
+      <span class="banc__et">Fond sombre — le site</span>
+      <div class="lock">
+        <svg viewBox="0 0 64 64" width="52" height="52"><defs><linearGradient id="b1" x1="8" y1="52" x2="56" y2="12" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#12D8C5"/><stop offset=".5" stop-color="#4FA6FF"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient></defs><path d="M10 33 26 49 55 13" fill="none" stroke="url(#b1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><span class="lock__n">VAELOR</span><span class="lock__s">DESIGN</span></span>
+      </div>
+      <div class="tailles">
+        <span class="taille"><svg viewBox="0 0 64 64" width="64" height="64"><path d="M10 33 26 49 55 13" fill="none" stroke="url(#b1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span>64 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="32" height="32"><path d="M10 33 26 49 55 13" fill="none" stroke="url(#b1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span>32 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="16" height="16"><path d="M10 33 26 49 55 13" fill="none" stroke="url(#b1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span>16 px</span></span>
+      </div>
+    </div>
+    <div class="banc banc--clair">
+      <span class="banc__et">Fond blanc — facture, carte d'affaires</span>
+      <div class="lock">
+        <svg viewBox="0 0 64 64" width="52" height="52"><path d="M10 33 26 49 55 13" fill="none" stroke="url(#b1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><span class="lock__n">VAELOR</span><span class="lock__s">DESIGN</span></span>
+      </div>
+      <div class="tailles">
+        <span class="taille"><svg viewBox="0 0 64 64" width="64" height="64"><path d="M10 33 26 49 55 13" fill="none" stroke="url(#b1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span>64 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="32" height="32"><path d="M10 33 26 49 55 13" fill="none" stroke="url(#b1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span>32 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="16" height="16"><path d="M10 33 26 49 55 13" fill="none" stroke="url(#b1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span>16 px</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPTION C -->
+<section class="opt env">
+  <div class="opt__t">
+    <span class="puce">OPTION C</span>
+    <h2>Sceau</h2>
+  </div>
+  <p class="desc">
+    Une <strong>tuile pleine</strong> avec le V creusé dedans. C'est celui qui tient le mieux en tout
+    petit : sur un onglet de navigateur ou une photo de profil, la pastille colorée se repère
+    tout de suite. En contrepartie, il ressemble davantage à une icône d'application qu'à un logo
+    d'agence.
+  </p>
+  <div class="bancs">
+    <div class="banc banc--sombre">
+      <span class="banc__et">Fond sombre — le site</span>
+      <div class="lock">
+        <svg viewBox="0 0 64 64" width="52" height="52"><defs><linearGradient id="c1" x1="0" y1="64" x2="64" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#12D8C5"/><stop offset=".5" stop-color="#4FA6FF"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient></defs><rect width="64" height="64" rx="17" fill="url(#c1)"/><path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><span class="lock__n">VAELOR</span><span class="lock__s">DESIGN</span></span>
+      </div>
+      <div class="tailles">
+        <span class="taille"><svg viewBox="0 0 64 64" width="64" height="64"><rect width="64" height="64" rx="17" fill="url(#c1)"/><path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>64 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="32" height="32"><rect width="64" height="64" rx="17" fill="url(#c1)"/><path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>32 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="16" height="16"><rect width="64" height="64" rx="17" fill="url(#c1)"/><path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>16 px</span></span>
+      </div>
+    </div>
+    <div class="banc banc--clair">
+      <span class="banc__et">Fond blanc — facture, carte d'affaires</span>
+      <div class="lock">
+        <svg viewBox="0 0 64 64" width="52" height="52"><rect width="64" height="64" rx="17" fill="url(#c1)"/><path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><span class="lock__n">VAELOR</span><span class="lock__s">DESIGN</span></span>
+      </div>
+      <div class="tailles">
+        <span class="taille"><svg viewBox="0 0 64 64" width="64" height="64"><rect width="64" height="64" rx="17" fill="url(#c1)"/><path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>64 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="32" height="32"><rect width="64" height="64" rx="17" fill="url(#c1)"/><path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>32 px</span></span>
+        <span class="taille"><svg viewBox="0 0 64 64" width="16" height="16"><rect width="64" height="64" rx="17" fill="url(#c1)"/><path d="M17 19 32 47 47 19" fill="none" stroke="#07070E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>16 px</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="choix env">
+  <div class="choix__b">
+    <p style="margin:0"><b>En attendant ta réponse, le site utilise l'option A (Prisme).</b></p>
+    <p style="margin:.6em 0 0">
+      Dis-moi simplement « A », « B » ou « C » et je le remplace partout en une minute : site,
+      favicon, fichiers de logo. Si aucun des trois ne te plaît, dis-moi ce qui cloche
+      (trop géométrique, trop coloré, trop simple…) et j'en refais trois autres dans une
+      direction différente.
+    </p>
+    <p style="margin:.9em 0 0"><a href="index.html">← Retour au site</a></p>
+  </div>
+</section>
+
+</body>
+</html>

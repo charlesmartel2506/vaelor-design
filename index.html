@@ -37,12 +37,16 @@
   <div class="enveloppe entete__grille">
     <a class="marque" href="#" aria-label="Vaelor Design, accueil">
       <svg viewBox="0 0 64 64" aria-hidden="true">
-        <defs><linearGradient id="lg-entete" x1="4" y1="60" x2="60" y2="4" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#12D8C5"/><stop offset=".55" stop-color="#4FA6FF"/><stop offset="1" stop-color="#7C5CFF"/>
-        </linearGradient></defs>
-        <path d="M45 6H18C11.4 6 6 11.4 6 18v28c0 6.6 5.4 12 12 12h28c6.6 0 12-5.4 12-12V31" fill="none" stroke="url(#lg-entete)" stroke-width="5" stroke-linecap="round"/>
-        <path d="M19.5 21.5 31 43.5 56.5 8" fill="none" stroke="url(#lg-entete)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M43.5 12.5 56.5 8 56 21.5" fill="none" stroke="url(#lg-entete)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs>
+          <linearGradient id="lg-e1" x1="6" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#12D8C5"/><stop offset="1" stop-color="#2E8FE0"/>
+          </linearGradient>
+          <linearGradient id="lg-e2" x1="58" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#A184FF"/><stop offset="1" stop-color="#5B63EE"/>
+          </linearGradient>
+        </defs>
+        <path d="M5 9h16l11 26v22Z" fill="url(#lg-e1)"/>
+        <path d="M59 9H43L32 35v22Z" fill="url(#lg-e2)"/>
       </svg>
       <span>
         <span class="marque__nom">VAELOR</span>
@@ -56,11 +60,13 @@
 
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <a href="#exemples">Exemples</a>
-      <a href="#themes">Thèmes</a>
       <a href="#approche">Notre approche</a>
       <a href="#tarifs">Tarifs</a>
       <a href="#questions">Questions</a>
-      <a class="btn btn--plein btn--mini" href="#contact">Ma démo gratuite</a>
+      <!-- Ce bouton ne s'affiche que dans le menu déroulant du téléphone :
+           sur ordinateur, c'est .entete__cta qui joue ce rôle. Un seul des deux
+           est visible à la fois. -->
+      <a class="btn btn--plein btn--mini nav__cta" href="#contact">Obtenir ma démo gratuite</a>
     </nav>
 
     <a class="btn btn--plein btn--mini entete__cta" href="#contact">Obtenir ma démo gratuite</a>
@@ -87,7 +93,7 @@
       <p class="heros__plomb">
         Je conçois le site complet de votre entreprise, je vous envoie le lien, vous le regardez
         sur votre téléphone. <strong>Si vous ne l'aimez pas, vous ne payez rien.</strong>
-        À partir de 1 000 $, une seule fois — et vous le modifiez vous-même après, sans coder.
+        À partir de 900 $, une seule fois — et vous le modifiez vous-même après, sans coder.
       </p>
 
       <div class="heros__actions">
@@ -104,7 +110,7 @@
       <div class="heros__preuves">
         <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Aucun acompte</span>
         <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Livré en 7 jours</span>
-        <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Zéro frais mensuel de gestion</span>
+        <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Aucun montant mensuel versé à moi</span>
         <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Le site vous appartient</span>
       </div>
     </div>
@@ -227,8 +233,8 @@
       </article>
       <article class="carte apparait">
         <span class="carte__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
-        <h3>8 clients sur 10 arrivent par téléphone</h3>
-        <p>Tous mes sites sont pensés d'abord pour l'écran d'un téléphone. Bouton d'appel qui fonctionne au premier coup de pouce, texte lisible sans zoomer.</p>
+        <h3>La plupart de vos visiteurs seront sur un téléphone</h3>
+        <p>Tous mes sites sont donc pensés d'abord pour un petit écran. Bouton d'appel qui fonctionne au premier coup de pouce, texte lisible sans zoomer, et je vérifie le rendu à la largeur exacte des vrais appareils.</p>
       </article>
       <article class="carte apparait">
         <span class="carte__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6l-8-4Z"/></svg></span>
@@ -251,8 +257,11 @@
       <span class="surtitre">Exemples de réalisations</span>
       <h2>Cinq sites complets, <span class="degrade">cliquables tout de suite</span></h2>
       <p class="plomb">
-        Ce ne sont pas des images : ce sont de vrais sites, terminés, que vous pouvez ouvrir et
-        parcourir. Chacun est bâti pour un type d'entreprise différent, avec un thème visuel différent.
+        Ce ne sont pas des images : ce sont de vrais sites, terminés, que vous pouvez ouvrir sur
+        votre téléphone et parcourir au complet. Chacun est bâti pour un type d'entreprise
+        différent, dans un style visuel différent — pour vous montrer l'étendue de ce qui est
+        possible. <strong>Vous n'avez pas besoin de savoir décrire ce que vous voulez : pointez
+        celui qui vous plaît, et je pars de là.</strong>
       </p>
       <p class="plomb" style="font-size:.9rem; color:var(--txt-3)">
         Note d'honnêteté : ces cinq entreprises sont fictives. Elles servent à vous montrer le niveau
@@ -302,7 +311,7 @@
           </span></span>
         </div>
         <div class="projet__corps">
-          <span class="projet__meta"><i class="projet__puce" style="background:#C9A227"></i> Restaurant · Thème Éclat</span>
+          <span class="projet__meta"><i class="projet__puce" style="background:#C9A227"></i> Restaurant · Sombre et doré</span>
           <h3>Maison Cavelier</h3>
           <p>Bistro français du Vieux-Montréal. Menu complet, réservations, ambiance chaleureuse et haut de gamme.</p>
           <div class="projet__pieds"><span class="jeton">Menu détaillé</span><span class="jeton">Réservation</span><span class="jeton">Galerie</span></div>
@@ -344,7 +353,7 @@
           </span></span>
         </div>
         <div class="projet__corps">
-          <span class="projet__meta"><i class="projet__puce" style="background:#1B74C4"></i> Clinique dentaire · Thème Clarté</span>
+          <span class="projet__meta"><i class="projet__puce" style="background:#1B74C4"></i> Clinique dentaire · Clair et rassurant</span>
           <h3>Clinique Aubéry</h3>
           <p>Dentisterie familiale à Laval. Soins détaillés, équipe, urgences, formulaire de rendez-vous et assurances acceptées.</p>
           <div class="projet__pieds"><span class="jeton">Prise de rendez-vous</span><span class="jeton">Équipe</span><span class="jeton">Soins</span></div>
@@ -385,7 +394,7 @@
           </span></span>
         </div>
         <div class="projet__corps">
-          <span class="projet__meta"><i class="projet__puce" style="background:#2F6B43"></i> Paysagiste · Thème Terra</span>
+          <span class="projet__meta"><i class="projet__puce" style="background:#2F6B43"></i> Paysagiste · Chaleureux et naturel</span>
           <h3>Verdal Paysagement</h3>
           <p>Aménagement extérieur sur la Rive-Sud. Services par saison, réalisations avant/après, demande de soumission.</p>
           <div class="projet__pieds"><span class="jeton">Soumission</span><span class="jeton">Avant / après</span><span class="jeton">Saisons</span></div>
@@ -425,7 +434,7 @@
           </span></span>
         </div>
         <div class="projet__corps">
-          <span class="projet__meta"><i class="projet__puce" style="background:#FF6A1A"></i> Garage · Thème Volt</span>
+          <span class="projet__meta"><i class="projet__puce" style="background:#FF6A1A"></i> Garage · Franc et solide</span>
           <h3>Garage Métrik</h3>
           <p>Mécanique générale à Anjou. Grille de prix affichée, prise de rendez-vous, urgences et remorquage.</p>
           <div class="projet__pieds"><span class="jeton">Prix affichés</span><span class="jeton">Rendez-vous</span><span class="jeton">Urgences</span></div>
@@ -466,7 +475,7 @@
           </span></span>
         </div>
         <div class="projet__corps">
-          <span class="projet__meta"><i class="projet__puce" style="background:#B4787A"></i> Salon &amp; spa · Thème Nuance</span>
+          <span class="projet__meta"><i class="projet__puce" style="background:#B4787A"></i> Salon &amp; spa · Doux et soigné</span>
           <h3>Studio Halona</h3>
           <p>Salon de beauté à Brossard. Liste de services avec prix, forfaits, équipe et réservation en ligne.</p>
           <div class="projet__pieds"><span class="jeton">Tarifs</span><span class="jeton">Forfaits</span><span class="jeton">Réservation</span></div>
@@ -479,79 +488,6 @@
       Aucun de ces secteurs ne correspond au vôtre ? Ce n'est pas un problème —
       <a href="#contact" style="color:var(--teal)">écrivez-moi</a> et je vous monte une démo pour votre métier à vous.
     </p>
-  </div>
-</section>
-
-<!-- ===================== THÈMES ===================== -->
-<section class="section" id="themes">
-  <div class="enveloppe">
-    <div class="entete-section apparait">
-      <span class="surtitre">Choisissez votre style</span>
-      <h2>Cinq thèmes. <span class="degrade">Cliquez, ça change en direct.</span></h2>
-      <p class="plomb">
-        Vous n'avez pas à savoir décrire ce que vous voulez. Vous cliquez sur un thème, vous voyez
-        l'effet tout de suite, et vous me dites : « celui-là ». Ensuite, tout — couleurs, polices,
-        arrondis — s'adapte à votre entreprise.
-      </p>
-    </div>
-
-    <div class="themes__disposition">
-      <div class="themes__liste apparait" role="group" aria-label="Choix du thème">
-        <button class="theme-choix" data-theme="eclat" aria-pressed="true">
-          <span class="theme-choix__pastilles" aria-hidden="true"><i style="background:#12100D"></i><i style="background:#C9A227"></i><i style="background:#F5EFE3"></i></span>
-          <span><b>Éclat</b><span>Sombre et doré, typographie classique. Restaurants, avocats, bijoutiers.</span></span>
-        </button>
-        <button class="theme-choix" data-theme="clarte" aria-pressed="false">
-          <span class="theme-choix__pastilles" aria-hidden="true"><i style="background:#1B74C4"></i><i style="background:#12B5A8"></i><i style="background:#F1F6FC"></i></span>
-          <span><b>Clarté</b><span>Blanc, bleu, très lisible. Cliniques, comptables, professionnels.</span></span>
-        </button>
-        <button class="theme-choix" data-theme="terra" aria-pressed="false">
-          <span class="theme-choix__pastilles" aria-hidden="true"><i style="background:#2F6B43"></i><i style="background:#B08A50"></i><i style="background:#F1EDE1"></i></span>
-          <span><b>Terra</b><span>Crème et vert forêt, chaleureux. Paysagistes, spas, produits naturels.</span></span>
-        </button>
-        <button class="theme-choix" data-theme="volt" aria-pressed="false">
-          <span class="theme-choix__pastilles" aria-hidden="true"><i style="background:#101215"></i><i style="background:#FF6A1A"></i><i style="background:#F2F4F7"></i></span>
-          <span><b>Volt</b><span>Anthracite et orange, franc et solide. Garages, construction, gyms.</span></span>
-        </button>
-        <button class="theme-choix" data-theme="nuance" aria-pressed="false">
-          <span class="theme-choix__pastilles" aria-hidden="true"><i style="background:#B4787A"></i><i style="background:#D6B2A6"></i><i style="background:#FDF9F7"></i></span>
-          <span><b>Nuance</b><span>Sable et rosé, tout en douceur. Salons, fleuristes, boutiques.</span></span>
-        </button>
-      </div>
-
-      <div class="apparait">
-        <div class="theme-apercu">
-          <div class="ta" id="apercu-theme" data-theme="eclat">
-            <div class="ta__nav">
-              <span class="ta__logo" data-champ="logo">Maison Cavelier</span>
-              <span class="ta__liens"><span>Menu</span><span>À propos</span><span>Contact</span></span>
-              <span class="ta__cta" data-champ="cta">Réserver</span>
-            </div>
-            <div class="ta__heros">
-              <div class="ta__eyebrow" data-champ="eyebrow">Depuis 1998</div>
-              <h3 data-champ="titre">La table du Vieux-Port</h3>
-              <p data-champ="texte">Une cuisine française franche, des produits d'ici, et une salle où l'on reste plus longtemps que prévu.</p>
-              <span class="ta__cta" data-champ="cta2">Voir le menu</span>
-            </div>
-            <div class="ta__cartes">
-              <div class="ta__carte"><span class="ta__vign"></span><b data-champ="c1t">Table d'hôte</b><span data-champ="c1s">Quatre services, changés chaque semaine selon l'arrivage.</span></div>
-              <div class="ta__carte"><span class="ta__vign"></span><b data-champ="c2t">Cave à vin</b><span data-champ="c2s">Plus de 120 importations privées choisies à la main.</span></div>
-              <div class="ta__carte"><span class="ta__vign"></span><b data-champ="c3t">Privatisation</b><span data-champ="c3s">La mezzanine accueille jusqu'à 40 personnes.</span></div>
-            </div>
-            <div class="ta__pied"><span data-champ="pied">© Maison Cavelier — Vieux-Montréal</span><span>514 555-0182</span></div>
-          </div>
-        </div>
-        <div class="theme-info">
-          <p class="theme-info__txt" id="theme-legende">
-            <strong>Éclat</strong> — pour une entreprise qui veut avoir l'air établie et raffinée.
-          </p>
-          <a class="btn btn--fantome btn--mini" id="theme-lien" href="demos/maison-cavelier/index.html" target="_blank" rel="noopener">
-            Voir un vrai site avec ce thème
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -599,7 +535,7 @@
         <span class="etape__num">04</span>
         <div class="etape__corps">
           <h3>On met le site en ligne à votre nom</h3>
-          <p>C'est ici que vous payez, et seulement ici. J'installe le site sur votre nom de domaine (ou je vous aide à en acheter un, environ 20 $ par année). Je configure les adresses courriel professionnelles si vous en voulez, j'inscris le site sur Google, et je relie votre fiche Google Maps.</p>
+          <p>C'est ici que vous payez, et seulement ici. On ouvre ensemble, à l'écran, vos deux comptes : le nom de domaine et l'hébergement — <strong>à votre nom, avec votre carte</strong>, jamais par moi. J'y installe WordPress, j'y monte le site, je crée vos adresses courriel professionnelles si votre hébergeur les inclut (la plupart le font), j'inscris le site auprès de Google et je relie votre fiche Google d'entreprise.</p>
           <span class="etape__duree">1 à 2 jours</span>
         </div>
       </article>
@@ -645,8 +581,12 @@
             <th scope="col" class="col-nous">
               <span class="marque-nous">
                 <svg viewBox="0 0 64 64" aria-hidden="true">
-                  <defs><linearGradient id="lg-tab" x1="4" y1="60" x2="60" y2="4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#12D8C5"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient></defs>
-                  <path d="M19.5 21.5 31 43.5 56.5 8" fill="none" stroke="url(#lg-tab)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <defs>
+                    <linearGradient id="lg-t1" x1="6" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#12D8C5"/><stop offset="1" stop-color="#2E8FE0"/></linearGradient>
+                    <linearGradient id="lg-t2" x1="58" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#A184FF"/><stop offset="1" stop-color="#5B63EE"/></linearGradient>
+                  </defs>
+                  <path d="M5 9h16l11 26v22Z" fill="url(#lg-t1)"/>
+                  <path d="M59 9H43L32 35v22Z" fill="url(#lg-t2)"/>
                 </svg>
                 Vaelor Design
               </span>
@@ -658,13 +598,13 @@
         <tbody>
           <tr>
             <th scope="row">Coût la première année</th>
-            <td class="col-nous"><strong>1 000 $ à 1 700 $</strong>, une seule fois</td>
+            <td class="col-nous"><strong>900 $ à 1 700 $</strong>, une seule fois<br><span style="color:var(--txt-3);font-size:.86rem">+ environ 200 $ d'hébergement et de domaine, payés au fournisseur</span></td>
             <td>4 000 $ à 15 000 $</td>
             <td>350 $ à 700 $ d'abonnement</td>
           </tr>
           <tr>
             <th scope="row">Coût des années suivantes</th>
-            <td class="col-nous"><strong>Environ 120 $ / an</strong> (hébergement + domaine)</td>
+            <td class="col-nous"><strong>0 $ pour moi.</strong><br>Environ 200 $ / an d'hébergement et de domaine, payés directement au fournisseur</td>
             <td>600 $ à 2 400 $ / an de maintenance</td>
             <td>350 $ à 700 $ / an, sans fin</td>
           </tr>
@@ -732,7 +672,7 @@
       <article class="tarif apparait">
         <h3>Essentiel</h3>
         <p class="tarif__pour">Le travailleur autonome et la petite entreprise qui veut simplement exister sur Google.</p>
-        <div class="tarif__prix"><b>1 000</b><span>$ CA</span></div>
+        <div class="tarif__prix"><b>900</b><span>$ CA</span></div>
         <p class="tarif__note">Paiement unique, au moment de la mise en ligne</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Site d'une page, complet et défilant</li>
@@ -749,15 +689,16 @@
         <span class="tarif__ruban">Le plus demandé</span>
         <h3>Professionnel</h3>
         <p class="tarif__pour">Le restaurant, la clinique, le salon, le commerce qui a plusieurs services à présenter.</p>
-        <div class="tarif__prix"><b>1 400</b><span>$ CA</span></div>
+        <div class="tarif__prix"><b>1 300</b><span>$ CA</span></div>
         <p class="tarif__note">Paiement unique, au moment de la mise en ligne</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <strong>Tout ce qu'il y a dans Essentiel</strong></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Jusqu'à 5 pages (services, équipe, galerie, FAQ…)</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Menu, grille de prix ou catalogue de services</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Galerie photos et section témoignages</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Réservation ou prise de rendez-vous en ligne</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Optimisation Google locale (« près de moi »)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Demande de rendez-vous en ligne, ou branchement de l'outil que vous utilisez déjà</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <strong>Site bilingue français / anglais</strong></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Référencement local : titres, description, données Google et fiche d'entreprise</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 3 ajustements gratuits dans les 90 jours</li>
         </ul>
         <a class="btn btn--plein" href="#contact" data-forfait="Professionnel">Demander ma démo</a>
@@ -771,7 +712,8 @@
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <strong>Tout ce qu'il y a dans Professionnel</strong></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Pages illimitées, structure sur mesure</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Site bilingue français / anglais</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <strong>Site bilingue français / anglais</strong>, avec sélecteur de langue</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Véritable calendrier de réservation en ligne, si votre métier le demande</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Blogue ou section actualités que vous alimentez</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Contenu répétitif géré en quelques clics (menu, événements, produits)</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Logo créé ou rafraîchi si vous n'en avez pas</li>
@@ -784,13 +726,66 @@
     <div class="note-tarif apparait">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
       <div>
-        <strong>Ce que vous payez en plus, et à qui.</strong> Je préfère le dire tout de suite plutôt
-        que de vous le glisser à la fin. Le nom de domaine coûte environ <strong>20 $ par année</strong> et
-        l'hébergement environ <strong>100 $ par année</strong> — vous les payez directement au
-        fournisseur, à votre nom, jamais à moi. Je vous aide à les configurer sans frais. C'est tout.
-        Aucun abonnement, aucun pourcentage, aucun frais de gestion mensuel.
+        <strong>Les frais mensuels ne me sont pas versés. Jamais un sou.</strong>
+        Un site web, quel que soit celui qui le construit, a besoin d'une adresse et d'un endroit
+        où vivre. Ces deux choses se paient <strong>directement aux fournisseurs, avec votre carte,
+        dans votre compte, à votre nom</strong>. Je vous aide à les ouvrir et à les configurer, sans
+        frais et sans commission — et si vous quittez Vaelor Design demain, ces comptes restent
+        les vôtres.
       </div>
     </div>
+
+    <div class="tableau-enveloppe apparait" style="margin-top:22px">
+      <table class="comparatif">
+        <thead>
+          <tr>
+            <th scope="col">Ce que c'est</th>
+            <th scope="col">Combien</th>
+            <th scope="col">À qui vous payez</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Nom de domaine<br><span style="color:var(--txt-3);font-size:.86rem">votre-entreprise.ca</span></th>
+            <td>20 à 30 $ par <strong>année</strong></td>
+            <td>Au registraire — Namecheap, GoDaddy, Cira…</td>
+          </tr>
+          <tr>
+            <th scope="row">Hébergement web<br><span style="color:var(--txt-3);font-size:.86rem">WordPress déjà installé et entretenu</span></th>
+            <td>10 à 20 $ par <strong>mois</strong></td>
+            <td>À l'hébergeur — Hostinger, WHC (québécois), SiteGround…</td>
+          </tr>
+          <tr>
+            <th scope="row">WordPress et Elementor<br><span style="color:var(--txt-3);font-size:.86rem">les outils qui font tourner le site</span></th>
+            <td><strong>0 $</strong></td>
+            <td>Personne — ce sont des logiciels libres, gratuits pour toujours</td>
+          </tr>
+          <tr>
+            <th scope="row">Certificat de sécurité (le cadenas)</th>
+            <td><strong>0 $</strong></td>
+            <td>Compris dans l'hébergement</td>
+          </tr>
+          <tr>
+            <th scope="row" class="col-nous"><span class="marque-nous">Vaelor Design, après la mise en ligne</span></th>
+            <td class="col-nous"><strong>0 $ par mois</strong></td>
+            <td class="col-nous">Vous m'avez déjà payé une fois. Il n'y a rien d'autre.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="apparait" style="margin-top:18px; color:var(--txt-2); font-size:.93rem; max-width:78ch">
+      <strong>Donc, en tout : environ 15 à 25 $ par mois</strong>, versés à des entreprises qui ne
+      sont pas moi. C'est le prix normal d'un site web qui existe — les gens l'oublient parce que
+      les grandes plateformes le cachent dans un seul montant.
+      <br><br>
+      <strong>Une seule mise en garde, et je préfère la dire d'avance :</strong> si vous tenez à passer
+      par <em>WordPress.com</em> plutôt que par un hébergeur classique, il faut leur forfait
+      « Business », autour de <strong>40 $ par mois</strong>, parce que c'est le seul de leurs forfaits
+      qui autorise Elementor. C'est deux à trois fois plus cher pour le même résultat. Je vous
+      recommande donc un hébergeur classique — mais c'est votre décision, et je monte le site
+      dans les deux cas.
+    </p>
   </div>
 </section>
 
@@ -891,8 +886,10 @@
       <details class="qr">
         <summary>Est-ce que vous facturez des frais mensuels ?</summary>
         <div class="qr__corps">
-          <p>Non. Vous payez une fois, quand le site est mis en ligne. Après ça, je ne prélève rien.</p>
-          <p>Les seuls frais récurrents sont ceux que <em>tout</em> site a : le nom de domaine (environ 20 $ par année) et l'hébergement (environ 100 $ par année), payés directement au fournisseur. Si un jour vous voulez que je fasse des changements à votre place plutôt que de les faire vous-même, on s'entend à ce moment-là, à la pièce. Jamais d'abonnement imposé.</p>
+          <p><strong>Non. Aucun montant mensuel ne m'est versé, jamais.</strong> Vous me payez une seule fois, le jour de la mise en ligne, et c'est terminé entre nous côté argent.</p>
+          <p>Il y a bien des frais mensuels, mais ils vont ailleurs : à l'<strong>hébergeur</strong> qui garde votre site allumé 24 heures sur 24 (10 à 20 $ par mois, WordPress déjà installé dedans) et au <strong>registraire</strong> qui vous loue votre adresse web (20 à 30 $ par année). Vous ouvrez ces deux comptes vous-même, avec votre carte — je vous accompagne à l'écran, sans frais et sans commission.</p>
+          <p>WordPress et Elementor, eux, ne coûtent rien : ce sont des logiciels libres. La seule exception est WordPress.com, qui exige son forfait « Business » à environ 40 $ par mois pour autoriser Elementor. C'est pourquoi je recommande plutôt un hébergeur classique.</p>
+          <p>Et si un jour vous préférez que je fasse un changement à votre place plutôt que de le faire vous-même, on s'entend à ce moment-là, à la pièce. Jamais d'abonnement imposé.</p>
         </div>
       </details>
 
@@ -901,6 +898,26 @@
         <div class="qr__corps">
           <p>C'est le cas de la majorité des entreprises que je rencontre. Les textes, je les écris. Les photos, je vais les chercher dans des banques d'images libres de droits pour usage commercial — vous n'aurez jamais de problème légal avec ça.</p>
           <p>Pour le logo : je peux vous en créer un dans le forfait Signature, ou en travailler un simple et propre dans les autres forfaits. Un logo maison mal fait fait plus de tort qu'un beau nom bien mis en page.</p>
+        </div>
+      </details>
+
+      <details class="qr">
+        <summary>Puis-je avoir un vrai système de rendez-vous en ligne ?</summary>
+        <div class="qr__corps">
+          <p>Oui, et voici exactement ce que ça veut dire, parce que ce mot cache trois choses très différentes :</p>
+          <p><strong>1. Un formulaire de demande de rendez-vous.</strong> Le client remplit ses coordonnées et ses disponibilités, vous recevez le tout par courriel, vous le rappelez. C'est gratuit, c'est inclus dans tous mes forfaits, et pour la majorité des petites entreprises c'est amplement suffisant.</p>
+          <p><strong>2. Un vrai calendrier avec vos disponibilités.</strong> Le client voit les plages libres et réserve lui-même. C'est possible dans WordPress avec un module gratuit — avec une limite honnête : les versions gratuites n'acceptent généralement qu'<em>un seul type de service et un seul employé</em>. Pour un massothérapeute seul, c'est parfait. Pour un salon avec quatre personnes et vingt services, il faut la version payante du module, autour de 100 à 200 $ par année, payée à l'éditeur du module et pas à moi.</p>
+          <p><strong>3. La réservation avec paiement d'un dépôt.</strong> Là on entre dans le commerce en ligne : c'est faisable, mais ça sort de mes forfaits et je vous le dirai franchement.</p>
+          <p>Et si vous utilisez déjà un système — Clic Santé, Calendly, Square, GOrendezvous — je le branche simplement à votre site. C'est souvent la meilleure solution : vous gardez vos habitudes.</p>
+        </div>
+      </details>
+
+      <details class="qr">
+        <summary>Comment fonctionne le site bilingue ?</summary>
+        <div class="qr__corps">
+          <p>Votre site existe en deux versions complètes, français et anglais, avec un petit sélecteur de langue en haut de page. Google indexe les deux séparément : un client qui cherche en anglais vous trouve en anglais.</p>
+          <p>C'est monté avec une extension WordPress gratuite, et j'écris moi-même la version anglaise — vous n'avez rien à traduire. Vous pourrez ensuite modifier les deux versions au clic, exactement comme la version française.</p>
+          <p>C'est compris dans les forfaits <strong>Professionnel</strong> et <strong>Signature</strong>. À Montréal et à Laval, ça vaut presque toujours la peine.</p>
         </div>
       </details>
 
@@ -990,8 +1007,8 @@
             <label for="f-forfait">Forfait qui vous intéresse</label>
             <select id="f-forfait" name="forfait">
               <option>Je ne sais pas encore — conseillez-moi</option>
-              <option>Essentiel — 1 000 $</option>
-              <option>Professionnel — 1 400 $</option>
+              <option>Essentiel — 900 $</option>
+              <option>Professionnel — 1 300 $</option>
               <option>Signature — 1 700 $</option>
             </select>
           </div>
@@ -1026,12 +1043,16 @@
       <div>
         <a class="marque" href="#" style="margin-bottom:16px">
           <svg viewBox="0 0 64 64" aria-hidden="true">
-            <defs><linearGradient id="lg-pied" x1="4" y1="60" x2="60" y2="4" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#12D8C5"/><stop offset=".55" stop-color="#4FA6FF"/><stop offset="1" stop-color="#7C5CFF"/>
-            </linearGradient></defs>
-            <path d="M45 6H18C11.4 6 6 11.4 6 18v28c0 6.6 5.4 12 12 12h28c6.6 0 12-5.4 12-12V31" fill="none" stroke="url(#lg-pied)" stroke-width="5" stroke-linecap="round"/>
-            <path d="M19.5 21.5 31 43.5 56.5 8" fill="none" stroke="url(#lg-pied)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M43.5 12.5 56.5 8 56 21.5" fill="none" stroke="url(#lg-pied)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="lg-p1" x1="6" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#12D8C5"/><stop offset="1" stop-color="#2E8FE0"/>
+              </linearGradient>
+              <linearGradient id="lg-p2" x1="58" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#A184FF"/><stop offset="1" stop-color="#5B63EE"/>
+              </linearGradient>
+            </defs>
+            <path d="M5 9h16l11 26v22Z" fill="url(#lg-p1)"/>
+            <path d="M59 9H43L32 35v22Z" fill="url(#lg-p2)"/>
           </svg>
           <span><span class="marque__nom">VAELOR</span><span class="marque__sous">DESIGN</span></span>
         </a>
@@ -1042,7 +1063,6 @@
         <h4>Le site</h4>
         <ul>
           <li><a href="#exemples">Exemples de réalisations</a></li>
-          <li><a href="#themes">Thèmes disponibles</a></li>
           <li><a href="#approche">Notre approche</a></li>
           <li><a href="#comparatif">Comparatif</a></li>
           <li><a href="#tarifs">Tarifs</a></li>

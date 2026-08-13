@@ -1,20 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Vaelor Design">
   <defs>
-    <linearGradient id="vd-grad" x1="4" y1="60" x2="60" y2="4" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#12D8C5"/>
-      <stop offset=".55" stop-color="#4FA6FF"/>
-      <stop offset="1" stop-color="#7C5CFF"/>
+    <linearGradient id="vm-1" x1="6" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12D8C5"/><stop offset="1" stop-color="#2E8FE0"/>
+    </linearGradient>
+    <linearGradient id="vm-2" x1="58" y1="8" x2="32" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A184FF"/><stop offset="1" stop-color="#5B63EE"/>
     </linearGradient>
   </defs>
-  <!-- Le cadre : un écran. Le coin haut-droit est ouvert, la lettre en sort. -->
-  <path d="M45 6H18C11.4 6 6 11.4 6 18v28c0 6.6 5.4 12 12 12h28c6.6 0 12-5.4 12-12V31"
-        fill="none" stroke="url(#vd-grad)" stroke-width="5" stroke-linecap="round"/>
-  <!-- Le V : il part du bas de l'écran et s'échappe vers le haut. -->
-  <path d="M19.5 21.5 31 43.5 56.5 8"
-        fill="none" stroke="url(#vd-grad)" stroke-width="6"
-        stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- La pointe : croissance. -->
-  <path d="M43.5 12.5 56.5 8 56 21.5"
-        fill="none" stroke="url(#vd-grad)" stroke-width="5"
-        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 9h16l11 26v22Z" fill="url(#vm-1)"/>
+  <path d="M59 9H43L32 35v22Z" fill="url(#vm-2)"/>
 </svg>

@@ -1,20 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" width="320" height="72" role="img" aria-label="Vaelor Design">
   <defs>
-    <linearGradient id="vdb-grad" x1="8" y1="64" x2="64" y2="8" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#12D8C5"/>
-      <stop offset=".55" stop-color="#4FA6FF"/>
-      <stop offset="1" stop-color="#7C5CFF"/>
+    <linearGradient id="vb-1" x1="10" y1="12" x2="36" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12D8C5"/><stop offset="1" stop-color="#2E8FE0"/>
+    </linearGradient>
+    <linearGradient id="vb-2" x1="62" y1="12" x2="36" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A184FF"/><stop offset="1" stop-color="#5B63EE"/>
     </linearGradient>
   </defs>
   <g transform="translate(4,4)">
-    <path d="M45 6H18C11.4 6 6 11.4 6 18v28c0 6.6 5.4 12 12 12h28c6.6 0 12-5.4 12-12V31"
-          fill="none" stroke="url(#vdb-grad)" stroke-width="5" stroke-linecap="round"/>
-    <path d="M19.5 21.5 31 43.5 56.5 8"
-          fill="none" stroke="url(#vdb-grad)" stroke-width="6"
-          stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M43.5 12.5 56.5 8 56 21.5"
-          fill="none" stroke="url(#vdb-grad)" stroke-width="5"
-          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5 9h16l11 26v22Z" fill="url(#vb-1)"/>
+    <path d="M59 9H43L32 35v22Z" fill="url(#vb-2)"/>
   </g>
   <text x="88" y="40" font-family="Sora, 'Segoe UI', Inter, Arial, sans-serif"
         font-size="27" font-weight="700" letter-spacing="4.5" fill="#FFFFFF">VAELOR</text>

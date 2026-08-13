@@ -60,6 +60,10 @@ body{overflow-wrap:break-word}
 .nav{display:flex;align-items:center;gap:2px}
 .nav a{text-decoration:none;color:var(--gris);font-size:.93rem;font-weight:500;padding:9px 13px;transition:.2s}
 .nav a:hover{color:var(--vert)}
+/* Le bouton du menu ne sert qu'au téléphone : sur ordinateur c'est .ent__cta
+   qui joue ce rôle, sinon l'appel à l'action apparaît deux fois. */
+.nav > .btn{display:none}
+@media(max-width:980px){.nav > .btn{display:inline-flex}}
 .brg{display:none;width:44px;height:44px;background:var(--creme2);border:1px solid var(--bord);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
 .brg span{width:18px;height:2px;background:var(--encre);transition:.25s}
 .brg[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}

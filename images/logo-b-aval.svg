@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Vaelor Design">
+  <defs>
+    <linearGradient id="av-1" x1="8" y1="52" x2="56" y2="12" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12D8C5"/><stop offset=".5" stop-color="#4FA6FF"/><stop offset="1" stop-color="#7C5CFF"/>
+    </linearGradient>
+  </defs>
+  <!-- Un crochet d'approbation qui est aussi le V de Vaelor : « vous approuvez avant de payer ». -->
+  <path d="M10 33 26 49 55 13" fill="none" stroke="url(#av-1)" stroke-width="11"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

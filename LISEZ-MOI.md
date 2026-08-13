@@ -45,15 +45,21 @@ la déposer sur un hébergement, ou la copier ailleurs : elle fonctionnera seule
 
 ---
 
-## 3. Le logo
+## 3. Le logo — trois propositions
 
-Le symbole représente les deux choses à la fois :
+Ouvre **`logos.html`** : les trois options y sont montrées côte à côte, sur fond sombre et sur
+fond blanc, aux tailles réelles (64 px, 32 px, 16 px).
 
-- **le cadre arrondi** = un écran, une fenêtre de navigateur → ce que tu vends ;
-- **le « V » qui sort du cadre par le coin, avec une pointe de flèche** = Vaelor, et la
-  croissance de l'entreprise du client.
+| | Nom | L'idée |
+|---|---|---|
+| **A** | **Prisme** *(en place actuellement)* | Deux plans pliés formant un V massif. Le plus « studio de design », le plus distinctif. |
+| **B** | **Aval** | Un crochet d'approbation qui est aussi le V de Vaelor — il raconte ton argument de vente. |
+| **C** | **Sceau** | Une tuile pleine, V creusé dedans. Imbattable en très petit, mais plus « icône d'application ». |
 
-Le dégradé turquoise → bleu → violet est la signature visuelle de la marque.
+Dis-moi simplement A, B ou C et je le remplace partout. Les trois fichiers sont dans
+`images/logo-a-prisme.svg`, `logo-b-aval.svg`, `logo-c-sceau.svg`.
+
+Le dégradé turquoise → bleu → violet reste la signature de la marque dans les trois cas.
 
 **Codes de couleur à réutiliser partout (cartes d'affaires, factures, réseaux sociaux) :**
 
@@ -111,26 +117,57 @@ avant d'envoyer le lien à un client.
 
 ---
 
-## 6. Les cinq thèmes
+## 6. ✅ Vérification : tout ce qui est promis est-il réellement faisable ?
 
-Le sélecteur de la section « Thèmes » change **en direct** les couleurs, les polices et les
-arrondis d'un mini-site d'exemple. C'est l'outil de vente le plus efficace de la page : au lieu
-de demander au client de décrire ce qu'il veut, tu lui fais cliquer.
+J'ai repassé chaque promesse du site et je l'ai confrontée à ce que WordPress + Elementor
+gratuit permettent vraiment.
 
-| Thème | Ambiance | Pour qui |
+| Promesse sur le site | Faisable ? | Comment, concrètement |
 |---|---|---|
-| **Éclat** | Sombre + doré, typographie classique | Restaurants, avocats, bijoutiers |
-| **Clarté** | Blanc + bleu, très lisible | Cliniques, comptables, professionnels |
-| **Terra** | Crème + vert forêt, chaleureux | Paysagistes, spas, produits naturels |
-| **Volt** | Anthracite + orange, franc | Garages, construction, gyms |
-| **Nuance** | Sable + rosé, tout en douceur | Salons, fleuristes, boutiques |
+| Site modifiable par le client au clic | Oui | Elementor gratuit |
+| Textes rédigés, images libres de droits | Oui | Unsplash / Pexels, usage commercial |
+| Affichage impeccable sur téléphone | Oui | Vérifié à la largeur exacte des appareils |
+| Formulaire de contact | Oui | WPForms Lite ou Fluent Forms, gratuits |
+| **Demande** de rendez-vous par formulaire | Oui | Inclus dans tous les forfaits |
+| **Calendrier** de réservation en ligne | Oui, avec limite | Module gratuit = souvent 1 service et 1 employé. Au-delà : version payante ~100-200 $/an, versée à l'éditeur du module. **C'est écrit sur le site.** |
+| Brancher un outil déjà utilisé (Clic Santé, Calendly, Square) | Oui | Lien ou intégration |
+| Site bilingue FR/EN | Oui | Extension gratuite, je rédige la version anglaise |
+| Blogue ou actualités | Oui | Natif dans WordPress |
+| Menu, grille de prix, catalogue | Oui | Elementor |
+| Contenu répétitif géré par le client | Oui | Extension sur mesure — déjà fait pour un autre client |
+| Galerie photos, témoignages | Oui | Elementor |
+| Référencement local | Oui | Titres, descriptions, données structurées, Search Console, fiche Google |
+| Adresses courriel professionnelles | Oui | Incluses chez la plupart des hébergeurs |
+| Formation vidéo du client | Oui | Enregistrement d'écran sur son propre site |
+| Le site appartient au client | Oui | Domaine et hébergement à son nom, fichiers exportables |
+| Première place sur Google | **Non** | Non promis — c'est écrit dans « ce que je ne fais pas » |
 
-Chaque thème renvoie vers la démo complète construite avec ce style — le client voit d'abord
-un aperçu, puis un vrai site fini.
+**Ce que j'ai corrigé pour que le site ne promette rien de trop :**
 
-**Ajouter un sixième thème** : dans `js/script.js`, copie un bloc de l'objet `THEMES`, change
-les valeurs, puis ajoute un bouton `<button class="theme-choix" data-theme="ton-nom">` dans
-`index.html`. Rien d'autre à toucher.
+- « Réservation en ligne » distingue maintenant le *formulaire de demande* (inclus partout) du
+  *vrai calendrier* (possible, avec ses limites en version gratuite). Une question entière de
+  la FAQ y est consacrée.
+- « 8 clients sur 10 arrivent par téléphone » : **statistique retirée**. Je ne peux pas la
+  sourcer, donc elle n'a rien à faire sur ton site. Remplacée par « la plupart de vos visiteurs
+  seront sur un téléphone », qui est vrai et défendable.
+- Les adresses courriel pro sont présentées comme « si votre hébergeur les inclut », parce que
+  c'est le cas de la plupart mais pas de tous.
+
+### Les frais récurrents, et à qui ils vont
+
+Le site l'affiche maintenant dans un tableau, et la FAQ le répète :
+
+| Ce que c'est | Combien | À qui |
+|---|---|---|
+| Nom de domaine | 20 à 30 $ par année | Registraire — Namecheap, GoDaddy, Cira |
+| Hébergement, WordPress inclus | 10 à 20 $ par mois | Hébergeur — Hostinger, WHC, SiteGround |
+| WordPress + Elementor | 0 $ | Personne : logiciels libres |
+| Certificat de sécurité | 0 $ | Compris dans l'hébergement |
+| **Vaelor Design, après la mise en ligne** | **0 $** | **Rien ne t'est versé** |
+
+Mise en garde écrite sur le site : si un client tient à **WordPress.com** plutôt qu'à un
+hébergeur classique, il lui faut le forfait **Business (~40 $ par mois)** — le seul de leurs
+forfaits qui autorise Elementor. Deux à trois fois le prix pour le même résultat.
 
 ---
 
@@ -145,7 +182,7 @@ propriétaire de PME se pose avant d'écrire à un inconnu.
 | **Bandeau « 0 $ d'avance »** dans le héros | Visible avant même de défiler |
 | **Cinq sites cliquables** | « Il dit qu'il sait faire, mais est-ce que c'est beau ? » |
 | **Mention que les entreprises sont fictives** | Ne jamais laisser croire à une clientèle que tu n'as pas encore : la confiance se casse une seule fois |
-| **Sélecteur de thèmes** | « Je ne sais pas expliquer ce que je veux » |
+| **Cinq styles visuels bien distincts** | « Je ne sais pas expliquer ce que je veux » — il pointe la démo qui lui plaît |
 | **Notre approche, en 6 étapes chiffrées** | « Combien de temps ? Qu'est-ce qu'on attend de moi ? » |
 | **Comparatif à 3 colonnes** | « Je pourrais le faire moi-même sur Wix » — et tu y admets quand tu n'es PAS le bon choix, ce qui rend le reste crédible |
 | **Tarifs affichés** | Le silence sur les prix fait fuir plus de clients qu'un prix élevé |
@@ -167,9 +204,9 @@ propriétaire de PME se pose avant d'écrire à un inconnu.
 - [ ] **Brancher Formspree** (§4).
 - [ ] **Créer une fiche Google d'entreprise** — c'est gratuit et c'est par là que passeront
       la moitié de tes appels.
-- [ ] **Vérifier tes prix.** J'ai fixé 1 000 / 1 400 / 1 700 $ selon ce que tu m'as dit.
-      Ce sont trois paliers clairs : ajuste les montants si ta réalité change, mais garde
-      la structure — trois forfaits vendent mieux qu'un prix « sur demande ».
+- [ ] **Choisir ton logo** — ouvre `logos.html` et dis-moi A, B ou C.
+- [ ] **Prix actuels : 900 / 1 300 / 1 700 $.** Garde la structure à trois paliers — trois
+      forfaits vendent mieux qu'un prix « sur demande ».
 
 ---
 
