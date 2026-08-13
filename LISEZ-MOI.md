@@ -45,36 +45,41 @@ la déposer sur un hébergement, ou la copier ailleurs : elle fonctionnera seule
 
 ---
 
-## 3. Le logo — trois propositions
+## 3. Le logo — « Prisme » (choisi le 13 août 2026)
 
-Ouvre **`logos.html`** : les trois options y sont montrées côte à côte, sur fond sombre et sur
-fond blanc, aux tailles réelles (64 px, 32 px, 16 px).
+Deux plans pliés qui forment un **V massif**, l'arête centrale captant la lumière comme une
+feuille de papier pliée. Plein, assuré, sans contour fin qui disparaît en petit.
+Le dégradé turquoise → bleu → violet est la signature de la marque.
 
-| | Nom | L'idée |
-|---|---|---|
-| **A** | **Prisme** *(en place actuellement)* | Deux plans pliés formant un V massif. Le plus « studio de design », le plus distinctif. |
-| **B** | **Aval** | Un crochet d'approbation qui est aussi le V de Vaelor — il raconte ton argument de vente. |
-| **C** | **Sceau** | Une tuile pleine, V creusé dedans. Imbattable en très petit, mais plus « icône d'application ». |
+**Les fichiers, et quand utiliser lequel :**
 
-Dis-moi simplement A, B ou C et je le remplace partout. Les trois fichiers sont dans
-`images/logo-a-prisme.svg`, `logo-b-aval.svg`, `logo-c-sceau.svg`.
+| Fichier | Quand |
+|---|---|
+| `images/logo.svg` | Marque + texte, **fond clair** — facture, papier en-tête, document |
+| `images/logo-blanc.svg` | Marque + texte, **fond sombre** |
+| `images/logo-marque.svg` | Le symbole seul — photo de profil, réseaux sociaux, tampon |
+| `images/favicon.svg` | L'icône d'onglet, posée sur sa tuile foncée pour rester visible |
 
-Le dégradé turquoise → bleu → violet reste la signature de la marque dans les trois cas.
+Les deux propositions écartées restent dans le dossier (`logo-b-aval.svg`, `logo-c-sceau.svg`),
+et `logos.html` garde la comparaison des trois, au cas où.
 
-**Codes de couleur à réutiliser partout (cartes d'affaires, factures, réseaux sociaux) :**
+> **Si un fournisseur refuse le format SVG** et demande un PNG : ouvre le `.svg` dans un
+> navigateur, agrandis la fenêtre au maximum et fais une capture — ou demande-le-moi, je te le
+> génère à la taille voulue.
+
+**Codes de couleur de la marque** (pour cartes d'affaires, factures, réseaux sociaux) :
 
 | Usage | Code |
 |---|---|
-| Turquoise | `#12D8C5` |
-| Bleu | `#4FA6FF` |
-| Violet | `#7C5CFF` |
+| Turquoise (branche gauche) | `#12D8C5` → `#2E8FE0` |
+| Violet (branche droite) | `#A184FF` → `#5B63EE` |
 | Fond sombre | `#07070E` |
 | Texte clair | `#F4F3FF` |
+| Dégradé complet du site | `#12D8C5` → `#4FA6FF` → `#7C5CFF` |
 
-> Note : dans les fichiers `.svg`, le texte « VAELOR / DESIGN » utilise la police Sora.
-> Si tu as besoin d'un logo en image fixe (PNG) pour un fournisseur qui n'accepte pas le SVG,
-> ouvre le `.svg` dans un navigateur, agrandis la fenêtre, et fais une capture — ou demande-moi
-> de le générer.
+> Note : dans `logo.svg` et `logo-blanc.svg`, le texte « VAELOR / DESIGN » utilise la police
+> **Sora**. Un imprimeur qui ne l'a pas verra une police de remplacement — dis-le-moi et je te
+> fournis une version où le texte est converti en tracés, qui s'affiche partout à l'identique.
 
 ---
 
@@ -204,7 +209,7 @@ propriétaire de PME se pose avant d'écrire à un inconnu.
 - [ ] **Brancher Formspree** (§4).
 - [ ] **Créer une fiche Google d'entreprise** — c'est gratuit et c'est par là que passeront
       la moitié de tes appels.
-- [ ] **Choisir ton logo** — ouvre `logos.html` et dis-moi A, B ou C.
+- [x] ~~Choisir ton logo~~ — **fait : option A, « Prisme »**, en place partout.
 - [ ] **Prix actuels : 900 / 1 300 / 1 700 $.** Garde la structure à trois paliers — trois
       forfaits vendent mieux qu'un prix « sur demande ».
 
