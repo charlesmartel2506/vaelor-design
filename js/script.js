@@ -126,31 +126,54 @@
       var forfait    = v('#f-forfait');
       var message    = v('#f-message');
 
+      /* Les messages suivent la langue de la page (<html lang="…">), pour que
+         le même fichier serve la version française et la version anglaise. */
+      var en = (document.documentElement.lang || 'fr').slice(0, 2) === 'en';
+      var t = en ? {
+        manque  : 'I need your name, your business name and your email address to be able to reply.',
+        courriel: 'That email address looks incomplete — could you check it?',
+        sujet   : 'Demo request — ',
+        lNom    : 'Name: ',      lEntreprise: 'Business: ',  lCourriel: 'Email: ',
+        lTel    : 'Phone: ',     lSecteur   : 'Industry: ',  lForfait : 'Package of interest: ',
+        lMessage: 'Message:\n',  aucun      : '(no message)',
+        source  : '— Sent from vaelordesign.com',
+        ok      : 'Your email app is opening with the message already written — all that is left is to press Send. If it does not open, write to me directly at charlesmartel2506@gmail.com.'
+      } : {
+        manque  : 'Il me manque votre nom, celui de votre entreprise et votre courriel pour pouvoir vous répondre.',
+        courriel: 'L\'adresse courriel semble incomplète — pouvez-vous la vérifier ?',
+        sujet   : 'Demande de démo — ',
+        lNom    : 'Nom : ',      lEntreprise: 'Entreprise : ', lCourriel: 'Courriel : ',
+        lTel    : 'Téléphone : ', lSecteur  : 'Domaine : ',    lForfait : 'Forfait envisagé : ',
+        lMessage: 'Message :\n', aucun      : '(aucun message)',
+        source  : '— Envoyé depuis vaelordesign.com',
+        ok      : 'Votre logiciel de courriel s\'ouvre avec le message déjà écrit — il ne reste qu\'à appuyer sur « Envoyer ». S\'il ne s\'ouvre pas, écrivez-moi directement à charlesmartel2506@gmail.com.'
+      };
+
       if (!nom || !entreprise || !courriel) {
-        montrer('Il me manque votre nom, celui de votre entreprise et votre courriel pour pouvoir vous répondre.', false);
+        montrer(t.manque, false);
         return;
       }
       if (courriel.indexOf('@') < 1 || courriel.indexOf('.') < 0) {
-        montrer('L\'adresse courriel semble incomplète — pouvez-vous la vérifier ?', false);
+        montrer(t.courriel, false);
         return;
       }
 
-      var sujet = 'Demande de démo — ' + entreprise;
+      var sujet = t.sujet + entreprise;
       var corps =
-        'Nom : ' + nom + '\n' +
-        'Entreprise : ' + entreprise + '\n' +
-        'Courriel : ' + courriel + '\n' +
-        'Téléphone : ' + (tel || '—') + '\n' +
-        'Domaine : ' + secteur + '\n' +
-        'Forfait envisagé : ' + forfait + '\n\n' +
-        'Message :\n' + (message || '(aucun message)') + '\n\n' +
-        '— Envoyé depuis vaelordesign.ca';
+        t.lNom       + nom + '\n' +
+        t.lEntreprise + entreprise + '\n' +
+        t.lCourriel  + courriel + '\n' +
+        t.lTel       + (tel || '—') + '\n' +
+        t.lSecteur   + secteur + '\n' +
+        t.lForfait   + forfait + '\n\n' +
+        t.lMessage   + (message || t.aucun) + '\n\n' +
+        t.source;
 
       window.location.href = 'mailto:charlesmartel2506@gmail.com'
         + '?subject=' + encodeURIComponent(sujet)
         + '&body='    + encodeURIComponent(corps);
 
-      montrer('Votre logiciel de courriel s\'ouvre avec le message déjà écrit — il ne reste qu\'à appuyer sur « Envoyer ». S\'il ne s\'ouvre pas, écrivez-moi directement à charlesmartel2506@gmail.com.', true);
+      montrer(t.ok, true);
     });
   }
 
