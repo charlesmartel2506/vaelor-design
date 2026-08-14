@@ -230,3 +230,30 @@ propriétaire de PME se pose avant d'écrire à un inconnu.
 - **Toutes les entreprises des démos sont fictives**, avec des numéros en `555` et des adresses
   inventées. C'est dit explicitement sur le site principal et dans un bandeau au bas de chaque
   démo.
+
+## 10. L'expérience 3D (refonte du 14 août 2026)
+
+Le site vitrine (FR + EN) est une expérience 3D pilotée par le défilement — « la lumière
+traverse le prisme » : la teinte dominante interpole turquoise → bleu → violet du haut au bas
+de la page. Les 5 démos et `logos.html` ne sont pas concernés.
+
+- **`js/experience.js`** : le moteur. IIFE autonome qui pose `.fx`/`.fx-lite` sur `<html>` et
+  écrit des variables CSS (`--p` par section, `--glob`, `--vel`, `--exit`, `--mx/--my`, `--d`,
+  `--i`). Une boucle `requestAnimationFrame` unique qui s'endort quand rien ne bouge. Le canvas
+  de particules et le faisceau de progression sont créés par ce script — ils n'existent pas
+  dans le HTML.
+- **`css/styles.css`** : tout le rendu 3D vit dans la strate « EXPÉRIENCE 3D » en fin de
+  fichier, préfixée `html.fx` / `html.fx-lite`. Le CSS au-dessus de cette strate est le site
+  d'avant, intact — c'est la version de repli.
+- **3 paliers** : complet (souris + ≥ 981 px), allégé (tactile/petit écran — glissements au
+  lieu des rotations, 35 particules, canvas coupé sur petits processeurs), éteint
+  (`prefers-reduced-motion` ou échec du script → site d'avant, exactement). Filet
+  anti-page-blanche : try/catch + sentinelle 2,5 s qui retire `.fx` si rien n'a été rendu.
+- **Règles à respecter en modifiant** : jamais de `transform` sur un ancêtre de l'en-tête fixe
+  ou du bouton retour-haut ; uniquement `transform` + `opacity` animés ; un pseudo-élément ne
+  doit jamais dépasser à droite d'une boîte non clippée (4 px de défilement horizontal mobile,
+  déjà vécu) ; `clip-path:inset(0)` reste sur `.prisme3d` (sans lui, le `preserve-3d` échappe
+  au `overflow:hidden` dans Chromium et crée un scroll fantôme).
+- **Pour tester les animations** : la machine de Julien a les effets d'animation Windows
+  désactivés → tous ses navigateurs sont en `prefers-reduced-motion: reduce` → utiliser
+  Playwright, ou activer Paramètres → Accessibilité → Effets visuels.
