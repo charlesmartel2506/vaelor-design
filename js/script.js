@@ -134,23 +134,23 @@
          le même fichier serve la version française et la version anglaise. */
       var en = (document.documentElement.lang || 'fr').slice(0, 2) === 'en';
       var t = en ? {
-        manque  : 'I need your name, your business name and your email address to be able to reply.',
+        manque  : 'We need your name, your business name and your email address to be able to reply.',
         courriel: 'That email address looks incomplete — could you check it?',
         sujet   : 'Demo request — ',
         lNom    : 'Name: ',      lEntreprise: 'Business: ',  lCourriel: 'Email: ',
         lTel    : 'Phone: ',     lSecteur   : 'Industry: ',  lForfait : 'Package of interest: ',
         lMessage: 'Message:\n',  aucun      : '(no message)',
         source  : '— Sent from vaelordesign.com',
-        ok      : 'Your email app is opening with the message already written — all that is left is to press Send. If it does not open, write to me directly at charlesmartel2506@gmail.com.'
+        ok      : 'Your email app is opening with the message already written — all that is left is to press Send. If it does not open, write to us directly at charlesmartel2506@gmail.com.'
       } : {
-        manque  : 'Il me manque votre nom, celui de votre entreprise et votre courriel pour pouvoir vous répondre.',
+        manque  : 'Il nous manque votre nom, celui de votre entreprise et votre courriel pour pouvoir vous répondre.',
         courriel: 'L\'adresse courriel semble incomplète — pouvez-vous la vérifier ?',
         sujet   : 'Demande de démo — ',
         lNom    : 'Nom : ',      lEntreprise: 'Entreprise : ', lCourriel: 'Courriel : ',
         lTel    : 'Téléphone : ', lSecteur  : 'Domaine : ',    lForfait : 'Forfait envisagé : ',
         lMessage: 'Message :\n', aucun      : '(aucun message)',
         source  : '— Envoyé depuis vaelordesign.com',
-        ok      : 'Votre logiciel de courriel s\'ouvre avec le message déjà écrit — il ne reste qu\'à appuyer sur « Envoyer ». S\'il ne s\'ouvre pas, écrivez-moi directement à charlesmartel2506@gmail.com.'
+        ok      : 'Votre logiciel de courriel s\'ouvre avec le message déjà écrit — il ne reste qu\'à appuyer sur « Envoyer ». S\'il ne s\'ouvre pas, écrivez-nous directement à charlesmartel2506@gmail.com.'
       };
 
       if (!nom || !entreprise || !courriel) {
