@@ -559,3 +559,311 @@ p{ margin:0 0 1em; }
 .haut.visible{ opacity:1; pointer-events:auto; transform:none; }
 .haut:hover{ border-color:var(--teal); }
 .haut svg{ width:19px; height:19px; }
+
+/* =========================================================================
+   EXPÉRIENCE 3D — « la lumière traverse le prisme »
+   Tout ce qui suit n'existe que si js/experience.js a posé la classe .fx
+   sur <html>. Sans elle (mouvement réduit, vieux navigateur, script en
+   échec), le site s'affiche exactement comme au-dessus de cette ligne.
+   Le moteur écrit des variables : --p (progression 0→1 de chaque section
+   dans l'écran), --glob (progression de la page), --vel (vitesse lissée),
+   --exit (sortie du héros), --mx/--my (souris), --i (rang en cascade),
+   --d (distance d'une carte au centre de l'écran), --hx/--hy (survol).
+   Règles d'or : uniquement transform + opacity ; jamais de transform sur
+   un ancêtre de l'en-tête fixe ; les scènes preserve-3d vivent dans des
+   conteneurs sans overflow caché.
+   ========================================================================= */
+
+/* Le visuel de droite du héros : positionné même sans l'expérience
+   (les étiquettes flottantes en dépendent). */
+.heros__visu{ position:relative; }
+
+/* Le prisme 3D n'apparaît que si l'expérience tourne. */
+.prisme3d{ display:none; }
+
+/* ---------- Décor global (canvas + faisceau créés par le JS) ---------- */
+#fond-experience{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+}
+.faisceau{
+  position:fixed; top:0; right:14px; width:2px; height:100vh; z-index:60;
+  background:rgba(255,255,255,.05); pointer-events:none; border-radius:2px;
+}
+.faisceau span{
+  display:block; width:100%; height:100%;
+  transform:scaleY(0); transform-origin:50% 0;
+  background:linear-gradient(180deg, var(--teal), var(--blue), var(--violet));
+  border-radius:2px;
+}
+html.fx-lite .faisceau{ display:none; }
+@media (max-width:980px){ .faisceau{ display:none; } }
+
+/* ---------- L'ancien « apparait » cède la place aux scènes pilotées ----------
+   Uniquement sur les éléments que le moteur transforme lui-même, pour que
+   les deux systèmes ne se battent jamais sur le même élément. */
+html.fx.js-anim .projet.apparait,
+html.fx.js-anim .etape.apparait,
+html.fx.js-anim .tarif.apparait,
+html.fx.js-anim .tableau-enveloppe.apparait{
+  opacity:1; transform:none; transition:none;
+}
+
+/* ============================== HÉROS ============================== */
+
+/* Le sol : la grille se couche en perspective et file vers l'horizon. */
+html.fx .grille-fond{
+  transform:perspective(700px) rotateX(54deg);
+  transform-origin:50% 100%;
+  background-image:none;
+  overflow:hidden;
+  inset:22% 0 0 0;
+}
+html.fx .grille-fond::before{
+  content:''; position:absolute; inset:-64px 0 0 0;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:64px 64px;
+  animation:solDefile 3.2s linear infinite;
+}
+@keyframes solDefile{ to{ transform:translateY(64px); } }
+
+/* Le prisme : les deux plans pliés du logo, en vrai volume, en rotation lente. */
+html.fx .prisme3d{
+  display:block; position:absolute;
+  right:-4%; top:2%;
+  width:min(44vw, 540px); aspect-ratio:1/1;
+  perspective:900px; opacity:.5;
+  /* Dans Chromium, un descendant preserve-3d échappe au « overflow:hidden »
+     du héros pour le calcul de la largeur de défilement : sans ce clip, la
+     page gagne 4 px de défilement horizontal sur téléphone. Le clip vit ici
+     (au-dessus du pivot), donc le pliage 3D interne n'est pas aplati. */
+  clip-path:inset(0);
+}
+html.fx .prisme3d__pivot{
+  position:absolute; inset:0; transform-style:preserve-3d;
+  animation:prismeTourne 30s linear infinite;
+}
+@keyframes prismeTourne{
+  from{ transform:rotateX(-9deg) rotateY(0deg); }
+  to  { transform:rotateX(-9deg) rotateY(360deg); }
+}
+html.fx .p3d{
+  position:absolute; inset:0; display:block;
+  backface-visibility:visible;
+}
+html.fx .p3d--a{
+  clip-path:polygon(7.8% 14%, 32.8% 14%, 50% 54.7%, 50% 89%);
+  background:linear-gradient(160deg, rgba(18,216,197,.6), rgba(79,166,255,.28));
+  transform:rotateY(34deg);
+}
+html.fx .p3d--b{
+  clip-path:polygon(92.2% 14%, 67.2% 14%, 50% 54.7%, 50% 89%);
+  background:linear-gradient(200deg, rgba(161,132,255,.6), rgba(91,99,238,.28));
+  transform:rotateY(-34deg);
+}
+
+/* Le fond du héros (halos + prisme) s'éteint quand on quitte la scène. */
+html.fx .heros__fond{ opacity:calc(1 - var(--exit, 0)); }
+
+/* Le texte recule et s'estompe à la sortie. */
+html.fx .heros__contenu > div:first-child{
+  transform:translateY(calc(var(--exit, 0) * -46px));
+  opacity:calc(1 - var(--exit, 0) * 1.15);
+}
+
+/* La fenêtre devient une carte 3D : inclinaison de repos, suivi de la
+   souris (variables --mx/--my, écran large seulement), plongée à la sortie. */
+html.fx .heros__visu{
+  perspective:1100px; transform-style:preserve-3d;
+  animation:visuFlotte 9s ease-in-out infinite;
+}
+@keyframes visuFlotte{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-11px); } }
+html.fx .fenetre--flotte{ animation:none; }
+html.fx .fenetre{
+  transform:
+    rotateY(calc(-8deg + var(--mx, 0) * 9deg + var(--exit, 0) * 16deg))
+    rotateX(calc(4deg + var(--my, 0) * -7deg - var(--exit, 0) * 10deg))
+    translateZ(calc(var(--exit, 0) * -140px));
+}
+html.fx .et--1{ transform:translateZ(46px); }
+html.fx .et--2{ transform:translateZ(72px); }
+
+/* ============================== BANDEAU ============================== */
+html.fx .bandeau{
+  transform:perspective(800px) rotateX(6deg) skewX(calc(var(--vel, 0) * -5deg));
+  transform-origin:50% 50%;
+}
+
+/* ============================== RISQUE ============================== */
+html.fx .risque__boite{ perspective:1200px; }
+html.fx .etape-risque{
+  --e: clamp(0, calc((var(--p, 1) - 0.12 - var(--i, 0) * 0.07) / 0.26), 1);
+  transform:translateZ(calc((1 - var(--e)) * -330px)) rotateX(calc((1 - var(--e)) * 16deg));
+  opacity:var(--e);
+}
+
+/* ============================== SECTIONS CALMES ============================== */
+/* Parallax discret : le titre monte, les cartes suivent avec un temps de retard. */
+html.fx .section--serre .entete-section{
+  transform:translateY(calc((1 - var(--p, 1)) * -22px));
+}
+html.fx .section--serre .grille{
+  transform:translateY(calc((1 - var(--p, 1)) * 44px));
+}
+
+/* ============================== EXEMPLES ============================== */
+/* Éventail doux : chaque carte pivote selon sa distance au centre de
+   l'écran (--d), et s'incline sous le curseur au survol (--hx/--hy). */
+html.fx .projet{
+  transform:perspective(900px)
+    rotateY(calc(var(--d, 0) * -7deg + var(--hx, 0) * 8deg))
+    rotateX(calc(var(--hy, 0) * -8deg))
+    translateY(calc(var(--hov, 0) * -6px));
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+html.fx .projet:hover{ --hov:1; border-color:var(--line-fort); box-shadow:var(--ombre); }
+/* Reflet spéculaire qui suit le curseur. */
+html.fx .projet__apercu::after{
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:0;
+  background:radial-gradient(260px circle at calc(50% + var(--hx, 0) * 100%) calc(50% + var(--hy, 0) * 100%),
+    rgba(255,255,255,.16), transparent 62%);
+  transition:opacity .25s ease;
+}
+html.fx .projet:hover .projet__apercu::after{ opacity:1; }
+
+/* ============================== APPROCHE ============================== */
+/* La ligne du parcours se dessine au fil du défilement. */
+html.fx .chrono::before{ opacity:.14; }
+html.fx .chrono::after{
+  content:''; position:absolute; left:26px; top:26px; bottom:60px; width:2px;
+  background:linear-gradient(180deg, var(--teal), var(--blue), var(--violet));
+  transform:scaleY(clamp(0, calc(var(--p, 1) * 1.3 - 0.1), 1));
+  transform-origin:50% 0;
+}
+@media (max-width:640px){ html.fx .chrono::after{ left:20px; } }
+html.fx .etape{
+  --e: clamp(0, calc((var(--p, 1) - var(--i, 0) * 0.09) / 0.3), 1);
+  opacity:calc(.25 + var(--e) * .75);
+  transform:perspective(800px) rotateX(calc((1 - var(--e)) * -8deg)) translateY(calc((1 - var(--e)) * 26px));
+}
+/* Le numéro s'allume quand la ligne l'atteint. */
+html.fx .etape__num{ background:transparent; }
+html.fx .etape__num::before{
+  content:''; position:absolute; inset:0; border-radius:50%; z-index:-1;
+  background:var(--panel-2);
+}
+html.fx .etape__num::after{
+  content:''; position:absolute; inset:0; border-radius:50%; z-index:-1;
+  background:var(--grad); opacity:calc(var(--e, 1) * .85);
+}
+
+/* ============================== TABLEAUX (comparatif + frais) ============================== */
+html.fx .tableau-enveloppe{
+  --e: clamp(0, calc(var(--p, 1) / 0.42), 1);
+  transform:perspective(1400px) rotateX(calc((1 - var(--e)) * 13deg));
+  transform-origin:50% 100%;
+  opacity:calc(.25 + var(--e) * .75);
+}
+
+/* ============================== TARIFS ============================== */
+/* Les trois forfaits se déploient en éventail depuis une pile centrale. */
+html.fx .grille-tarifs{ perspective:1400px; }
+html.fx .tarif{
+  --e: clamp(0, calc((var(--p, 1) - 0.1) / 0.32), 1);
+  --pos: calc(var(--i, 0) - 1);
+  transform:
+    translateX(calc((1 - var(--e)) * var(--pos) * -55%))
+    translateZ(calc((1 - var(--e)) * -180px))
+    rotateY(calc((1 - var(--e)) * var(--pos) * -14deg));
+  opacity:calc(.15 + var(--e) * .85);
+}
+/* La vedette finit légèrement en avant-plan. */
+html.fx .tarif--vedette{
+  transform:
+    translateX(calc((1 - var(--e)) * var(--pos) * -55%))
+    translateZ(calc((1 - var(--e)) * -180px + var(--e) * 22px))
+    rotateY(calc((1 - var(--e)) * var(--pos) * -14deg));
+}
+
+/* ============================== TRANSPARENCE ============================== */
+html.fx .transparence{ perspective:1200px; }
+html.fx .transparence > :first-child{
+  --e: clamp(0, calc(var(--p, 1) / 0.38), 1);
+  transform:translateX(calc((1 - var(--e)) * -64px)) translateZ(calc((1 - var(--e)) * -80px));
+  opacity:var(--e);
+}
+html.fx .transparence > :last-child{
+  --e: clamp(0, calc(var(--p, 1) / 0.38), 1);
+  transform:translateX(calc((1 - var(--e)) * 64px)) translateZ(calc((1 - var(--e)) * -80px));
+  opacity:var(--e);
+}
+
+/* ============================== FAQ (volontairement calme) ============================== */
+html.fx .faq .qr{
+  --e: clamp(0, calc((var(--p, 1) - var(--i, 0) * 0.04) / 0.3), 1);
+  opacity:calc(.15 + var(--e) * .85);
+  transform:translateY(calc((1 - var(--e)) * 18px));
+}
+html.fx .qr[open] .qr__corps{ animation:qrDeplie .3s var(--ease-expressif); }
+@keyframes qrDeplie{ from{ opacity:0; transform:translateY(-6px); } }
+
+/* ============================== CONTACT ============================== */
+/* Destination du rayon : la boîte se soulève, le prisme veille en filigrane. */
+html.fx .contact__boite{
+  position:relative;
+  --e: clamp(0, calc(var(--p, 1) / 0.4), 1);
+  transform:translateY(calc((1 - var(--e)) * 40px));
+}
+html.fx .contact__boite::after{
+  /* Le filigrane reste DANS la boîte : un dépassement à droite créerait
+     4 px de défilement horizontal sur téléphone (la boîte n'a pas
+     d'overflow caché et rien ne la clippe). */
+  content:''; position:absolute; right:12px; bottom:12px; width:min(300px, 55%); aspect-ratio:1/1; height:auto;
+  pointer-events:none; opacity:calc(var(--e, 1) * .1);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M5 9h16l11 26v22Z' fill='%2312D8C5'/%3E%3Cpath d='M59 9H43L32 35v22Z' fill='%237C5CFF'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* ============================== PALIER ALLÉGÉ (téléphone / tactile) ==============================
+   Les rotations 3D deviennent des glissements verticaux : même récit,
+   coût minimal. Le prisme du héros et le sol restent (animations CSS
+   composées, une seule couche chacune). */
+html.fx-lite .fenetre{ transform:none; }
+html.fx-lite .heros__visu{ perspective:none; }
+html.fx-lite .et--1, html.fx-lite .et--2{ transform:none; }
+html.fx-lite .bandeau{ transform:none; }
+html.fx-lite .etape-risque{
+  transform:translateY(calc((1 - var(--e)) * 36px));
+}
+html.fx-lite .projet{ transform:none; transition:transform .45s var(--ease-expressif), border-color .3s ease, box-shadow .45s var(--ease-expressif); }
+html.fx-lite .projet__apercu::after{ content:none; }
+html.fx-lite .etape{ transform:translateY(calc((1 - var(--e)) * 22px)); }
+html.fx-lite .tableau-enveloppe{ transform:none; }
+html.fx-lite .tarif, html.fx-lite .tarif--vedette{
+  transform:translateY(calc((1 - var(--e)) * 36px));
+}
+html.fx-lite .transparence > :first-child,
+html.fx-lite .transparence > :last-child{
+  transform:translateY(calc((1 - var(--e)) * 28px));
+}
+html.fx-lite .contact__boite{ transform:translateY(calc((1 - var(--e)) * 24px)); }
+html.fx-lite .prisme3d{ width:min(70vw, 380px); opacity:.35; }
+
+/* ============================== GARDE-FOU MOUVEMENT RÉDUIT ==============================
+   Le moteur ne démarre jamais si la préférence est active au chargement ;
+   ce bloc couvre le cas où elle est activée en cours de visite. */
+@media (prefers-reduced-motion: reduce){
+  html.fx .prisme3d, html.fx .faisceau, html.fx #fond-experience{ display:none; }
+  html.fx .grille-fond{ transform:none; inset:0; }
+  html.fx .grille-fond::before{ animation:none; }
+  html.fx .heros__visu{ animation:none; }
+  html.fx .prisme3d__pivot{ animation:none; }
+  html.fx .heros__contenu > div:first-child,
+  html.fx .fenetre, html.fx .bandeau, html.fx .etape-risque,
+  html.fx .section--serre .entete-section, html.fx .section--serre .grille,
+  html.fx .projet, html.fx .etape, html.fx .tableau-enveloppe,
+  html.fx .tarif, html.fx .tarif--vedette,
+  html.fx .transparence > :first-child, html.fx .transparence > :last-child,
+  html.fx .faq .qr, html.fx .contact__boite{
+    transform:none; opacity:1;
+  }
+}

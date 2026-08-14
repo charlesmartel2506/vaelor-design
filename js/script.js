@@ -33,10 +33,14 @@
   var burger = $('#burger');
   var nav    = $('#nav');
   if (burger && nav) {
+    /* Les libellés suivent la langue de la page, comme le formulaire. */
+    var enAnglais = (document.documentElement.lang || 'fr').slice(0, 2) === 'en';
+    var libOuvrir = enAnglais ? 'Open the menu' : 'Ouvrir le menu';
+    var libFermer = enAnglais ? 'Close the menu' : 'Fermer le menu';
     burger.addEventListener('click', function () {
       var ouvert = nav.classList.toggle('ouverte');
       burger.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
-      burger.setAttribute('aria-label', ouvert ? 'Fermer le menu' : 'Ouvrir le menu');
+      burger.setAttribute('aria-label', ouvert ? libFermer : libOuvrir);
     });
     // Refermer quand on clique un lien
     $$('a', nav).forEach(function (a) {
