@@ -231,29 +231,34 @@ propriétaire de PME se pose avant d'écrire à un inconnu.
   inventées. C'est dit explicitement sur le site principal et dans un bandeau au bas de chaque
   démo.
 
-## 10. L'expérience 3D (refonte du 14 août 2026)
+## 10. L'expérience « Constellation » (refonte du 14 août 2026, 2e version)
 
-Le site vitrine (FR + EN) est une expérience 3D pilotée par le défilement — « la lumière
-traverse le prisme » : la teinte dominante interpole turquoise → bleu → violet du haut au bas
-de la page. Les 5 démos et `logos.html` ne sont pas concernés.
+Le site vitrine (FR + EN) est une expérience WebGL pilotée par le défilement : un champ de
+particules 3D (Three.js) vit derrière tout le site et se réorganise à chaque section — logo
+Vaelor au chargement, fenêtre de navigateur (#risque), nuage libre (pourquoi), grille de
+5 panneaux (#exemples), double hélice (#approche), nappe calme (#comparatif), trois colonnes
+(#tarifs), orbe (#contact). GSAP + ScrollTrigger orchestrent le reste : section du risque
+épinglée pendant que les 4 cartes se distribuent, chronologie qui se trace, forfaits en
+éventail, cartes inclinables, boutons magnétiques. Les 5 démos et `logos.html` ne sont pas
+concernés.
 
-- **`js/experience.js`** : le moteur. IIFE autonome qui pose `.fx`/`.fx-lite` sur `<html>` et
-  écrit des variables CSS (`--p` par section, `--glob`, `--vel`, `--exit`, `--mx/--my`, `--d`,
-  `--i`). Une boucle `requestAnimationFrame` unique qui s'endort quand rien ne bouge. Le canvas
-  de particules et le faisceau de progression sont créés par ce script — ils n'existent pas
-  dans le HTML.
-- **`css/styles.css`** : tout le rendu 3D vit dans la strate « EXPÉRIENCE 3D » en fin de
-  fichier, préfixée `html.fx` / `html.fx-lite`. Le CSS au-dessus de cette strate est le site
-  d'avant, intact — c'est la version de repli.
-- **3 paliers** : complet (souris + ≥ 981 px), allégé (tactile/petit écran — glissements au
-  lieu des rotations, 35 particules, canvas coupé sur petits processeurs), éteint
-  (`prefers-reduced-motion` ou échec du script → site d'avant, exactement). Filet
-  anti-page-blanche : try/catch + sentinelle 2,5 s qui retire `.fx` si rien n'a été rendu.
-- **Règles à respecter en modifiant** : jamais de `transform` sur un ancêtre de l'en-tête fixe
-  ou du bouton retour-haut ; uniquement `transform` + `opacity` animés ; un pseudo-élément ne
-  doit jamais dépasser à droite d'une boîte non clippée (4 px de défilement horizontal mobile,
-  déjà vécu) ; `clip-path:inset(0)` reste sur `.prisme3d` (sans lui, le `preserve-3d` échappe
-  au `overflow:hidden` dans Chromium et crée un scroll fantôme).
+- **`js/experience.js`** : le moteur complet. Charge **gsap@3.12.5** et **three@0.160.0**
+  depuis jsdelivr (versions épinglées — c'est la SEULE dépendance réseau du site avec les
+  polices). Délais de garde 8-10 s. Le canevas `.scene3d` et le voile `.scene3d-voile` sont
+  créés par ce script, jamais présents dans le HTML.
+- **`css/styles.css`** : réécrite au complet pour la nouvelle direction visuelle (verre
+  dépoli sur fond de particules). Elle est **complète sans JavaScript** : l'entrée du héros
+  (lignes masquées qui montent) est en CSS pur, et rien n'est masqué d'avance par le moteur.
+- **3 paliers** : complet (souris fine + ≥ 981 px : 3 800 particules, épinglage, éventail,
+  inclinaisons, magnétisme), allégé (tactile/petit écran : 1 600 particules, échelle 0,55,
+  montées simples, pas d'épinglage), éteint (`prefers-reduced-motion`, CDN bloqué, pas de
+  WebGL ou vieux navigateur → site statique complet, rien n'a jamais été caché).
+- **Règles à respecter en modifiant** : uniquement `transform` + `opacity` animés ; jamais de
+  `rotationX` en perspective sur téléphone (la projection élargit la boîte → 27 px de
+  défilement horizontal, mesuré et corrigé le 14 août) ; la section #risque doit tenir dans
+  100svh sur grand écran (elle est épinglée) ; toute modification du HTML doit être répercutée
+  dans `en/index.html`.
 - **Pour tester les animations** : la machine de Julien a les effets d'animation Windows
   désactivés → tous ses navigateurs sont en `prefers-reduced-motion: reduce` → utiliser
-  Playwright, ou activer Paramètres → Accessibilité → Effets visuels.
+  Playwright (défilements `behavior:'instant'` seulement), ou activer
+  Paramètres → Accessibilité → Effets visuels.
