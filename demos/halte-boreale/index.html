@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halte Boréale — Spa nordique à Val-David, Laurentides</title>
+<meta name="description" content="Halte Boréale, spa nordique en forêt à Val-David. Sauna finlandais, chute froide, bassins chauds sous les étoiles, à 40 minutes de Montréal. Passage dès 58 $.">
+<meta property="og:title" content="Halte Boréale — Spa nordique à Val-David">
+<meta property="og:description" content="Sauna finlandais, chute froide et silence sous les étoiles, à 40 minutes de Montréal.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A1220">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== HALTE BORÉALE — exemple du forfait Prestige de Vaelor Design ======
+   Thème verrouillé : nuit boréale (sombre d'un bout à l'autre).
+   Rayons : cartes 18px, boutons pilules, champs 12px. Un seul accent : #5FE3B3.
+   Tout le mouvement est coupé si prefers-reduced-motion: reduce.            */
+:root{
+  --nuit:#0A1220; --nuit2:#0E1828; --nuit3:#142236; --foret:#071019;
+  --brume:rgba(159,240,208,.08);
+  --aurore:#5FE3B3; --aurore2:#9FF0D0; --glace:#7FB8D8;
+  --txt:#EDF4F5; --txt2:#A9BCC5; --txt3:#6E8391;
+  --bord:rgba(159,240,208,.16); --bord2:rgba(159,240,208,.3);
+  --chaud:#E8956B;
+  --max:1180px; --pad:clamp(20px,5vw,44px);
+  --t:'Syne',system-ui,sans-serif; --c:'Instrument Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0;background:var(--nuit);color:var(--txt);font-family:var(--c);
+  font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg,canvas{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--t);font-weight:700;line-height:1.08;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,5.2vw,4.2rem);font-weight:800}
+h2{font-size:clamp(1.9rem,4.2vw,3.1rem)}
+h3{font-size:clamp(1.12rem,1.9vw,1.35rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--aurore);outline-offset:3px;border-radius:4px}
+.env{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(76px,10vw,140px);position:relative}
+.plomb{color:var(--txt2);max-width:62ch}
+.accent{color:var(--aurore)}
+
+/* ---------- Boutons (pilules, un seul intitulé par intention) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--t);font-weight:700;font-size:1rem;text-decoration:none;
+  border-radius:100px;padding:16px 30px;border:1px solid transparent;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s ease, border-color .3s ease;
+  position:relative;overflow:hidden;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn--plein{background:var(--aurore);color:#06231A}
+.btn--plein:hover{box-shadow:0 14px 40px -12px rgba(95,227,179,.45);transform:translateY(-2px)}
+.btn--ligne{border-color:var(--bord2);color:var(--txt)}
+.btn--ligne:hover{border-color:var(--aurore);transform:translateY(-2px)}
+@media (prefers-reduced-motion: no-preference){
+  .btn::after{content:'';position:absolute;top:0;bottom:0;left:-70%;width:45%;transform:skewX(-18deg);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+    transition:left .55s ease;pointer-events:none}
+  .btn:hover::after{left:120%}
+}
+
+/* ---------- Navigation ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s ease, border-color .35s ease}
+.nav__int{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.nav--fond{background:rgba(10,18,32,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--bord)}
+@media (prefers-reduced-transparency: reduce){ .nav--fond{background:var(--nuit)} }
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:var(--t);font-weight:800;
+  font-size:1.14rem;letter-spacing:.01em}
+.logo svg{width:30px;height:30px;flex:0 0 auto}
+.nav__liens{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav__liens a{text-decoration:none;color:var(--txt2);font-weight:500;font-size:.96rem;transition:color .25s}
+.nav__liens a:hover{color:var(--aurore2)}
+.nav .btn{padding:11px 22px;font-size:.92rem}
+@media (max-width: 860px){ .nav__liens{display:none} }
+
+/* ---------- Héros ---------- */
+.heros{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;
+  background:linear-gradient(180deg,#060B14 0%, #0A1220 46%, #0C1626 100%)}
+.ciel{position:absolute;inset:0;z-index:0}
+.ciel canvas{width:100%;height:100%}
+/* Repli sans WebGL / mouvement réduit : aurore peinte en dégradés, immobile */
+.ciel--calme{background:
+  radial-gradient(58% 34% at 68% 30%, rgba(95,227,179,.32), transparent 70%),
+  radial-gradient(42% 26% at 34% 22%, rgba(127,184,216,.2), transparent 72%),
+  radial-gradient(30% 18% at 82% 18%, rgba(159,240,208,.16), transparent 75%)}
+.foret{position:absolute;inset:auto 0 0;z-index:1;pointer-events:none}
+.foret svg{width:100%;height:auto}
+.heros__int{position:relative;z-index:2;padding-block:110px 150px}
+.heros__txt{max-width:760px}
+.heros h1{margin-bottom:18px}
+.heros h1 .ligne{display:block}
+.heros__sous{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--txt2);max-width:46ch;margin-bottom:34px}
+.heros__cta{display:flex;gap:14px;flex-wrap:wrap}
+.voile-bas{position:absolute;inset:auto 0 0;height:140px;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,transparent,var(--nuit))}
+
+/* ---------- Rituel thermique (épinglé au défilement sur grand écran) ---------- */
+.rituel{background:var(--nuit)}
+.rituel__scene{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding-block:90px 60px;position:relative}
+.rituel__tete{max-width:56ch;margin-bottom:clamp(26px,4vh,52px)}
+.rituel__corps{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:center}
+.thermo{font-family:var(--t);font-weight:800;font-size:clamp(4.6rem,11vw,9.5rem);line-height:1;
+  letter-spacing:-.04em;display:flex;align-items:baseline;gap:8px}
+.thermo small{font-size:.32em;font-weight:700;color:var(--txt2);letter-spacing:0}
+.phases{position:relative;min-height:240px}
+.phase{position:absolute;inset:0}
+.phase h3{font-size:clamp(1.5rem,2.6vw,2.1rem);margin-bottom:12px}
+.phase p{color:var(--txt2);max-width:44ch}
+.phase__no{display:inline-block;font-family:var(--t);font-weight:700;font-size:.95rem;color:var(--aurore);
+  border:1px solid var(--bord2);border-radius:100px;padding:5px 14px;margin-bottom:16px}
+.jauges{display:flex;gap:10px;margin-top:26px}
+.jauge{width:44px;height:4px;border-radius:2px;background:var(--nuit3);overflow:hidden}
+.jauge i{display:block;height:100%;width:0;background:var(--aurore);border-radius:2px}
+/* Version mobile / mouvement réduit : trois cartes empilées, aucune superposition */
+.rituel--fixe .rituel__scene{min-height:0;padding-block:0}
+.rituel--fixe .rituel__corps{grid-template-columns:1fr}
+.rituel--fixe .phases{position:static;min-height:0;display:grid;gap:18px}
+.rituel--fixe .phase{position:static;background:var(--nuit2);border:1px solid var(--bord);
+  border-radius:18px;padding:28px}
+.rituel--fixe .thermo,.rituel--fixe .jauges{display:none}
+
+/* ---------- Installations (bento) ---------- */
+.bento{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,auto)}
+.cellule{background:var(--nuit2);border:1px solid var(--bord);border-radius:18px;padding:26px;
+  position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
+  transition:transform .35s var(--ease), border-color .3s ease, box-shadow .35s var(--ease)}
+.cellule:hover{transform:translateY(-4px);border-color:var(--bord2);
+  box-shadow:0 18px 44px -18px rgba(95,227,179,.25)}
+.cellule h3{margin-bottom:6px}
+.cellule p{color:var(--txt2);font-size:.94rem;margin:0;max-width:38ch}
+.cellule--sauna{grid-column:span 2;grid-row:span 2;justify-content:flex-end;min-height:340px}
+.cellule--bassins{grid-column:span 2;background:linear-gradient(160deg,rgba(127,184,216,.14),rgba(14,24,40,.6)),var(--nuit2)}
+.cellule--chute{background:linear-gradient(180deg,rgba(95,227,179,.12),transparent 55%),var(--nuit2)}
+.cellule--yourte{}
+.cellule--foyers{background:linear-gradient(170deg,rgba(232,149,107,.13),transparent 60%),var(--nuit2)}
+.cellule--masso{}
+.cellule .scene{position:absolute;inset:0;z-index:0;opacity:.9;pointer-events:none}
+.cellule .scene ~ *{position:relative;z-index:1}
+@media (max-width: 980px){
+  .bento{grid-template-columns:1fr 1fr}
+  .cellule--sauna{grid-column:span 2;grid-row:auto;min-height:280px}
+  .cellule--bassins{grid-column:span 2}
+}
+@media (max-width: 620px){
+  .bento{grid-template-columns:1fr}
+  .cellule,.cellule--sauna,.cellule--bassins{grid-column:auto;min-height:0}
+  .cellule--sauna{min-height:240px}
+}
+
+/* ---------- La nuit ---------- */
+.nuit{background:linear-gradient(180deg,var(--nuit) 0%, #060B14 30%, #060B14 70%, var(--nuit) 100%);
+  overflow:hidden;position:relative}
+.nuit__etoiles{position:absolute;inset:0;pointer-events:none;opacity:.85}
+.nuit__int{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(30px,5vw,80px);align-items:center}
+.nuit__soir{border:1px solid var(--bord);border-radius:18px;padding:30px;background:rgba(14,24,40,.55);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+@media (prefers-reduced-transparency: reduce){ .nuit__soir{background:var(--nuit2)} }
+.nuit__soir ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.nuit__soir li{display:flex;gap:12px;align-items:flex-start;color:var(--txt2);font-size:.97rem}
+.nuit__soir li svg{width:17px;height:17px;flex:0 0 auto;margin-top:5px;color:var(--aurore)}
+@media (max-width: 900px){ .nuit__int{grid-template-columns:1fr} }
+
+/* ---------- Forfaits ---------- */
+.forfaits{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
+.forfait{background:var(--nuit2);border:1px solid var(--bord);border-radius:18px;padding:clamp(26px,3vw,36px);
+  display:flex;flex-direction:column;position:relative;
+  transition:transform .35s var(--ease), border-color .3s ease, box-shadow .35s var(--ease)}
+.forfait:hover{transform:translateY(-5px);border-color:var(--bord2);
+  box-shadow:0 20px 50px -20px rgba(95,227,179,.3)}
+.forfait--vedette{border-color:rgba(95,227,179,.5);
+  background:linear-gradient(165deg,rgba(95,227,179,.1),rgba(127,184,216,.06)),var(--nuit2)}
+.forfait__ruban{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  font-family:var(--t);font-weight:700;font-size:.78rem;letter-spacing:.04em;white-space:nowrap;
+  background:var(--aurore);color:#06231A;border-radius:100px;padding:6px 16px}
+.forfait h3{margin-bottom:4px}
+.forfait__duree{color:var(--txt3);font-size:.92rem;margin-bottom:14px}
+.forfait__prix{font-family:var(--t);font-weight:800;font-size:clamp(2.4rem,3.6vw,3.2rem);line-height:1;
+  color:var(--aurore2);margin-bottom:18px}
+.forfait__prix span{font-size:.4em;font-weight:700;color:var(--txt2)}
+.forfait ul{list-style:none;margin:0;padding:18px 0 0;border-top:1px solid var(--bord);
+  display:grid;gap:11px;flex:1}
+.forfait li{display:flex;gap:10px;font-size:.94rem;color:var(--txt2)}
+.forfait li svg{width:15px;height:15px;flex:0 0 auto;margin-top:5px;color:var(--aurore)}
+.forfaits__note{margin-top:22px;color:var(--txt3);font-size:.92rem}
+@media (max-width: 940px){ .forfaits{grid-template-columns:1fr;max-width:520px;margin-inline:auto} }
+
+/* ---------- Témoignage ---------- */
+.temoin{text-align:center}
+.temoin blockquote{margin:0 auto;max-width:44ch;font-family:var(--t);font-weight:600;
+  font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.4;letter-spacing:-.01em}
+.temoin figcaption{margin-top:20px;color:var(--txt2)}
+.temoin figcaption b{color:var(--txt);font-weight:600}
+
+/* ---------- Infos pratiques ---------- */
+.infos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.info{background:var(--nuit2);border:1px solid var(--bord);border-radius:18px;padding:28px}
+.info h3{font-size:1.05rem;margin-bottom:12px;color:var(--aurore2)}
+.info ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;color:var(--txt2);font-size:.95rem}
+.info li{display:flex;justify-content:space-between;gap:14px}
+.info li span:last-child{color:var(--txt);font-weight:500;text-align:right}
+.info p{color:var(--txt2);font-size:.95rem;margin:0}
+@media (max-width: 900px){ .infos{grid-template-columns:1fr;max-width:520px;margin-inline:auto} }
+
+/* ---------- Appel final ---------- */
+.final{position:relative;overflow:hidden;text-align:center;
+  background:linear-gradient(180deg,var(--nuit),#0C1A2E)}
+.final::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50% 42% at 50% 108%, rgba(95,227,179,.2), transparent 70%)}
+.final__int{position:relative;max-width:660px;margin-inline:auto}
+.final .btn{margin-top:8px}
+.final__tel{margin-top:18px;color:var(--txt2)}
+.final__tel a{color:var(--aurore2);text-decoration:none;font-weight:600}
+.final__tel a:hover{text-decoration:underline}
+
+/* ---------- Pied de page ---------- */
+.pied{border-top:1px solid var(--bord);padding:34px 0 96px;color:var(--txt3);font-size:.9rem}
+.pied__int{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.pied a{color:var(--txt2)}
+
+/* ---------- Bandeau démo Vaelor ---------- */
+.demo-bandeau{position:fixed;inset:auto 0 0;z-index:60;background:linear-gradient(90deg,#12D8C5,#4FA6FF,#7C5CFF);
+  color:#080812;font-size:.9rem;font-weight:500;padding:11px 16px;text-align:center}
+.demo-bandeau a{color:#080812;font-weight:700}
+
+/* Les éléments animés restent visibles par défaut : le moteur ne fait que les
+   rehausser. Aucune opacité 0 en CSS, jamais de page blanche si un script échoue. */
+</style>
+</head>
+<body>
+
+<!-- Sentinelle : sert à l'observateur qui opacifie la barre de navigation -->
+<div id="haut-sentinelle" aria-hidden="true" style="position:absolute;top:0;height:60px;width:1px"></div>
+
+<header class="nav" id="nav">
+  <div class="env nav__int">
+    <a class="logo" href="#" aria-label="Halte Boréale, retour en haut">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 3 6 21h7l-3 8L26 14h-8l4-11Z" fill="#5FE3B3"/>
+      </svg>
+      Halte Boréale
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul class="nav__liens">
+        <li><a href="#rituel">Le rituel</a></li>
+        <li><a href="#installations">Les installations</a></li>
+        <li><a href="#forfaits">Forfaits</a></li>
+        <li><a href="#infos">Infos</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--plein" href="#reserver">Réserver ma soirée</a>
+  </div>
+</header>
+
+<!-- ===================== HÉROS ===================== -->
+<section class="heros" id="haut">
+  <div class="ciel" id="ciel" aria-hidden="true"></div>
+  <div class="foret" aria-hidden="true">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice">
+      <g fill="#0B1522" opacity=".85" id="foret-loin">
+        <path d="M0 200V150l40-52 38 52 26-34 30 40 44-70 40 62 30-38 36 48 50-80 46 74 28-36 34 44 52-84 48 78 26-32 32 40 46-72 42 66 30-38 38 48 48-76 44 70 28-34 36 44 50-80 46 74 30-38 36 46 42-66 40 62V200Z"/>
+      </g>
+      <g fill="#071019" id="foret-pres">
+        <path d="M0 200v-38l30-44 28 40 20-26 24 32 34-56 32 50 22-28 28 36 38-64 36 60 20-26 26 32 40-68 38 64 20-26 26 34 36-60 34 56 22-28 28 36 38-64 36 60 22-28 26 34 40-66 36 62 22-28 28 36 34-56 32 52 24-30 26 34V200Z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="voile-bas" aria-hidden="true"></div>
+  <div class="env heros__int">
+    <div class="heros__txt">
+      <h1><span class="ligne">L'hiver devient</span><span class="ligne accent">un rituel.</span></h1>
+      <p class="heros__sous">Sauna finlandais, chute froide et silence sous les étoiles,
+        à 40 minutes de Montréal.</p>
+      <div class="heros__cta">
+        <a class="btn btn--plein" href="#reserver" data-magnetique>Réserver ma soirée</a>
+        <a class="btn btn--ligne" href="#rituel">Découvrir le rituel</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LE RITUEL (épinglé sur grand écran) ===================== -->
+<section class="sec rituel" id="rituel">
+  <div class="env rituel__scene">
+    <div class="rituel__tete">
+      <h2>Trois températures.<br><span class="accent">Un seul but : tout relâcher.</span></h2>
+      <p class="plomb">Le cycle thermique se répète trois fois. Chaque tour est plus
+        facile que le précédent, et le sommeil qui suit ne ressemble à rien d'autre.</p>
+    </div>
+    <div class="rituel__corps">
+      <div>
+        <div class="thermo" aria-hidden="true"><span id="thermo-val">85</span><small>°C</small></div>
+        <div class="jauges" aria-hidden="true">
+          <span class="jauge"><i id="jauge-1"></i></span>
+          <span class="jauge"><i id="jauge-2"></i></span>
+          <span class="jauge"><i id="jauge-3"></i></span>
+        </div>
+      </div>
+      <div class="phases" id="phases">
+        <article class="phase" id="phase-1">
+          <span class="phase__no">1 · Le chaud</span>
+          <h3>Quinze minutes de sauna</h3>
+          <p>Le bois d'épinette, la vapeur sur les pierres, la chaleur qui descend
+            dans les épaules. Le corps monte à 85 °C et les pensées ralentissent.</p>
+        </article>
+        <article class="phase" id="phase-2">
+          <span class="phase__no">2 · Le froid</span>
+          <h3>Dix secondes de courage</h3>
+          <p>La chute nordique à 12 °C. Le souffle coupe, le cœur repart, la peau
+            picote. C'est le moment que tout le monde redoute, puis redemande.</p>
+        </article>
+        <article class="phase" id="phase-3">
+          <span class="phase__no">3 · Le repos</span>
+          <h3>Le calme fait le travail</h3>
+          <p>Enroulé dans une couverture près du foyer, le corps revient doucement
+            à 36,9 °C. C'est là que la détente réelle commence.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LES INSTALLATIONS ===================== -->
+<section class="sec" id="installations">
+  <div class="env">
+    <h2>Un domaine pensé pour <span class="accent">le silence</span></h2>
+    <p class="plomb" style="margin-bottom:36px">Six espaces répartis dans la forêt,
+      reliés par des sentiers chauffés. On circule en peignoir, sans se presser.</p>
+    <div class="bento">
+      <article class="cellule cellule--sauna">
+        <div class="scene" aria-hidden="true">
+          <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+            <rect width="600" height="400" fill="#0E1828"/>
+            <rect x="0" y="250" width="600" height="150" fill="#0B1522"/>
+            <g stroke="#1E3A50" stroke-width="3" opacity=".8">
+              <line x1="60" y1="250" x2="60" y2="400"/><line x1="140" y1="250" x2="140" y2="400"/>
+              <line x1="220" y1="250" x2="220" y2="400"/><line x1="300" y1="250" x2="300" y2="400"/>
+              <line x1="380" y1="250" x2="380" y2="400"/><line x1="460" y1="250" x2="460" y2="400"/>
+              <line x1="540" y1="250" x2="540" y2="400"/>
+            </g>
+            <rect x="120" y="90" width="360" height="160" rx="10" fill="#142236"/>
+            <rect x="150" y="120" width="120" height="100" rx="6" fill="#5FE3B3" opacity=".2"/>
+            <rect x="300" y="120" width="150" height="100" rx="6" fill="#7FB8D8" opacity=".12"/>
+            <ellipse cx="300" cy="330" rx="180" ry="26" fill="#5FE3B3" opacity=".07"/>
+            <g fill="#9FF0D0" opacity=".5">
+              <circle cx="90" cy="60" r="1.6"/><circle cx="210" cy="40" r="1.2"/><circle cx="340" cy="55" r="1.5"/>
+              <circle cx="470" cy="38" r="1.2"/><circle cx="540" cy="70" r="1.7"/><circle cx="40" cy="110" r="1.2"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Le sauna panoramique</h3>
+        <p>Un mur entier de verre donne sur la rivière gelée. 85 °C dedans, la forêt dehors.</p>
+      </article>
+      <article class="cellule cellule--bassins">
+        <h3>Les bassins chauds</h3>
+        <p>Deux bassins extérieurs à 39 °C, ouverts jusqu'à 23 h les week-ends.</p>
+      </article>
+      <article class="cellule cellule--chute">
+        <h3>La chute nordique</h3>
+        <p>Eau de source à 12 °C. Dix secondes suffisent.</p>
+      </article>
+      <article class="cellule cellule--yourte">
+        <h3>La yourte de repos</h3>
+        <p>Hamacs, tisanes et chuchotements seulement.</p>
+      </article>
+      <article class="cellule cellule--foyers">
+        <h3>Les foyers extérieurs</h3>
+        <p>Quatre feux entretenus du matin au soir.</p>
+      </article>
+      <article class="cellule cellule--masso">
+        <h3>La massothérapie</h3>
+        <p>Suédois, deep tissue ou pierres chaudes, en cabine simple ou double.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LA NUIT ===================== -->
+<section class="sec nuit" id="nuit">
+  <div class="nuit__etoiles" aria-hidden="true">
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+      <g fill="#EDF4F5" id="etoiles-1" opacity=".8">
+        <circle cx="120" cy="80" r="1.4"/><circle cx="340" cy="140" r="1.1"/><circle cx="520" cy="60" r="1.6"/>
+        <circle cx="760" cy="110" r="1.2"/><circle cx="980" cy="70" r="1.5"/><circle cx="1200" cy="130" r="1.1"/>
+        <circle cx="1380" cy="90" r="1.4"/><circle cx="200" cy="240" r="1.2"/><circle cx="640" cy="220" r="1.3"/>
+        <circle cx="1100" cy="250" r="1.4"/><circle cx="880" cy="320" r="1.1"/><circle cx="420" cy="330" r="1.2"/>
+      </g>
+      <g fill="#9FF0D0" id="etoiles-2" opacity=".6">
+        <circle cx="260" cy="60" r="1.1"/><circle cx="580" cy="170" r="1.3"/><circle cx="840" cy="50" r="1.1"/>
+        <circle cx="1060" cy="180" r="1.2"/><circle cx="1300" cy="220" r="1.3"/><circle cx="80" cy="180" r="1.1"/>
+        <circle cx="1420" cy="300" r="1.2"/><circle cx="700" cy="290" r="1.1"/>
+      </g>
+    </svg>
+  </div>
+  <div class="env nuit__int">
+    <div>
+      <h2>Le soir, la forêt<br><span class="accent">change de registre</span></h2>
+      <p class="plomb">Dès la brunante, l'éclairage tombe à la lueur des feux et des
+        lanternes. Par nuit claire, loin des lumières de la ville, il arrive que le
+        ciel s'en mêle. Les habitués visent les soirées froides de janvier.</p>
+      <p class="plomb">Le jeudi, c'est la soirée silence : aucune conversation sur
+        tout le site, de 18 h à la fermeture.</p>
+    </div>
+    <aside class="nuit__soir">
+      <h3 style="margin-bottom:18px">Les soirées, en pratique</h3>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Bassins et sauna ouverts jusqu'à 23 h, du vendredi au dimanche</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Lanternes et sentiers chauffés entre chaque installation</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Chocolat chaud et bouillon servis au chalet jusqu'à la fermeture</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Jeudi silence : on chuchote au vestiaire, puis plus un mot</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- ===================== FORFAITS ===================== -->
+<section class="sec" id="forfaits">
+  <div class="env">
+    <h2>Trois façons de <span class="accent">décrocher</span></h2>
+    <p class="plomb">Serviettes, peignoir et casier compris dans tous les forfaits.
+      L'accès est limité en nombre : on ne vend jamais plus de places qu'il n'y a de
+      chaises longues.</p>
+    <div class="forfaits">
+      <article class="forfait">
+        <h3>Passage</h3>
+        <p class="forfait__duree">3 heures, en journée</p>
+        <p class="forfait__prix">58 <span>$</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Accès complet aux bains, sauna et aires de repos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Serviettes, peignoir et casier fournis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tisanes et eau citronnée à volonté</li>
+        </ul>
+      </article>
+      <article class="forfait forfait--vedette">
+        <span class="forfait__ruban">Le préféré des habitués</span>
+        <h3>Crépuscule</h3>
+        <p class="forfait__duree">De 16 h à la fermeture</p>
+        <p class="forfait__prix">88 <span>$</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tout le forfait Passage, sans limite de temps le soir</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Les bassins sous les étoiles, jusqu'à 23 h les week-ends</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bouillon du soir servi au chalet, compris</li>
+        </ul>
+      </article>
+      <article class="forfait">
+        <h3>Rituel signature</h3>
+        <p class="forfait__duree">La journée entière</p>
+        <p class="forfait__prix">148 <span>$</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Accès du matin à la fermeture, sans restriction</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Massage suédois de 60 minutes compris</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Assiette nordique du chalet comprise le midi</li>
+        </ul>
+      </article>
+    </div>
+    <p class="forfaits__note">Prix par personne, taxes en sus. Réservation fortement
+      recommandée les week-ends d'hiver.</p>
+  </div>
+</section>
+
+<!-- ===================== TÉMOIGNAGE ===================== -->
+<section class="sec temoin">
+  <div class="env">
+    <figure>
+      <blockquote>« On est arrivés stressés, on est repartis en silence.
+        Trois heures qui valent une semaine de vacances. »</blockquote>
+      <figcaption><b>Marie-Ève Lachapelle</b><br>Rosemère, abonnée depuis deux hivers</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== INFOS PRATIQUES ===================== -->
+<section class="sec" id="infos" style="padding-top:0">
+  <div class="env">
+    <h2 style="margin-bottom:30px">Avant de venir</h2>
+    <div class="infos">
+      <div class="info">
+        <h3>Horaires</h3>
+        <ul>
+          <li><span>Lundi au jeudi</span><span>10 h à 22 h</span></li>
+          <li><span>Vendredi au dimanche</span><span>9 h à 23 h</span></li>
+          <li><span>Jeudi silence</span><span>dès 18 h</span></li>
+          <li><span>Fêtes et tempêtes</span><span>voir nos réseaux</span></li>
+        </ul>
+      </div>
+      <div class="info">
+        <h3>S'y rendre</h3>
+        <p>2180, chemin de la Rivière, Val-David. À 8 minutes du village, sortie 76
+          de l'autoroute 15. Stationnement gratuit, navette depuis la gare
+          d'autobus les samedis.</p>
+      </div>
+      <div class="info">
+        <h3>Les règles de la maison</h3>
+        <ul style="display:grid;gap:9px">
+          <li><span>Âge minimum</span><span>16 ans</span></li>
+          <li><span>Maillot de bain</span><span>requis</span></li>
+          <li><span>Téléphones</span><span>au casier</span></li>
+          <li><span>Voix</span><span>chuchotée</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== APPEL FINAL ===================== -->
+<section class="sec final" id="reserver">
+  <div class="env final__int">
+    <h2>Le froid ne s'explique pas.<br><span class="accent">Il s'essaie.</span></h2>
+    <p class="plomb" style="margin-inline:auto">Choisissez votre soirée, on garde
+      votre chaise longue près du feu.</p>
+    <a class="btn btn--plein" href="tel:+18195550114" data-magnetique>Réserver ma soirée</a>
+    <p class="final__tel">ou appelez-nous : <a href="tel:+18195550114">819 555-0114</a></p>
+  </div>
+</section>
+
+<footer class="pied">
+  <div class="env pied__int">
+    <span>© 2026 Halte Boréale. Entreprise fictive créée en exemple.</span>
+    <span>Site conçu par <a href="https://vaelordesign.com" target="_blank" rel="noopener">Vaelor Design</a></span>
+  </div>
+</footer>
+
+<div class="demo-bandeau">
+  ✨ Exemple du forfait <strong>Prestige</strong> par
+  <a href="https://vaelordesign.com/#tarifs" target="_blank" rel="noopener">Vaelor Design</a> ·
+  cette entreprise est fictive.
+</div>
+
+<script>
+/* ===== Halte Boréale · moteur Prestige ====================================
+   Vanilla + GSAP 3.12.5 + Three.js 0.160.0 (CDN épinglés, comme vaelordesign.com).
+   Règles héritées des pièges mesurés du carnet Vaelor :
+   - tout est coupé si prefers-reduced-motion: reduce (repli 100 % statique) ;
+   - rien n'est masqué par le CSS : si un script échoue, la page reste entière ;
+   - épinglage et rotations en perspective : grand écran + souris fine seulement ;
+   - boucle de rendu en pause quand le héros sort de l'écran ou l'onglet se cache. */
+(function(){
+  'use strict';
+  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ciel = document.getElementById('ciel');
+
+  /* --- Barre de navigation : fond opaque dès qu'on quitte le sommet --- */
+  var nav = document.getElementById('nav');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      nav.classList.toggle('nav--fond', !es[0].isIntersecting);
+    }).observe(document.getElementById('haut-sentinelle'));
+  }else{
+    nav.classList.add('nav--fond');
+  }
+
+  /* --- Mouvement réduit : aurore peinte, aucune bibliothèque chargée --- */
+  if(reduit){ ciel.classList.add('ciel--calme'); document.body.classList.add('rituel--fixe'); return; }
+
+  var grandEcran = window.matchMedia('(min-width: 981px) and (pointer: fine)').matches;
+  var mobile = !grandEcran;
+
+  /* --- Chargement gardé des bibliothèques (repli : page statique intacte) --- */
+  function charger(src){
+    return new Promise(function(res, rej){
+      var s = document.createElement('script');
+      s.src = src; s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+  }
+  var garde = setTimeout(function(){ ciel.classList.add('ciel--calme'); }, 2500);
+
+  /* ---------- 1. L'aurore boréale (Three.js, nuanceur maison) ---------- */
+  function lancerAurore(){
+    if(!window.THREE){ ciel.classList.add('ciel--calme'); return; }
+    var rendu;
+    try{
+      rendu = new THREE.WebGLRenderer({ alpha:true, antialias:false, powerPreference:'low-power' });
+    }catch(e){ ciel.classList.add('ciel--calme'); return; }
+    rendu.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1 : 1.5));
+    rendu.setSize(ciel.clientWidth, ciel.clientHeight);
+    ciel.appendChild(rendu.domElement);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    var uniforms = {
+      uTime:{ value:0 }, uRatio:{ value: ciel.clientWidth / ciel.clientHeight },
+      uDerive:{ value:0 }, uDetail:{ value: mobile ? 3.0 : 5.0 }
+    };
+    var mat = new THREE.ShaderMaterial({
+      transparent:true, depthWrite:false, uniforms:uniforms,
+      vertexShader:
+        'varying vec2 vUv;'+
+        'void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
+      fragmentShader:
+        'precision highp float; varying vec2 vUv;'+
+        'uniform float uTime; uniform float uRatio; uniform float uDerive; uniform float uDetail;'+
+        'float hache(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }'+
+        'float bruit(vec2 p){ vec2 i = floor(p); vec2 f = fract(p); f = f*f*(3.0-2.0*f);'+
+        '  return mix(mix(hache(i), hache(i+vec2(1,0)), f.x),'+
+        '             mix(hache(i+vec2(0,1)), hache(i+vec2(1,1)), f.x), f.y); }'+
+        'float fbm(vec2 p){ float v = 0.0; float a = 0.55;'+
+        '  for(int k = 0; k < 5; k++){ if(float(k) >= uDetail) break;'+
+        '    v += a * bruit(p); p *= 2.05; a *= 0.5; } return v; }'+
+        'void main(){'+
+        '  vec2 uv = vUv; vec3 col = vec3(0.0); float t = uTime * 0.045;'+
+        /* étoiles scintillantes, moitié haute seulement */
+        '  vec2 sp = uv * vec2(140.0 * uRatio, 84.0); vec2 id = floor(sp);'+
+        '  float h = hache(id);'+
+        '  if(h > 0.994 && uv.y > 0.42){'+
+        '    float d = length(fract(sp) - 0.5);'+
+        '    float sc = 0.55 + 0.45 * sin(uTime * (0.8 + h * 2.4) + h * 41.0);'+
+        '    col += vec3(0.92, 0.96, 1.0) * smoothstep(0.32, 0.0, d) * sc * 0.85; }'+
+        /* trois rideaux d'aurore */
+        '  for(int i = 0; i < 3; i++){ float fi = float(i);'+
+        '    float x = uv.x * (1.5 + fi * 0.35) + fi * 1.73 + t * (0.5 + fi * 0.22) + uDerive * (0.12 + fi * 0.05);'+
+        '    float crete = fbm(vec2(x, fi * 3.17));'+
+        '    float base = 0.52 + 0.20 * crete + fi * 0.055;'+
+        '    float d = uv.y - base;'+
+        '    float rideau = exp(-abs(d) * (10.0 - fi * 2.2)) * smoothstep(-0.34, 0.06, d);'+
+        '    float danse = 0.72 + 0.28 * sin(uTime * 0.6 + fi * 2.1 + crete * 7.0);'+
+        '    vec3 teinte = mix(vec3(0.11, 0.78, 0.55), vec3(0.09, 0.48, 0.66), fi * 0.5);'+
+        '    teinte = mix(teinte, vec3(0.5, 0.94, 0.75), rideau * 0.45);'+
+        '    col += teinte * rideau * danse * 0.85; }'+
+        '  col *= smoothstep(0.02, 0.3, uv.y);'+ /* fondu vers la forêt */
+        '  float a = clamp(max(col.r, max(col.g, col.b)) * 1.1, 0.0, 1.0);'+
+        '  gl_FragColor = vec4(col, a); }'
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+    var horloge = new THREE.Clock();
+    var derive = 0, deriveCible = 0;
+    if(grandEcran){
+      window.addEventListener('pointermove', function(e){
+        deriveCible = (e.clientX / window.innerWidth - 0.5) * 2;
+      }, { passive:true });
+    }
+    var visible = true, cache = false;
+    new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }).observe(ciel);
+    document.addEventListener('visibilitychange', function(){ cache = document.hidden; });
+
+    rendu.setAnimationLoop(function(){
+      if(!visible || cache){ return; }
+      derive += (deriveCible - derive) * 0.03;
+      uniforms.uTime.value = horloge.getElapsedTime();
+      uniforms.uDerive.value = derive;
+      rendu.render(scene, camera);
+    });
+    window.addEventListener('resize', function(){
+      rendu.setSize(ciel.clientWidth, ciel.clientHeight);
+      uniforms.uRatio.value = ciel.clientWidth / ciel.clientHeight;
+    });
+  }
+
+  /* ---------- 2. La chorégraphie GSAP ---------- */
+  function lancerChoregraphie(){
+    if(!window.gsap || !window.ScrollTrigger){ document.body.classList.add('rituel--fixe'); return; }
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Entrée du héros : les deux lignes du titre montent, le sous-titre suit.
+       (Motivation : hiérarchie, l'œil arrive sur le titre puis descend.) */
+    gsap.from('.heros h1 .ligne', { yPercent:60, autoAlpha:0, duration:1.1, stagger:.14, ease:'power3.out', delay:.15 });
+    gsap.from('.heros__sous, .heros__cta', { y:26, autoAlpha:0, duration:.9, stagger:.12, ease:'power3.out', delay:.55 });
+
+    /* Parallaxe douce des deux plans de forêt pendant qu'on quitte le héros. */
+    gsap.to('#foret-loin', { yPercent:16, ease:'none',
+      scrollTrigger:{ trigger:'.heros', start:'top top', end:'bottom top', scrub:.6 } });
+    gsap.to('#foret-pres', { yPercent:7, ease:'none',
+      scrollTrigger:{ trigger:'.heros', start:'top top', end:'bottom top', scrub:.6 } });
+
+    /* Révélations générales : chaque section principale monte en entrant.
+       (Motivation : rythme de lecture, une chose à la fois.) */
+    gsap.utils.toArray('#installations .cellule, .forfait, .info').forEach(function(el, i){
+      gsap.from(el, { y:34, autoAlpha:0, duration:.8, ease:'power3.out',
+        delay:(i % 3) * .07,
+        scrollTrigger:{ trigger:el, start:'top 88%', once:true } });
+    });
+    gsap.from('.temoin blockquote', { y:24, autoAlpha:0, duration:1, ease:'power3.out',
+      scrollTrigger:{ trigger:'.temoin', start:'top 80%', once:true } });
+    gsap.utils.toArray('#etoiles-1, #etoiles-2').forEach(function(g, i){
+      gsap.to(g, { yPercent:(i + 1) * -6, ease:'none',
+        scrollTrigger:{ trigger:'.nuit', start:'top bottom', end:'bottom top', scrub:.8 } });
+    });
+
+    /* Le rituel thermique. Grand écran : section épinglée, le thermomètre
+       voyage 85° → 12° → 36,9° pendant que les trois phases se relaient.
+       (Motivation : raconter le cycle dans l'ordre où on le vit.) */
+    var mm = gsap.matchMedia();
+    mm.add('(min-width: 981px) and (pointer: fine)', function(){
+      var val = { t:85 };
+      var affiche = document.getElementById('thermo-val');
+      var phases = ['#phase-1', '#phase-2', '#phase-3'];
+      gsap.set('#phase-2, #phase-3', { autoAlpha:0, y:24 });
+      gsap.set('#jauge-1', { width:'100%' });
+
+      var tl = gsap.timeline({
+        scrollTrigger:{ trigger:'.rituel', start:'top top', end:'+=220%', pin:true, scrub:.6 },
+        defaults:{ ease:'none' }
+      });
+      tl.to(val, { t:12, duration:1, onUpdate:function(){ affiche.textContent = Math.round(val.t); } })
+        .to('#phase-1', { autoAlpha:0, y:-24, duration:.28 }, .12)
+        .to('#phase-2', { autoAlpha:1, y:0, duration:.3 }, .3)
+        .to('#jauge-2', { width:'100%', duration:.4 }, .3)
+        .to(val, { t:36.9, duration:1, onUpdate:function(){
+            affiche.textContent = (Math.round(val.t * 10) / 10).toLocaleString('fr-CA');
+          } }, 1.15)
+        .to('#phase-2', { autoAlpha:0, y:-24, duration:.28 }, 1.3)
+        .to('#phase-3', { autoAlpha:1, y:0, duration:.3 }, 1.5)
+        .to('#jauge-3', { width:'100%', duration:.4 }, 1.5);
+      return function(){};
+    });
+    mm.add('(max-width: 980px), (pointer: coarse)', function(){
+      document.body.classList.add('rituel--fixe');
+      gsap.utils.toArray('.rituel .phase').forEach(function(el){
+        gsap.from(el, { y:30, autoAlpha:0, duration:.7, ease:'power3.out',
+          scrollTrigger:{ trigger:el, start:'top 90%', once:true } });
+      });
+      return function(){ document.body.classList.remove('rituel--fixe'); };
+    });
+
+    /* Boutons magnétiques (souris fine seulement).
+       (Motivation : retour tactile, le bouton répond avant le clic.) */
+    if(grandEcran){
+      document.querySelectorAll('[data-magnetique]').forEach(function(b){
+        var qx = gsap.quickTo(b, 'x', { duration:.4, ease:'power3' });
+        var qy = gsap.quickTo(b, 'y', { duration:.4, ease:'power3' });
+        b.addEventListener('pointermove', function(e){
+          var r = b.getBoundingClientRect();
+          qx((e.clientX - r.left - r.width / 2) * .25);
+          qy((e.clientY - r.top - r.height / 2) * .35);
+        });
+        b.addEventListener('pointerleave', function(){ qx(0); qy(0); });
+      });
+    }
+  }
+
+  /* ---------- Démarrage ---------- */
+  Promise.all([
+    charger('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js'),
+    charger('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js')
+      .then(function(){ return charger('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js'); })
+  ]).then(function(){
+    clearTimeout(garde);
+    try{ lancerAurore(); }catch(e){ ciel.classList.add('ciel--calme'); }
+    try{ lancerChoregraphie(); }catch(e){ document.body.classList.add('rituel--fixe'); }
+  }).catch(function(){
+    clearTimeout(garde);
+    ciel.classList.add('ciel--calme');
+    document.body.classList.add('rituel--fixe');
+  });
+})();
+</script>
+</body>
+</html>
