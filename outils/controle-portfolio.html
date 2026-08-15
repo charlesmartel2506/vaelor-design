@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<title>Contrôle des démos-portfolio</title>
+<style>
+  body{background:#111;color:#eee;font:13px system-ui;margin:0;padding:10px}
+  .g{display:flex;flex-wrap:wrap;gap:8px}
+  figure{margin:0}
+  iframe{width:393px;height:620px;border:1px solid #333;background:#000}
+  figcaption{font-size:11px;color:#9cf;padding:3px 0}
+</style>
+</head>
+<body>
+<div class="g" id="g"></div>
+<script>
+  window.DEMOS = ['maison-cavelier','clinique-aubery','verdal-paysagement',
+                  'garage-metrik','studio-halona','halte-boreale'];
+  document.getElementById('g').innerHTML = window.DEMOS.map(function(n){
+    return '<figure><iframe src="../demos/'+n+'/" loading="eager"></iframe>'+
+           '<figcaption>'+n+'</figcaption></figure>';
+  }).join('');
+</script>
+</body>
+</html>
