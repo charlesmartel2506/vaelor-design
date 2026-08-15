@@ -11,6 +11,7 @@
 <meta property="og:locale" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#101215">
+<link rel="preload" as="image" href="images/heros.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -90,7 +91,18 @@ body{overflow-wrap:break-word}
 
 /* Héros */
 .hero{position:relative;overflow:hidden;background:var(--noir2);border-bottom:1px solid var(--bord)}
-.hero__art{position:absolute;inset:0;z-index:0}
+.hero__art{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero__art img{width:100%;height:100%;object-fit:cover}
+.hero__voile{position:absolute;inset:0;z-index:1;background:linear-gradient(96deg,
+  rgba(16,18,21,.97) 0%,rgba(16,18,21,.92) 38%,rgba(16,18,21,.66) 70%,rgba(16,18,21,.42) 100%)}
+@media(max-width:880px){.hero__voile{background:linear-gradient(180deg,
+  rgba(16,18,21,.94) 0%,rgba(16,18,21,.88) 55%,rgba(16,18,21,.80) 100%)}}
+/* Bande pleine largeur : l'atelier en vrai, entre deux sections. */
+.bande-photo{position:relative;height:clamp(240px,32vw,400px);overflow:hidden;border-block:1px solid var(--bord)}
+.bande-photo img{width:100%;height:100%;object-fit:cover}
+.bande-photo__t{position:absolute;inset:auto 0 0 0;z-index:2;padding:clamp(20px,4vw,38px);
+  background:linear-gradient(0deg,rgba(16,18,21,.94),transparent);
+  font-family:var(--t);font-size:clamp(1.1rem,2.4vw,1.7rem);letter-spacing:.04em;text-transform:uppercase;color:var(--blanc)}
 .hero__g{position:relative;z-index:2;padding-block:clamp(56px,8vw,110px);max-width:660px}
 .hero h1{margin-bottom:20px}
 .hero__act{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
@@ -232,22 +244,9 @@ body{overflow-wrap:break-word}
 <!-- HÉROS -->
 <section class="hero">
   <div class="hero__art" aria-hidden="true">
-    <svg viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
-      <rect width="1440" height="700" fill="#171A1F"/>
-      <path d="M860 0h580v700H700Z" fill="#FF6A1A" opacity=".13"/>
-      <path d="M1010 0h430v700H870Z" fill="#FF6A1A" opacity=".1"/>
-      <!-- silhouette de voiture -->
-      <g opacity=".28">
-        <path d="M900 470h420c14 0 22-10 20-24l-14-72c-4-20-18-32-38-36l-70-14-52-42c-12-10-26-14-42-14h-104c-18 0-34 8-44 22l-40 54-52 14c-18 4-30 18-30 36v54c0 12 8 22 20 22h26Z" fill="#FF6A1A"/>
-        <circle cx="990" cy="470" r="52" fill="#101215"/><circle cx="990" cy="470" r="26" fill="#FF6A1A"/>
-        <circle cx="1260" cy="470" r="52" fill="#101215"/><circle cx="1260" cy="470" r="26" fill="#FF6A1A"/>
-      </g>
-      <!-- grille technique -->
-      <g stroke="#FF6A1A" stroke-opacity=".08" stroke-width="1">
-        <path d="M0 100h1440M0 200h1440M0 300h1440M0 400h1440M0 500h1440M0 600h1440"/>
-        <path d="M120 0v700M240 0v700M360 0v700M480 0v700M600 0v700"/>
-      </g>
-    </svg>
+    <img class="v3-photo" src="images/heros.jpg" alt="" fetchpriority="high">
+    <div class="hero__voile"></div>
+    <div data-vfond='{"motif":"grille","couleur":"#FF6A1A","couleur2":"#FFA678","opacite":0.42,"dessous":false}'></div>
   </div>
   <div class="env hero__g">
     <span class="sur">Mécanique générale · Anjou</span>
@@ -258,7 +257,7 @@ body{overflow-wrap:break-word}
       votre accord. C'est notre seule règle, et elle n'a jamais changé en 22 ans.
     </p>
     <div class="hero__act">
-      <a class="btn btn--plein" href="#rdv">
+      <a class="btn btn--plein btn--magn" href="#rdv">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
         Prendre rendez-vous
       </a>
@@ -366,6 +365,11 @@ body{overflow-wrap:break-word}
 </section>
 
 <!-- PROMESSE -->
+<div class="bande-photo">
+  <img class="v3-photo-bande" src="images/atelier.jpg" alt="Un mécanicien de Métrik au travail sur un moteur" loading="lazy">
+  <div class="bande-photo__t">Six baies, cinq mécaniciens, aucune sous-traitance.</div>
+</div>
+
 <section class="sec prom" id="promesse">
   <div class="env">
     <div class="centre rev" style="max-width:640px;margin-bottom:40px">
@@ -613,5 +617,167 @@ body{overflow-wrap:break-word}
   }
 })();
 </script>
+<!-- MARQUE-KIT-NIVEAU-3 -->
+<style>:root{--v3-a:#FF6A1A;--v3-b:#FFA678;--v3-lueur:rgba(255,106,26,.14);--v3-bord:rgba(42,48,58,1)}</style>
+<!--
+  Vaelor Design · KIT D'ANIMATIONS NIVEAU 3 — v1.0 (14 août 2026)
+  ============================================================================
+  Ce qui s'ajoute au kit niveau 2 (cascade, compteurs, reflet de bouton) :
+
+    1. FOND ANIMÉ en canvas .................. voir outils/fond-anime.js
+    2. PHOTO DE HÉROS VIVANTE ................ Ken Burns + parallaxe au défilement
+    3. RÉVÉLATION PAR VOLET .................. le texte se découvre derrière un rideau
+    4. IMAGE QUI S'OUVRE ..................... clip-path au défilement
+    5. BARRE DE LECTURE ...................... progression fine en haut de page
+    6. BOUTON MAGNÉTIQUE ..................... le bouton vient vers le curseur
+    7. BANDEAU DÉFILANT ...................... marquee CSS pur, aucune image
+    8. SOULIGNÉ QUI SE TRACE ................. sur les liens de navigation
+    9. LUEUR QUI SUIT LA SOURIS .............. sur les cartes (grand écran)
+
+  TOUT est CSS + JS vanille : ça se colle dans un widget « HTML » d'Elementor
+  gratuit, sans plugin, sans CDN, sans jQuery.
+
+  RÈGLES QUI NE SE NÉGOCIENT PAS
+  ------------------------------
+  · Chaque effet est INACTIF si `prefers-reduced-motion: reduce`.
+  · Rien n'est masqué par défaut en CSS seul : si le JS ne s'exécute pas, la page
+    reste entièrement lisible (piège déjà payé, carnet §14).
+  · Aucune rotation en perspective sur téléphone (elle élargit la boîte englobante
+    et crée du défilement horizontal — 27 px mesurés le 14 août).
+  · Les effets « souris » ne s'allument que sur `(hover:hover) and (pointer:fine)`.
+
+  À ADAPTER par site : les noms de classes marqués « ADAPTER » ci-dessous.
+============================================================================ -->
+
+<style>
+/* ---------- 5. Barre de lecture (toujours présente, largeur pilotée par le JS) ---------- */
+.v3-lecture{position:fixed;top:0;left:0;height:2px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--v3-a,#C9A227),var(--v3-b,#E3C566));
+  transition:width .12s linear;pointer-events:none}
+
+/* ---------- 7. Bandeau défilant ---------- */
+.v3-bandeau{overflow:hidden;white-space:nowrap;border-block:1px solid var(--v3-bord,rgba(255,255,255,.14));
+  padding-block:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.v3-bandeau__p{display:inline-block;will-change:transform}
+.v3-bandeau__p span{display:inline-block;padding-inline:26px;font-size:.78rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--v3-a,#C9A227)}
+
+@media (prefers-reduced-motion: no-preference){
+
+  /* ---------- 2. Photo de héros vivante ---------- */
+  @keyframes v3ken{from{transform:scale(1.06)}to{transform:scale(1.15)}}
+  .v3-photo{animation:v3ken 26s ease-in-out infinite alternate;will-change:transform}
+
+  /* ---------- 3. Révélation par volet ---------- */
+  .v3-volet{display:inline-block;overflow:hidden;vertical-align:bottom}
+  .v3-volet > span{display:inline-block;transform:translateY(105%);
+    transition:transform .9s cubic-bezier(.16,1,.3,1)}
+  .v3-volet.vu > span,.vu .v3-volet > span{transform:none}
+
+  /* ---------- 4. Image qui s'ouvre ---------- */
+  .v3-ouvre{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1)}
+  .v3-ouvre.vu,.vu .v3-ouvre{clip-path:inset(0 0 0 0)}
+
+  /* ---------- 7. Bandeau défilant (mouvement) ---------- */
+  @keyframes v3defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .v3-bandeau__p{animation:v3defile 34s linear infinite}
+  .v3-bandeau:hover .v3-bandeau__p{animation-play-state:paused}
+
+  /* ---------- 8. Souligné qui se trace (ADAPTER : .nav a) ---------- */
+  .nav a{position:relative}
+  .nav a::after{content:'';position:absolute;left:14px;right:14px;bottom:4px;height:1px;
+    background:currentColor;transform:scaleX(0);transform-origin:right;
+    transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  .nav a:hover::after{transform:scaleX(1);transform-origin:left}
+
+  /* ---------- 9. Lueur qui suit la souris (ADAPTER : classe des cartes) ---------- */
+  @media (hover:hover) and (pointer:fine){
+    .v3-lueur{position:relative;isolation:isolate}
+    .v3-lueur::before{content:'';position:absolute;inset:0;z-index:-1;opacity:0;
+      transition:opacity .35s ease;pointer-events:none;
+      background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),
+                 var(--v3-lueur,rgba(201,162,39,.16)),transparent 70%)}
+    .v3-lueur:hover::before{opacity:1}
+  }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  if(!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
+  var $=function(s,c){return (c||document).querySelector(s);},
+      $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));},
+      PETIT=window.matchMedia('(max-width: 860px)').matches,
+      FIN=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ---- 3 & 4 : allumer les révélations quand elles entrent à l'écran ---- */
+  var aRevele=$$('.v3-volet, .v3-ouvre');
+  if(aRevele.length && 'IntersectionObserver' in window){
+    var ioR=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('vu');ioR.unobserve(e.target);}
+    });},{threshold:.2,rootMargin:'0px 0px -40px 0px'});
+    aRevele.forEach(function(e){ioR.observe(e);});
+    // Filet : si rien ne s'est allumé au bout de 2,5 s, tout devient visible.
+    setTimeout(function(){ if(!$('.v3-volet.vu, .v3-ouvre.vu')){ aRevele.forEach(function(e){e.classList.add('vu');}); } },2500);
+  }
+
+  /* ---- 2 : parallaxe de la photo du héros (grand écran seulement) ---- */
+  var photo=$('.v3-photo'), lecture=null, tic=false;
+
+  function auDefilement(){
+    if(tic){return;} tic=true;
+    requestAnimationFrame(function(){
+      var y=window.scrollY||0;
+      if(photo && !PETIT){ photo.style.translate='0 '+(y*0.18).toFixed(1)+'px'; }
+      if(lecture){
+        var h=document.documentElement.scrollHeight-window.innerHeight;
+        lecture.style.width=(h>0?Math.min(y/h,1)*100:0)+'%';
+      }
+      tic=false;
+    });
+  }
+
+  /* ---- 5 : barre de lecture ---- */
+  lecture=document.createElement('div');
+  lecture.className='v3-lecture';
+  lecture.setAttribute('aria-hidden','true');
+  document.body.appendChild(lecture);
+
+  window.addEventListener('scroll',auDefilement,{passive:true});
+  auDefilement();
+
+  /* ---- 6 : boutons magnétiques (ADAPTER le sélecteur si besoin) ---- */
+  if(FIN && !PETIT){
+    $$('.btn--magn').forEach(function(b){
+      b.style.transition='translate .25s cubic-bezier(.16,1,.3,1),background .3s ease';
+      b.addEventListener('mousemove',function(e){
+        var r=b.getBoundingClientRect();
+        b.style.translate=((e.clientX-r.left-r.width/2)*0.22).toFixed(1)+'px '+
+                          ((e.clientY-r.top-r.height/2)*0.28).toFixed(1)+'px';
+      });
+      b.addEventListener('mouseleave',function(){b.style.translate='0 0';});
+    });
+
+    /* ---- 9 : position de la lueur sur les cartes ---- */
+    $$('.v3-lueur').forEach(function(c){
+      c.addEventListener('mousemove',function(e){
+        var r=c.getBoundingClientRect();
+        c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+        c.style.setProperty('--my',(e.clientY-r.top)+'px');
+      },{passive:true});
+    });
+  }
+
+  /* ---- 7 : le bandeau doit contenir DEUX fois le texte pour boucler sans saut ---- */
+  $$('.v3-bandeau__p').forEach(function(p){
+    if(p.dataset.v3){return;} p.dataset.v3='1';
+    p.innerHTML=p.innerHTML+p.innerHTML;
+  });
+})();
+</script>
+
+<script src="fond-anime.js"></script>
 </body>
 </html>

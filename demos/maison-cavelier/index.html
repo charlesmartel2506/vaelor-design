@@ -11,6 +11,7 @@
 <meta property="og:locale" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#12100D">
+<link rel="preload" as="image" href="images/heros.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -84,7 +85,11 @@ body{overflow-wrap:break-word}
 
 /* Héros */
 .hero{position:relative;min-height:100svh;display:grid;align-items:center;padding-top:120px;padding-bottom:70px;overflow:hidden}
-.hero__art{position:absolute;inset:0;z-index:0}
+.hero__art{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero__art img{width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
+/* Grain d'or par-dessus la photo : la salle reste lisible, la lumière vit. */
+.hero__grain{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 90% at 78% 30%,rgba(201,162,39,.20),transparent 62%)}
 .hero__voile{position:absolute;inset:0;background:linear-gradient(100deg,var(--noir) 12%,rgba(18,16,13,.86) 46%,rgba(18,16,13,.5) 100%)}
 .hero__c{position:relative;z-index:2;max-width:660px}
 .hero h1{margin-bottom:24px}
@@ -102,6 +107,7 @@ body{overflow-wrap:break-word}
 @media(max-width:880px){.duo{grid-template-columns:1fr}}
 .cadre{position:relative;border:1px solid var(--bord);padding:14px}
 .cadre svg{width:100%;height:auto}
+.cadre img{width:100%;height:clamp(320px,42vw,520px);object-fit:cover;display:block}
 .chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;padding-top:30px;border-top:1px solid var(--bord)}
 .chiffre b{display:block;font-family:var(--t);font-size:2.3rem;color:var(--or);line-height:1}
 .chiffre span{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--creme3)}
@@ -204,44 +210,9 @@ body{padding-bottom:54px}
 <!-- HÉROS -->
 <section class="hero">
   <div class="hero__art" aria-hidden="true">
-    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
-      <defs>
-        <linearGradient id="mc-h" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#241F19"/><stop offset="1" stop-color="#12100D"/>
-        </linearGradient>
-        <radialGradient id="mc-lueur" cx=".72" cy=".34" r=".55">
-          <stop offset="0" stop-color="#C9A227" stop-opacity=".34"/><stop offset="1" stop-color="#C9A227" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <rect width="1440" height="900" fill="url(#mc-h)"/>
-      <rect width="1440" height="900" fill="url(#mc-lueur)"/>
-      <!-- Suspensions -->
-      <g stroke="#C9A227" stroke-opacity=".5" fill="none">
-        <path d="M980 0v150M1120 0v210M1260 0v120"/>
-      </g>
-      <g fill="#C9A227" opacity=".22">
-        <path d="M930 150h100l-24 52h-52z"/><path d="M1070 210h100l-24 52h-52z"/><path d="M1210 120h100l-24 52h-52z"/>
-      </g>
-      <g fill="#E3C566" opacity=".5">
-        <ellipse cx="980" cy="205" rx="26" ry="9"/><ellipse cx="1120" cy="265" rx="26" ry="9"/><ellipse cx="1260" cy="175" rx="26" ry="9"/>
-      </g>
-      <!-- Table et couverts stylisés -->
-      <ellipse cx="1090" cy="720" rx="380" ry="120" fill="#1B1813"/>
-      <ellipse cx="1090" cy="700" rx="380" ry="120" fill="#241F19"/>
-      <circle cx="960" cy="678" r="72" fill="#12100D" stroke="#C9A227" stroke-opacity=".4" stroke-width="2"/>
-      <circle cx="960" cy="678" r="50" fill="none" stroke="#C9A227" stroke-opacity=".25"/>
-      <circle cx="1230" cy="700" r="58" fill="#12100D" stroke="#C9A227" stroke-opacity=".3" stroke-width="2"/>
-      <!-- Verres -->
-      <g stroke="#C9A227" stroke-opacity=".55" fill="none" stroke-width="2.5">
-        <path d="M1080 600c0 26 14 40 22 44v46m0 0h-24m24 0h24"/>
-        <path d="M1122 616c0 22 12 34 19 38v38m0 0h-20m20 0h20"/>
-      </g>
-      <!-- Grain -->
-      <g fill="#C9A227" opacity=".1">
-        <circle cx="200" cy="180" r="1.5"/><circle cx="340" cy="420" r="1.5"/><circle cx="520" cy="260" r="1.5"/>
-        <circle cx="150" cy="640" r="1.5"/><circle cx="430" cy="760" r="1.5"/><circle cx="700" cy="140" r="1.5"/>
-      </g>
-    </svg>
+    <img class="v3-photo" src="images/heros.jpg" alt="" fetchpriority="high" width="1700" height="1133">
+    <div class="hero__grain"></div>
+    <div data-vfond='{"motif":"poussiere","couleur":"#C9A227","couleur2":"#E3C566","densite":1.1,"opacite":0.55,"dessous":false}'></div>
   </div>
   <div class="hero__voile" aria-hidden="true"></div>
   <div class="env hero__c">
@@ -253,7 +224,7 @@ body{padding-bottom:54px}
       et des soirées qui s'étirent plus longtemps que prévu.
     </p>
     <div class="hero__act">
-      <a class="btn btn--or" href="#reserver">Réserver une table</a>
+      <a class="btn btn--or btn--magn" href="#reserver">Réserver une table</a>
       <a class="btn btn--ligne" href="#menu">Consulter le menu</a>
     </div>
     <div class="hero__info">
@@ -273,6 +244,8 @@ body{padding-bottom:54px}
 </div>
 
 <!-- LA MAISON -->
+<div class="v3-bandeau" aria-hidden="true"><div class="v3-bandeau__p"><span>Table d'hôte</span><span>·</span><span>Importations privées</span><span>·</span><span>Salle privée</span><span>·</span><span>Arrivages du mardi</span><span>·</span><span>Depuis 1998</span><span>·</span></div></div>
+
 <section class="sec" id="maison">
   <div class="env duo">
     <div class="rev">
@@ -296,26 +269,7 @@ body{padding-bottom:54px}
       </div>
     </div>
     <div class="cadre rev">
-      <svg viewBox="0 0 520 620" aria-hidden="true">
-        <rect width="520" height="620" fill="#1B1813"/>
-        <rect x="30" y="30" width="460" height="560" fill="none" stroke="#C9A227" stroke-opacity=".25"/>
-        <!-- fenêtre de pierre -->
-        <path d="M110 470V250a150 150 0 0 1 300 0v220Z" fill="#12100D" stroke="#C9A227" stroke-opacity=".35" stroke-width="2"/>
-        <path d="M260 470V110M110 300h300M110 380h300" stroke="#C9A227" stroke-opacity=".22" stroke-width="1.5"/>
-        <path d="M150 470V270a110 110 0 0 1 220 0v200Z" fill="#241F19" opacity=".7"/>
-        <!-- lueur intérieure -->
-        <ellipse cx="260" cy="330" rx="120" ry="130" fill="#C9A227" opacity=".13"/>
-        <!-- table sous la fenêtre -->
-        <rect x="90" y="478" width="340" height="10" rx="3" fill="#C9A227" opacity=".5"/>
-        <rect x="140" y="488" width="10" height="72" fill="#C9A227" opacity=".28"/>
-        <rect x="370" y="488" width="10" height="72" fill="#C9A227" opacity=".28"/>
-        <!-- couverts -->
-        <g stroke="#C9A227" stroke-opacity=".55" fill="none" stroke-width="2">
-          <path d="M190 440c0 18 9 27 15 30v0M205 470v-40"/>
-          <circle cx="300" cy="452" r="24"/>
-        </g>
-        <text x="260" y="576" text-anchor="middle" font-family="Playfair Display,serif" font-size="17" fill="#C9A227" letter-spacing="4">EST. MCMXCVIII</text>
-      </svg>
+      <img class="v3-ouvre" src="images/cuisine.jpg" alt="La cuisine ouverte de la Maison Cavelier, au moment du dressage" loading="lazy">
     </div>
   </div>
 </section>
@@ -387,30 +341,7 @@ body{padding-bottom:54px}
 <section class="sec" id="cave">
   <div class="env duo">
     <div class="cadre rev" style="order:2">
-      <svg viewBox="0 0 520 560" aria-hidden="true">
-        <rect width="520" height="560" fill="#1B1813"/>
-        <!-- casiers -->
-        <g stroke="#C9A227" stroke-opacity=".28" fill="none" stroke-width="1.5">
-          <rect x="50" y="50" width="420" height="460"/>
-          <path d="M50 165h420M50 280h420M50 395h420M190 50v460M330 50v460"/>
-        </g>
-        <!-- bouteilles couchées -->
-        <g fill="#C9A227" opacity=".38">
-          <circle cx="90" cy="107" r="17"/><circle cx="130" cy="107" r="17"/><circle cx="170" cy="107" r="17"/>
-          <circle cx="230" cy="222" r="17"/><circle cx="270" cy="222" r="17"/><circle cx="310" cy="222" r="17"/>
-          <circle cx="370" cy="337" r="17"/><circle cx="410" cy="337" r="17"/><circle cx="450" cy="337" r="17"/>
-          <circle cx="90" cy="452" r="17"/><circle cx="130" cy="452" r="17"/>
-        </g>
-        <g fill="#C9A227" opacity=".16">
-          <circle cx="230" cy="107" r="17"/><circle cx="270" cy="107" r="17"/><circle cx="310" cy="107" r="17"/>
-          <circle cx="370" cy="107" r="17"/><circle cx="410" cy="107" r="17"/><circle cx="450" cy="107" r="17"/>
-          <circle cx="90" cy="222" r="17"/><circle cx="130" cy="222" r="17"/><circle cx="170" cy="222" r="17"/>
-          <circle cx="90" cy="337" r="17"/><circle cx="130" cy="337" r="17"/><circle cx="170" cy="337" r="17"/>
-          <circle cx="230" cy="337" r="17"/><circle cx="270" cy="337" r="17"/><circle cx="310" cy="337" r="17"/>
-          <circle cx="230" cy="452" r="17"/><circle cx="270" cy="452" r="17"/><circle cx="310" cy="452" r="17"/>
-        </g>
-        <ellipse cx="260" cy="280" rx="230" ry="200" fill="#C9A227" opacity=".07"/>
-      </svg>
+      <img class="v3-ouvre" src="images/cave.jpg" alt="La cave de la maison, cent vingt vins choisis un par un" loading="lazy">
     </div>
     <div class="rev">
       <span class="sur">La cave</span>
@@ -710,5 +641,167 @@ body{padding-bottom:54px}
   }
 })();
 </script>
+<!-- MARQUE-KIT-NIVEAU-3 -->
+<style>:root{--v3-a:#C9A227;--v3-b:#E3C566;--v3-lueur:rgba(201,162,39,.16);--v3-bord:rgba(201,162,39,.22)}</style>
+<!--
+  Vaelor Design · KIT D'ANIMATIONS NIVEAU 3 — v1.0 (14 août 2026)
+  ============================================================================
+  Ce qui s'ajoute au kit niveau 2 (cascade, compteurs, reflet de bouton) :
+
+    1. FOND ANIMÉ en canvas .................. voir outils/fond-anime.js
+    2. PHOTO DE HÉROS VIVANTE ................ Ken Burns + parallaxe au défilement
+    3. RÉVÉLATION PAR VOLET .................. le texte se découvre derrière un rideau
+    4. IMAGE QUI S'OUVRE ..................... clip-path au défilement
+    5. BARRE DE LECTURE ...................... progression fine en haut de page
+    6. BOUTON MAGNÉTIQUE ..................... le bouton vient vers le curseur
+    7. BANDEAU DÉFILANT ...................... marquee CSS pur, aucune image
+    8. SOULIGNÉ QUI SE TRACE ................. sur les liens de navigation
+    9. LUEUR QUI SUIT LA SOURIS .............. sur les cartes (grand écran)
+
+  TOUT est CSS + JS vanille : ça se colle dans un widget « HTML » d'Elementor
+  gratuit, sans plugin, sans CDN, sans jQuery.
+
+  RÈGLES QUI NE SE NÉGOCIENT PAS
+  ------------------------------
+  · Chaque effet est INACTIF si `prefers-reduced-motion: reduce`.
+  · Rien n'est masqué par défaut en CSS seul : si le JS ne s'exécute pas, la page
+    reste entièrement lisible (piège déjà payé, carnet §14).
+  · Aucune rotation en perspective sur téléphone (elle élargit la boîte englobante
+    et crée du défilement horizontal — 27 px mesurés le 14 août).
+  · Les effets « souris » ne s'allument que sur `(hover:hover) and (pointer:fine)`.
+
+  À ADAPTER par site : les noms de classes marqués « ADAPTER » ci-dessous.
+============================================================================ -->
+
+<style>
+/* ---------- 5. Barre de lecture (toujours présente, largeur pilotée par le JS) ---------- */
+.v3-lecture{position:fixed;top:0;left:0;height:2px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--v3-a,#C9A227),var(--v3-b,#E3C566));
+  transition:width .12s linear;pointer-events:none}
+
+/* ---------- 7. Bandeau défilant ---------- */
+.v3-bandeau{overflow:hidden;white-space:nowrap;border-block:1px solid var(--v3-bord,rgba(255,255,255,.14));
+  padding-block:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.v3-bandeau__p{display:inline-block;will-change:transform}
+.v3-bandeau__p span{display:inline-block;padding-inline:26px;font-size:.78rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--v3-a,#C9A227)}
+
+@media (prefers-reduced-motion: no-preference){
+
+  /* ---------- 2. Photo de héros vivante ---------- */
+  @keyframes v3ken{from{transform:scale(1.06)}to{transform:scale(1.15)}}
+  .v3-photo{animation:v3ken 26s ease-in-out infinite alternate;will-change:transform}
+
+  /* ---------- 3. Révélation par volet ---------- */
+  .v3-volet{display:inline-block;overflow:hidden;vertical-align:bottom}
+  .v3-volet > span{display:inline-block;transform:translateY(105%);
+    transition:transform .9s cubic-bezier(.16,1,.3,1)}
+  .v3-volet.vu > span,.vu .v3-volet > span{transform:none}
+
+  /* ---------- 4. Image qui s'ouvre ---------- */
+  .v3-ouvre{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1)}
+  .v3-ouvre.vu,.vu .v3-ouvre{clip-path:inset(0 0 0 0)}
+
+  /* ---------- 7. Bandeau défilant (mouvement) ---------- */
+  @keyframes v3defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .v3-bandeau__p{animation:v3defile 34s linear infinite}
+  .v3-bandeau:hover .v3-bandeau__p{animation-play-state:paused}
+
+  /* ---------- 8. Souligné qui se trace (ADAPTER : .nav a) ---------- */
+  .nav a{position:relative}
+  .nav a::after{content:'';position:absolute;left:14px;right:14px;bottom:4px;height:1px;
+    background:currentColor;transform:scaleX(0);transform-origin:right;
+    transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  .nav a:hover::after{transform:scaleX(1);transform-origin:left}
+
+  /* ---------- 9. Lueur qui suit la souris (ADAPTER : classe des cartes) ---------- */
+  @media (hover:hover) and (pointer:fine){
+    .v3-lueur{position:relative;isolation:isolate}
+    .v3-lueur::before{content:'';position:absolute;inset:0;z-index:-1;opacity:0;
+      transition:opacity .35s ease;pointer-events:none;
+      background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),
+                 var(--v3-lueur,rgba(201,162,39,.16)),transparent 70%)}
+    .v3-lueur:hover::before{opacity:1}
+  }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  if(!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
+  var $=function(s,c){return (c||document).querySelector(s);},
+      $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));},
+      PETIT=window.matchMedia('(max-width: 860px)').matches,
+      FIN=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ---- 3 & 4 : allumer les révélations quand elles entrent à l'écran ---- */
+  var aRevele=$$('.v3-volet, .v3-ouvre');
+  if(aRevele.length && 'IntersectionObserver' in window){
+    var ioR=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('vu');ioR.unobserve(e.target);}
+    });},{threshold:.2,rootMargin:'0px 0px -40px 0px'});
+    aRevele.forEach(function(e){ioR.observe(e);});
+    // Filet : si rien ne s'est allumé au bout de 2,5 s, tout devient visible.
+    setTimeout(function(){ if(!$('.v3-volet.vu, .v3-ouvre.vu')){ aRevele.forEach(function(e){e.classList.add('vu');}); } },2500);
+  }
+
+  /* ---- 2 : parallaxe de la photo du héros (grand écran seulement) ---- */
+  var photo=$('.v3-photo'), lecture=null, tic=false;
+
+  function auDefilement(){
+    if(tic){return;} tic=true;
+    requestAnimationFrame(function(){
+      var y=window.scrollY||0;
+      if(photo && !PETIT){ photo.style.translate='0 '+(y*0.18).toFixed(1)+'px'; }
+      if(lecture){
+        var h=document.documentElement.scrollHeight-window.innerHeight;
+        lecture.style.width=(h>0?Math.min(y/h,1)*100:0)+'%';
+      }
+      tic=false;
+    });
+  }
+
+  /* ---- 5 : barre de lecture ---- */
+  lecture=document.createElement('div');
+  lecture.className='v3-lecture';
+  lecture.setAttribute('aria-hidden','true');
+  document.body.appendChild(lecture);
+
+  window.addEventListener('scroll',auDefilement,{passive:true});
+  auDefilement();
+
+  /* ---- 6 : boutons magnétiques (ADAPTER le sélecteur si besoin) ---- */
+  if(FIN && !PETIT){
+    $$('.btn--magn').forEach(function(b){
+      b.style.transition='translate .25s cubic-bezier(.16,1,.3,1),background .3s ease';
+      b.addEventListener('mousemove',function(e){
+        var r=b.getBoundingClientRect();
+        b.style.translate=((e.clientX-r.left-r.width/2)*0.22).toFixed(1)+'px '+
+                          ((e.clientY-r.top-r.height/2)*0.28).toFixed(1)+'px';
+      });
+      b.addEventListener('mouseleave',function(){b.style.translate='0 0';});
+    });
+
+    /* ---- 9 : position de la lueur sur les cartes ---- */
+    $$('.v3-lueur').forEach(function(c){
+      c.addEventListener('mousemove',function(e){
+        var r=c.getBoundingClientRect();
+        c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+        c.style.setProperty('--my',(e.clientY-r.top)+'px');
+      },{passive:true});
+    });
+  }
+
+  /* ---- 7 : le bandeau doit contenir DEUX fois le texte pour boucler sans saut ---- */
+  $$('.v3-bandeau__p').forEach(function(p){
+    if(p.dataset.v3){return;} p.dataset.v3='1';
+    p.innerHTML=p.innerHTML+p.innerHTML;
+  });
+})();
+</script>
+
+<script src="fond-anime.js"></script>
 </body>
 </html>

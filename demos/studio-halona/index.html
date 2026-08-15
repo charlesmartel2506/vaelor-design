@@ -11,6 +11,7 @@
 <meta property="og:locale" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B4787A">
+<link rel="preload" as="image" href="images/heros.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -85,7 +86,22 @@ body{overflow-wrap:break-word}
 
 /* Héros */
 .hero{position:relative;overflow:hidden;background:var(--creme2)}
-.hero__art{position:absolute;inset:0;z-index:0}
+.hero__art{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero__art img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero__voile{position:absolute;inset:0;z-index:1;background:linear-gradient(98deg,
+  rgba(246,237,233,.98) 0%,rgba(246,237,233,.96) 44%,rgba(246,237,233,.70) 72%,rgba(246,237,233,.30) 100%)}
+@media(max-width:880px){.hero__voile{background:linear-gradient(180deg,
+  rgba(246,237,233,.95) 0%,rgba(246,237,233,.90) 58%,rgba(246,237,233,.74) 100%)}}
+.photo-cadre{width:100%;height:clamp(300px,40vw,480px);object-fit:cover;display:block;border-radius:20px;border:1px solid var(--bord)}
+/* Bande d'ambiance : trois vraies photos, sans nom ni prénom dessus. */
+.ambiance{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.ambiance{grid-template-columns:1fr 1fr}.ambiance figure:last-child{grid-column:span 2}}
+.ambiance figure{margin:0;position:relative;overflow:hidden;border-radius:var(--r-c)}
+.ambiance img{width:100%;height:clamp(190px,24vw,290px);object-fit:cover;display:block;
+  transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.ambiance figure:hover img{transform:scale(1.06)}
+.ambiance figcaption{position:absolute;inset:auto 0 0 0;padding:14px 16px;color:#fff;font-size:.82rem;
+  letter-spacing:.14em;text-transform:uppercase;background:linear-gradient(0deg,rgba(42,33,36,.82),transparent)}
 .hero__g{position:relative;z-index:2;padding-block:clamp(60px,9vw,126px);max-width:620px}
 .hero h1{margin-bottom:22px}
 .hero__act{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
@@ -224,21 +240,9 @@ body{overflow-wrap:break-word}
 <!-- HÉROS -->
 <section class="hero">
   <div class="hero__art" aria-hidden="true">
-    <svg viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
-      <rect width="1440" height="760" fill="#F6EDE9"/>
-      <circle cx="1150" cy="300" r="320" fill="#B4787A" opacity=".14"/>
-      <circle cx="1330" cy="520" r="200" fill="#D6B2A6" opacity=".3"/>
-      <circle cx="980" cy="620" r="130" fill="#D6B2A6" opacity=".22"/>
-      <!-- feuillage doux -->
-      <g opacity=".22" fill="#B4787A">
-        <path d="M1080 180c40 0 74 30 74 70s-34 70-74 70Z"/>
-        <path d="M1080 320c-40 0-74-30-74-70s34-70 74-70Z" opacity=".6"/>
-      </g>
-      <g stroke="#B4787A" stroke-opacity=".22" fill="none" stroke-width="1.5">
-        <path d="M0 640c180-60 300 40 480 0s300-80 480-40 300 20 480-40"/>
-        <path d="M0 690c180-60 300 40 480 0s300-80 480-40 300 20 480-40"/>
-      </g>
-    </svg>
+    <img class="v3-photo" src="images/heros.jpg" alt="" fetchpriority="high">
+    <div class="hero__voile"></div>
+    <div data-vfond='{"motif":"aurore","couleur":"#B4787A","couleur2":"#D6B2A6","opacite":0.34,"dessous":false}'></div>
   </div>
   <div class="env hero__g">
     <span class="sur">Soins · Coiffure · Ongles</span>
@@ -386,6 +390,16 @@ body{overflow-wrap:break-word}
 </section>
 
 <!-- ÉQUIPE -->
+<div class="sec" style="padding-block:clamp(20px,3vw,40px)">
+  <div class="env">
+    <div class="ambiance rev">
+      <figure><img src="images/g-cheveux.jpg" alt="Un balayage terminé, lumière naturelle" loading="lazy"><figcaption>Couleur</figcaption></figure>
+      <figure><img src="images/g-ongles.jpg" alt="Pose de vernis en cours" loading="lazy"><figcaption>Ongles</figcaption></figure>
+      <figure><img src="images/g-soin.jpg" alt="Soin du visage en cabine" loading="lazy"><figcaption>Soins</figcaption></figure>
+    </div>
+  </div>
+</div>
+
 <section class="sec" id="equipe">
   <div class="env">
     <div class="centre rev" style="max-width:600px;margin-bottom:44px">
@@ -456,30 +470,7 @@ body{overflow-wrap:break-word}
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cartes-cadeaux disponibles en tout temps</li>
       </ul>
     </div>
-    <svg viewBox="0 0 520 480" style="border-radius:20px;border:1px solid var(--bord)" class="rev" aria-hidden="true">
-      <rect width="520" height="480" fill="#FDF9F7"/>
-      <rect x="0" y="330" width="520" height="150" fill="#F0E4DF"/>
-      <!-- miroirs -->
-      <g>
-        <ellipse cx="130" cy="180" rx="66" ry="86" fill="#F6EDE9" stroke="#D6B2A6" stroke-width="3"/>
-        <ellipse cx="300" cy="180" rx="66" ry="86" fill="#F6EDE9" stroke="#D6B2A6" stroke-width="3"/>
-      </g>
-      <!-- fauteuils -->
-      <g fill="#B4787A">
-        <rect x="96" y="300" width="70" height="56" rx="12"/><rect x="120" y="356" width="22" height="40" rx="8" opacity=".7"/>
-        <rect x="266" y="300" width="70" height="56" rx="12"/><rect x="290" y="356" width="22" height="40" rx="8" opacity=".7"/>
-      </g>
-      <!-- plante -->
-      <g><rect x="440" y="352" width="44" height="52" rx="6" fill="#D6B2A6"/>
-        <path d="M462 352c0-46 22-72 54-80-6 48-24 74-54 80Z" fill="#9BB58C"/>
-        <path d="M462 352c0-40-20-64-48-72 6 42 22 66 48 72Z" fill="#B0C7A2"/></g>
-      <!-- lampe -->
-      <g stroke="#D6B2A6" stroke-width="3" fill="none"><path d="M420 60v120"/></g>
-      <path d="M396 180h48l-12 26h-24Z" fill="#D6B2A6"/>
-      <circle cx="420" cy="212" r="14" fill="#F5E3D8"/>
-      <!-- fleurs -->
-      <g fill="#D98C9E"><circle cx="60" cy="332" r="8"/><circle cx="78" cy="342" r="7"/><circle cx="46" cy="346" r="6"/></g>
-    </svg>
+    <img class="v3-ouvre photo-cadre" src="images/coupe.jpg" alt="Une coupe en cours dans la salle du studio" loading="lazy">
   </div>
 </section>
 
@@ -693,5 +684,167 @@ body{overflow-wrap:break-word}
   });
 })();
 </script>
+<!-- MARQUE-KIT-NIVEAU-3 -->
+<style>:root{--v3-a:#B4787A;--v3-b:#D6B2A6;--v3-lueur:rgba(180,120,122,.14);--v3-bord:rgba(237,221,216,1)}</style>
+<!--
+  Vaelor Design · KIT D'ANIMATIONS NIVEAU 3 — v1.0 (14 août 2026)
+  ============================================================================
+  Ce qui s'ajoute au kit niveau 2 (cascade, compteurs, reflet de bouton) :
+
+    1. FOND ANIMÉ en canvas .................. voir outils/fond-anime.js
+    2. PHOTO DE HÉROS VIVANTE ................ Ken Burns + parallaxe au défilement
+    3. RÉVÉLATION PAR VOLET .................. le texte se découvre derrière un rideau
+    4. IMAGE QUI S'OUVRE ..................... clip-path au défilement
+    5. BARRE DE LECTURE ...................... progression fine en haut de page
+    6. BOUTON MAGNÉTIQUE ..................... le bouton vient vers le curseur
+    7. BANDEAU DÉFILANT ...................... marquee CSS pur, aucune image
+    8. SOULIGNÉ QUI SE TRACE ................. sur les liens de navigation
+    9. LUEUR QUI SUIT LA SOURIS .............. sur les cartes (grand écran)
+
+  TOUT est CSS + JS vanille : ça se colle dans un widget « HTML » d'Elementor
+  gratuit, sans plugin, sans CDN, sans jQuery.
+
+  RÈGLES QUI NE SE NÉGOCIENT PAS
+  ------------------------------
+  · Chaque effet est INACTIF si `prefers-reduced-motion: reduce`.
+  · Rien n'est masqué par défaut en CSS seul : si le JS ne s'exécute pas, la page
+    reste entièrement lisible (piège déjà payé, carnet §14).
+  · Aucune rotation en perspective sur téléphone (elle élargit la boîte englobante
+    et crée du défilement horizontal — 27 px mesurés le 14 août).
+  · Les effets « souris » ne s'allument que sur `(hover:hover) and (pointer:fine)`.
+
+  À ADAPTER par site : les noms de classes marqués « ADAPTER » ci-dessous.
+============================================================================ -->
+
+<style>
+/* ---------- 5. Barre de lecture (toujours présente, largeur pilotée par le JS) ---------- */
+.v3-lecture{position:fixed;top:0;left:0;height:2px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--v3-a,#C9A227),var(--v3-b,#E3C566));
+  transition:width .12s linear;pointer-events:none}
+
+/* ---------- 7. Bandeau défilant ---------- */
+.v3-bandeau{overflow:hidden;white-space:nowrap;border-block:1px solid var(--v3-bord,rgba(255,255,255,.14));
+  padding-block:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.v3-bandeau__p{display:inline-block;will-change:transform}
+.v3-bandeau__p span{display:inline-block;padding-inline:26px;font-size:.78rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--v3-a,#C9A227)}
+
+@media (prefers-reduced-motion: no-preference){
+
+  /* ---------- 2. Photo de héros vivante ---------- */
+  @keyframes v3ken{from{transform:scale(1.06)}to{transform:scale(1.15)}}
+  .v3-photo{animation:v3ken 26s ease-in-out infinite alternate;will-change:transform}
+
+  /* ---------- 3. Révélation par volet ---------- */
+  .v3-volet{display:inline-block;overflow:hidden;vertical-align:bottom}
+  .v3-volet > span{display:inline-block;transform:translateY(105%);
+    transition:transform .9s cubic-bezier(.16,1,.3,1)}
+  .v3-volet.vu > span,.vu .v3-volet > span{transform:none}
+
+  /* ---------- 4. Image qui s'ouvre ---------- */
+  .v3-ouvre{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1)}
+  .v3-ouvre.vu,.vu .v3-ouvre{clip-path:inset(0 0 0 0)}
+
+  /* ---------- 7. Bandeau défilant (mouvement) ---------- */
+  @keyframes v3defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .v3-bandeau__p{animation:v3defile 34s linear infinite}
+  .v3-bandeau:hover .v3-bandeau__p{animation-play-state:paused}
+
+  /* ---------- 8. Souligné qui se trace (ADAPTER : .nav a) ---------- */
+  .nav a{position:relative}
+  .nav a::after{content:'';position:absolute;left:14px;right:14px;bottom:4px;height:1px;
+    background:currentColor;transform:scaleX(0);transform-origin:right;
+    transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  .nav a:hover::after{transform:scaleX(1);transform-origin:left}
+
+  /* ---------- 9. Lueur qui suit la souris (ADAPTER : classe des cartes) ---------- */
+  @media (hover:hover) and (pointer:fine){
+    .v3-lueur{position:relative;isolation:isolate}
+    .v3-lueur::before{content:'';position:absolute;inset:0;z-index:-1;opacity:0;
+      transition:opacity .35s ease;pointer-events:none;
+      background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),
+                 var(--v3-lueur,rgba(201,162,39,.16)),transparent 70%)}
+    .v3-lueur:hover::before{opacity:1}
+  }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  if(!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
+  var $=function(s,c){return (c||document).querySelector(s);},
+      $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));},
+      PETIT=window.matchMedia('(max-width: 860px)').matches,
+      FIN=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ---- 3 & 4 : allumer les révélations quand elles entrent à l'écran ---- */
+  var aRevele=$$('.v3-volet, .v3-ouvre');
+  if(aRevele.length && 'IntersectionObserver' in window){
+    var ioR=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('vu');ioR.unobserve(e.target);}
+    });},{threshold:.2,rootMargin:'0px 0px -40px 0px'});
+    aRevele.forEach(function(e){ioR.observe(e);});
+    // Filet : si rien ne s'est allumé au bout de 2,5 s, tout devient visible.
+    setTimeout(function(){ if(!$('.v3-volet.vu, .v3-ouvre.vu')){ aRevele.forEach(function(e){e.classList.add('vu');}); } },2500);
+  }
+
+  /* ---- 2 : parallaxe de la photo du héros (grand écran seulement) ---- */
+  var photo=$('.v3-photo'), lecture=null, tic=false;
+
+  function auDefilement(){
+    if(tic){return;} tic=true;
+    requestAnimationFrame(function(){
+      var y=window.scrollY||0;
+      if(photo && !PETIT){ photo.style.translate='0 '+(y*0.18).toFixed(1)+'px'; }
+      if(lecture){
+        var h=document.documentElement.scrollHeight-window.innerHeight;
+        lecture.style.width=(h>0?Math.min(y/h,1)*100:0)+'%';
+      }
+      tic=false;
+    });
+  }
+
+  /* ---- 5 : barre de lecture ---- */
+  lecture=document.createElement('div');
+  lecture.className='v3-lecture';
+  lecture.setAttribute('aria-hidden','true');
+  document.body.appendChild(lecture);
+
+  window.addEventListener('scroll',auDefilement,{passive:true});
+  auDefilement();
+
+  /* ---- 6 : boutons magnétiques (ADAPTER le sélecteur si besoin) ---- */
+  if(FIN && !PETIT){
+    $$('.btn--magn').forEach(function(b){
+      b.style.transition='translate .25s cubic-bezier(.16,1,.3,1),background .3s ease';
+      b.addEventListener('mousemove',function(e){
+        var r=b.getBoundingClientRect();
+        b.style.translate=((e.clientX-r.left-r.width/2)*0.22).toFixed(1)+'px '+
+                          ((e.clientY-r.top-r.height/2)*0.28).toFixed(1)+'px';
+      });
+      b.addEventListener('mouseleave',function(){b.style.translate='0 0';});
+    });
+
+    /* ---- 9 : position de la lueur sur les cartes ---- */
+    $$('.v3-lueur').forEach(function(c){
+      c.addEventListener('mousemove',function(e){
+        var r=c.getBoundingClientRect();
+        c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+        c.style.setProperty('--my',(e.clientY-r.top)+'px');
+      },{passive:true});
+    });
+  }
+
+  /* ---- 7 : le bandeau doit contenir DEUX fois le texte pour boucler sans saut ---- */
+  $$('.v3-bandeau__p').forEach(function(p){
+    if(p.dataset.v3){return;} p.dataset.v3='1';
+    p.innerHTML=p.innerHTML+p.innerHTML;
+  });
+})();
+</script>
+
+<script src="fond-anime.js"></script>
 </body>
 </html>

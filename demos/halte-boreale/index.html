@@ -144,6 +144,15 @@ a{color:inherit}
 .cellule--foyers{background:linear-gradient(170deg,rgba(232,149,107,.13),transparent 60%),var(--nuit2)}
 .cellule--masso{}
 .cellule .scene{position:absolute;inset:0;z-index:0;opacity:.9;pointer-events:none}
+/* Vraie photo derrière chaque cellule. Le voile n'est pas décoratif : sans lui
+   le titre blanc passe sur les zones claires de la photo et devient illisible. */
+.cellule__ph{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:18px}
+.cellule__ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.cellule:hover .cellule__ph img{transform:scale(1.07)}
+.cellule__ph::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(7,12,20,.86) 0%,rgba(7,12,20,.66) 45%,rgba(7,12,20,.93) 100%)}
+.cellule__ph ~ *{position:relative;z-index:1}
+@media (prefers-reduced-motion: reduce){.cellule:hover .cellule__ph img{transform:none}}
 .cellule .scene ~ *{position:relative;z-index:1}
 @media (max-width: 980px){
   .bento{grid-template-columns:1fr 1fr}
@@ -337,46 +346,32 @@ a{color:inherit}
       reliés par des sentiers chauffés. On circule en peignoir, sans se presser.</p>
     <div class="bento">
       <article class="cellule cellule--sauna">
-        <div class="scene" aria-hidden="true">
-          <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
-            <rect width="600" height="400" fill="#0E1828"/>
-            <rect x="0" y="250" width="600" height="150" fill="#0B1522"/>
-            <g stroke="#1E3A50" stroke-width="3" opacity=".8">
-              <line x1="60" y1="250" x2="60" y2="400"/><line x1="140" y1="250" x2="140" y2="400"/>
-              <line x1="220" y1="250" x2="220" y2="400"/><line x1="300" y1="250" x2="300" y2="400"/>
-              <line x1="380" y1="250" x2="380" y2="400"/><line x1="460" y1="250" x2="460" y2="400"/>
-              <line x1="540" y1="250" x2="540" y2="400"/>
-            </g>
-            <rect x="120" y="90" width="360" height="160" rx="10" fill="#142236"/>
-            <rect x="150" y="120" width="120" height="100" rx="6" fill="#5FE3B3" opacity=".2"/>
-            <rect x="300" y="120" width="150" height="100" rx="6" fill="#7FB8D8" opacity=".12"/>
-            <ellipse cx="300" cy="330" rx="180" ry="26" fill="#5FE3B3" opacity=".07"/>
-            <g fill="#9FF0D0" opacity=".5">
-              <circle cx="90" cy="60" r="1.6"/><circle cx="210" cy="40" r="1.2"/><circle cx="340" cy="55" r="1.5"/>
-              <circle cx="470" cy="38" r="1.2"/><circle cx="540" cy="70" r="1.7"/><circle cx="40" cy="110" r="1.2"/>
-            </g>
-          </svg>
-        </div>
+        <div class="cellule__ph"><img src="images/sauna.jpg" alt="Le sauna panoramique, mur de verre sur la rivière" loading="lazy"></div>
         <h3>Le sauna panoramique</h3>
         <p>Un mur entier de verre donne sur la rivière gelée. 85 °C dedans, la forêt dehors.</p>
       </article>
       <article class="cellule cellule--bassins">
+        <div class="cellule__ph"><img src="images/bassins.jpg" alt="Les bassins chauds en plein hiver" loading="lazy"></div>
         <h3>Les bassins chauds</h3>
         <p>Deux bassins extérieurs à 39 °C, ouverts jusqu'à 23 h les week-ends.</p>
       </article>
       <article class="cellule cellule--chute">
+        <div class="cellule__ph"><img src="images/chute.jpg" alt="La chute nordique, eau de source à 12 degrés" loading="lazy"></div>
         <h3>La chute nordique</h3>
         <p>Eau de source à 12 °C. Dix secondes suffisent.</p>
       </article>
       <article class="cellule cellule--yourte">
+        <div class="cellule__ph"><img src="images/yourte.jpg" alt="La yourte de repos, tisane et couverture" loading="lazy"></div>
         <h3>La yourte de repos</h3>
         <p>Hamacs, tisanes et chuchotements seulement.</p>
       </article>
       <article class="cellule cellule--foyers">
+        <div class="cellule__ph"><img src="images/foyers.jpg" alt="Un des quatre foyers extérieurs, le soir" loading="lazy"></div>
         <h3>Les foyers extérieurs</h3>
         <p>Quatre feux entretenus du matin au soir.</p>
       </article>
       <article class="cellule cellule--masso">
+        <div class="cellule__ph"><img src="images/masso.jpg" alt="Une cabine de massothérapie" loading="lazy"></div>
         <h3>La massothérapie</h3>
         <p>Suédois, deep tissue ou pierres chaudes, en cabine simple ou double.</p>
       </article>

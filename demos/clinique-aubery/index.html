@@ -11,6 +11,7 @@
 <meta property="og:locale" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1B74C4">
+<link rel="preload" as="image" href="images/heros.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -104,6 +105,14 @@ body{overflow-wrap:break-word}
 .pt{display:flex;align-items:center;gap:8px}
 .pt svg{width:18px;height:18px;color:var(--menthe);flex:0 0 auto}
 .hero__art{position:relative}
+.hero__art img.v3-photo{width:100%;height:clamp(320px,38vw,460px);object-fit:cover;display:block;
+  border-radius:24px;border:1px solid var(--bord)}
+/* La nappe de couleur vit derrière les deux colonnes, jamais devant le texte. */
+.bande-photo{position:relative;height:clamp(230px,30vw,380px);overflow:hidden}
+.bande-photo img{width:100%;height:100%;object-fit:cover}
+.bande-photo__t{position:absolute;inset:auto 0 0 0;z-index:2;padding:clamp(18px,4vw,34px);
+  background:linear-gradient(0deg,rgba(14,34,51,.88),transparent);color:#fff;
+  font-family:var(--t);font-size:clamp(1.05rem,2.2vw,1.55rem)}
 .badge-flot{position:absolute;background:#fff;border:1px solid var(--bord);border-radius:var(--r-l);box-shadow:var(--ombre);padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:.85rem}
 .badge-flot b{display:block;font-family:var(--t);font-size:1.15rem;color:var(--encre)}
 .badge-flot span{color:var(--gris-c);font-size:.78rem}
@@ -244,6 +253,7 @@ body{overflow-wrap:break-word}
 
 <!-- HÉROS -->
 <section class="hero">
+  <div data-vfond='{"motif":"aurore","couleur":"#1B74C4","couleur2":"#12B5A8","opacite":0.16,"densite":0.9}'></div>
   <div class="env hero__g">
     <div>
       <span class="sur">Dentisterie familiale depuis 2009</span>
@@ -271,20 +281,7 @@ body{overflow-wrap:break-word}
     </div>
 
     <div class="hero__art">
-      <svg viewBox="0 0 560 460" style="border-radius:24px;border:1px solid var(--bord);background:#fff" aria-hidden="true">
-        <rect width="560" height="460" fill="#EAF3FB"/>
-        <circle cx="420" cy="130" r="150" fill="#1B74C4" opacity=".1"/>
-        <circle cx="150" cy="360" r="110" fill="#12B5A8" opacity=".12"/>
-        <!-- dent centrale -->
-        <path d="M280 108c-30-24-70-20-89 7-17 24-13 57-5 91 6 27 12 57 19 78 6 17 27 19 34 3l23-52c7-15 32-15 39 0l23 52c7 16 28 14 34-3 7-21 13-51 19-78 8-34 12-67-5-91-19-27-59-31-89-7Z" fill="#fff" stroke="#1B74C4" stroke-width="3"/>
-        <path d="M280 150c-14 0-26 8-26 22s10 20 10 34" stroke="#C3DBF0" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <!-- étincelles -->
-        <g stroke="#12B5A8" stroke-width="4" stroke-linecap="round">
-          <path d="M400 190v22M389 201h22"/><path d="M150 170v18M142 179h16"/><path d="M430 300v16M423 308h14"/>
-        </g>
-        <!-- ligne sourire -->
-        <path d="M120 400c50 34 270 34 320 0" stroke="#1B74C4" stroke-width="4" stroke-linecap="round" fill="none" opacity=".35"/>
-      </svg>
+      <img class="v3-photo" src="images/heros.jpg" alt="La salle de soins de la Clinique Aubéry" fetchpriority="high">
 
       <div class="badge-flot bf1">
         <span class="badge-flot__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
@@ -452,6 +449,11 @@ body{overflow-wrap:break-word}
 </section>
 
 <!-- ASSURANCES -->
+<div class="bande-photo">
+  <img class="v3-photo-bande" src="images/equipe.jpg" alt="Une hygiéniste de la clinique avec un patient, pendant un examen" loading="lazy">
+  <div class="bande-photo__t">On explique tout avant de commencer. Toujours.</div>
+</div>
+
 <section class="sec" id="assurances">
   <div class="env">
     <div class="assur rev">
@@ -691,5 +693,167 @@ body{overflow-wrap:break-word}
   });
 })();
 </script>
+<!-- MARQUE-KIT-NIVEAU-3 -->
+<style>:root{--v3-a:#1B74C4;--v3-b:#12B5A8;--v3-lueur:rgba(27,116,196,.12);--v3-bord:rgba(226,235,243,1)}</style>
+<!--
+  Vaelor Design · KIT D'ANIMATIONS NIVEAU 3 — v1.0 (14 août 2026)
+  ============================================================================
+  Ce qui s'ajoute au kit niveau 2 (cascade, compteurs, reflet de bouton) :
+
+    1. FOND ANIMÉ en canvas .................. voir outils/fond-anime.js
+    2. PHOTO DE HÉROS VIVANTE ................ Ken Burns + parallaxe au défilement
+    3. RÉVÉLATION PAR VOLET .................. le texte se découvre derrière un rideau
+    4. IMAGE QUI S'OUVRE ..................... clip-path au défilement
+    5. BARRE DE LECTURE ...................... progression fine en haut de page
+    6. BOUTON MAGNÉTIQUE ..................... le bouton vient vers le curseur
+    7. BANDEAU DÉFILANT ...................... marquee CSS pur, aucune image
+    8. SOULIGNÉ QUI SE TRACE ................. sur les liens de navigation
+    9. LUEUR QUI SUIT LA SOURIS .............. sur les cartes (grand écran)
+
+  TOUT est CSS + JS vanille : ça se colle dans un widget « HTML » d'Elementor
+  gratuit, sans plugin, sans CDN, sans jQuery.
+
+  RÈGLES QUI NE SE NÉGOCIENT PAS
+  ------------------------------
+  · Chaque effet est INACTIF si `prefers-reduced-motion: reduce`.
+  · Rien n'est masqué par défaut en CSS seul : si le JS ne s'exécute pas, la page
+    reste entièrement lisible (piège déjà payé, carnet §14).
+  · Aucune rotation en perspective sur téléphone (elle élargit la boîte englobante
+    et crée du défilement horizontal — 27 px mesurés le 14 août).
+  · Les effets « souris » ne s'allument que sur `(hover:hover) and (pointer:fine)`.
+
+  À ADAPTER par site : les noms de classes marqués « ADAPTER » ci-dessous.
+============================================================================ -->
+
+<style>
+/* ---------- 5. Barre de lecture (toujours présente, largeur pilotée par le JS) ---------- */
+.v3-lecture{position:fixed;top:0;left:0;height:2px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--v3-a,#C9A227),var(--v3-b,#E3C566));
+  transition:width .12s linear;pointer-events:none}
+
+/* ---------- 7. Bandeau défilant ---------- */
+.v3-bandeau{overflow:hidden;white-space:nowrap;border-block:1px solid var(--v3-bord,rgba(255,255,255,.14));
+  padding-block:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.v3-bandeau__p{display:inline-block;will-change:transform}
+.v3-bandeau__p span{display:inline-block;padding-inline:26px;font-size:.78rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--v3-a,#C9A227)}
+
+@media (prefers-reduced-motion: no-preference){
+
+  /* ---------- 2. Photo de héros vivante ---------- */
+  @keyframes v3ken{from{transform:scale(1.06)}to{transform:scale(1.15)}}
+  .v3-photo{animation:v3ken 26s ease-in-out infinite alternate;will-change:transform}
+
+  /* ---------- 3. Révélation par volet ---------- */
+  .v3-volet{display:inline-block;overflow:hidden;vertical-align:bottom}
+  .v3-volet > span{display:inline-block;transform:translateY(105%);
+    transition:transform .9s cubic-bezier(.16,1,.3,1)}
+  .v3-volet.vu > span,.vu .v3-volet > span{transform:none}
+
+  /* ---------- 4. Image qui s'ouvre ---------- */
+  .v3-ouvre{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1)}
+  .v3-ouvre.vu,.vu .v3-ouvre{clip-path:inset(0 0 0 0)}
+
+  /* ---------- 7. Bandeau défilant (mouvement) ---------- */
+  @keyframes v3defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .v3-bandeau__p{animation:v3defile 34s linear infinite}
+  .v3-bandeau:hover .v3-bandeau__p{animation-play-state:paused}
+
+  /* ---------- 8. Souligné qui se trace (ADAPTER : .nav a) ---------- */
+  .nav a{position:relative}
+  .nav a::after{content:'';position:absolute;left:14px;right:14px;bottom:4px;height:1px;
+    background:currentColor;transform:scaleX(0);transform-origin:right;
+    transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  .nav a:hover::after{transform:scaleX(1);transform-origin:left}
+
+  /* ---------- 9. Lueur qui suit la souris (ADAPTER : classe des cartes) ---------- */
+  @media (hover:hover) and (pointer:fine){
+    .v3-lueur{position:relative;isolation:isolate}
+    .v3-lueur::before{content:'';position:absolute;inset:0;z-index:-1;opacity:0;
+      transition:opacity .35s ease;pointer-events:none;
+      background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),
+                 var(--v3-lueur,rgba(201,162,39,.16)),transparent 70%)}
+    .v3-lueur:hover::before{opacity:1}
+  }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  if(!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
+  var $=function(s,c){return (c||document).querySelector(s);},
+      $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));},
+      PETIT=window.matchMedia('(max-width: 860px)').matches,
+      FIN=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ---- 3 & 4 : allumer les révélations quand elles entrent à l'écran ---- */
+  var aRevele=$$('.v3-volet, .v3-ouvre');
+  if(aRevele.length && 'IntersectionObserver' in window){
+    var ioR=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('vu');ioR.unobserve(e.target);}
+    });},{threshold:.2,rootMargin:'0px 0px -40px 0px'});
+    aRevele.forEach(function(e){ioR.observe(e);});
+    // Filet : si rien ne s'est allumé au bout de 2,5 s, tout devient visible.
+    setTimeout(function(){ if(!$('.v3-volet.vu, .v3-ouvre.vu')){ aRevele.forEach(function(e){e.classList.add('vu');}); } },2500);
+  }
+
+  /* ---- 2 : parallaxe de la photo du héros (grand écran seulement) ---- */
+  var photo=$('.v3-photo'), lecture=null, tic=false;
+
+  function auDefilement(){
+    if(tic){return;} tic=true;
+    requestAnimationFrame(function(){
+      var y=window.scrollY||0;
+      if(photo && !PETIT){ photo.style.translate='0 '+(y*0.18).toFixed(1)+'px'; }
+      if(lecture){
+        var h=document.documentElement.scrollHeight-window.innerHeight;
+        lecture.style.width=(h>0?Math.min(y/h,1)*100:0)+'%';
+      }
+      tic=false;
+    });
+  }
+
+  /* ---- 5 : barre de lecture ---- */
+  lecture=document.createElement('div');
+  lecture.className='v3-lecture';
+  lecture.setAttribute('aria-hidden','true');
+  document.body.appendChild(lecture);
+
+  window.addEventListener('scroll',auDefilement,{passive:true});
+  auDefilement();
+
+  /* ---- 6 : boutons magnétiques (ADAPTER le sélecteur si besoin) ---- */
+  if(FIN && !PETIT){
+    $$('.btn--magn').forEach(function(b){
+      b.style.transition='translate .25s cubic-bezier(.16,1,.3,1),background .3s ease';
+      b.addEventListener('mousemove',function(e){
+        var r=b.getBoundingClientRect();
+        b.style.translate=((e.clientX-r.left-r.width/2)*0.22).toFixed(1)+'px '+
+                          ((e.clientY-r.top-r.height/2)*0.28).toFixed(1)+'px';
+      });
+      b.addEventListener('mouseleave',function(){b.style.translate='0 0';});
+    });
+
+    /* ---- 9 : position de la lueur sur les cartes ---- */
+    $$('.v3-lueur').forEach(function(c){
+      c.addEventListener('mousemove',function(e){
+        var r=c.getBoundingClientRect();
+        c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+        c.style.setProperty('--my',(e.clientY-r.top)+'px');
+      },{passive:true});
+    });
+  }
+
+  /* ---- 7 : le bandeau doit contenir DEUX fois le texte pour boucler sans saut ---- */
+  $$('.v3-bandeau__p').forEach(function(p){
+    if(p.dataset.v3){return;} p.dataset.v3='1';
+    p.innerHTML=p.innerHTML+p.innerHTML;
+  });
+})();
+</script>
+
+<script src="fond-anime.js"></script>
 </body>
 </html>

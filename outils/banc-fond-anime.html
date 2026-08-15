@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banc d'essai — fond-anime.js</title>
+<style>
+  body{margin:0;background:#07070E;color:#fff;font:16px/1.6 system-ui,sans-serif}
+  .b{position:relative;min-height:52vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid #222}
+  .b > .t{position:relative;z-index:2;text-align:center;padding:40px}
+  .t h2{margin:0 0 6px;font-size:1.5rem;letter-spacing:.02em}
+  .t p{margin:0;opacity:.7;font-size:.9rem}
+  #b1{background:#12100D}
+  #b2{background:#0B1220}
+  #b3{background:#0D1A12}
+  #b4{background:#150E1C}
+  #b5{background:#0A0C10}
+</style>
+</head>
+<body>
+
+<section class="b" id="b1">
+  <div data-vfond='{"motif":"poussiere","couleur":"#C9A227","couleur2":"#E3C566","densite":1.1,"opacite":.6}'></div>
+  <div class="t"><h2>poussière</h2><p>restaurants, boulangeries, spas — poussière d'or qui monte</p></div>
+</section>
+
+<section class="b" id="b2">
+  <div data-vfond='{"motif":"constellation","couleur":"#4FA6FF","couleur2":"#12D8C5","densite":1,"opacite":0.5}'></div>
+  <div class="t"><h2>constellation</h2><p>garages, techno, quincailleries — réseau de points reliés</p></div>
+</section>
+
+<section class="b" id="b3">
+  <div data-vfond='{"motif":"vagues","couleur":"#3E8E5A","couleur2":"#8FC79A","opacite":0.45}'></div>
+  <div class="t"><h2>vagues</h2><p>paysagement, piscines, bord de l'eau</p></div>
+</section>
+
+<section class="b" id="b4">
+  <div data-vfond='{"motif":"aurore","couleur":"#C77DFF","couleur2":"#5BC0BE","densite":1,"opacite":0.7}'></div>
+  <div class="t"><h2>aurore</h2><p>cliniques, salons, esthétique — nappes de couleur qui respirent</p></div>
+</section>
+
+<section class="b" id="b5">
+  <div data-vfond='{"motif":"grille","couleur":"#FF6B35","couleur2":"#FFB08A","opacite":0.55}'></div>
+  <div class="t"><h2>grille</h2><p>mécanique, construction, transport — perspective qui défile</p></div>
+</section>
+
+<script src="fond-anime.js"></script>
+</body>
+</html>
