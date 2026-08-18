@@ -570,6 +570,7 @@ main, .entete, .pied, .bandeau{ position:relative; z-index:1; }
   align-items:stretch; perspective:1200px;
 }
 @media (max-width: 980px){ .grille-tarifs{ grid-template-columns:1fr; max-width:520px; margin-inline:auto; } }
+.grille-tarifs--deux{ grid-template-columns:1fr; max-width:420px; margin-inline:auto; }
 
 .tarif{
   display:flex; flex-direction:column;
